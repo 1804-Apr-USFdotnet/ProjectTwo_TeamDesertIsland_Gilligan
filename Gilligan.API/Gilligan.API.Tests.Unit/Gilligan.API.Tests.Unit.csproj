@@ -79,6 +79,7 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="DomainServices\RatingServiceTests.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Models\SongTests.cs" />
   </ItemGroup>
@@ -93,7 +94,6 @@
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>
-    <Folder Include="DomainServices\" />
     <Folder Include="Mapping\" />
     <Folder Include="QueryObjects\" />
     <Folder Include="Rest\" />
