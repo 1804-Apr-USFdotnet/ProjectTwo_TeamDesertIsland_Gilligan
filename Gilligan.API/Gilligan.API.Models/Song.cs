@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Linq;
 
 namespace Gilligan.API.Models
 {
@@ -18,6 +19,18 @@ namespace Gilligan.API.Models
         {
             Ratings = new HashSet<Rating>();
             Artists = new HashSet<Artist>();
+        }
+
+        public void CalculateAverageRating()
+        {
+            if (Ratings.Count == 0)
+            {
+                AverageRating = 0;
+            }
+            else
+            {
+                AverageRating = Ratings.Select(x => x.Value).Sum() / Ratings.Count;
+            }
         }
     }
 }
