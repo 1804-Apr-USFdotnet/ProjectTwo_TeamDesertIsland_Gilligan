@@ -6,39 +6,40 @@ using Microsoft.VisualStudio.TestTools.UnitTesting;
 namespace Gilligan.API.Tests.Integration.Repositories
 {
     [TestClass]
-    public class SongRepositoryTests
+    public class UserRepositoryTests
     {
         private readonly GilliganTestContext _context;
-        private readonly SongRepository _songRepository;
+        private readonly UserRepository _userRepository;
 
-        public SongRepositoryTests()
+        public UserRepositoryTests()
         {
             _context = new GilliganTestContext();
-            _songRepository = new SongRepository(_context);
+            _userRepository = new UserRepository(_context);
         }
 
         [TestInitialize]
         public void ClearTable()
         {
-            _context.Songs.RemoveRange(_context.Songs);
+            _context.Users.RemoveRange(_context.Users);
             _context.SaveChanges();
         }
 
         [TestMethod]
-        public void Get_Guid_ReturnsCorrectSong()
+        public void Get_Guid_ReturnsCorrectUser()
         {
-            var song = new Song
+            var user = new User
             {
                 Id = Guid.NewGuid(),
-                SongId = Guid.NewGuid()
+                UserId = Guid.NewGuid(),
+                DateOfBirth = DateTime.Now
             };
 
-            _context.Songs.Add(song);
+            _context.Users.Add(user);
             _context.SaveChanges();
 
-            var result = _songRepository.Get(song.SongId);
+            var result = _userRepository.Get(user.UserId);
 
-            Assert.AreEqual(song, result);
+            Assert.AreEqual(user, result);
         }
     }
 }
