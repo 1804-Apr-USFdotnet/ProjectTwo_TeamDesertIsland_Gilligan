@@ -12,7 +12,9 @@ namespace Gilligan.API.Tests.Unit.DomainServices
     public class RatingServiceTests
     {
         private readonly RatingService _ratingService;
-        private readonly Mock<IRatingRepository> _mockRepository;
+        private readonly Mock<IRatingRepository> _mockRatingRepository;
+        private readonly Mock<ISongRepository> _mockSongRepository;
+        private readonly Mock<IUserRepository> _mockUserRepository;
 
         public RatingServiceTests()
         {
@@ -26,11 +28,17 @@ namespace Gilligan.API.Tests.Unit.DomainServices
                 new Rating {RatedOn = new DateTime(2018,02,18), Value = 4}
             };
 
-            _mockRepository = new Mock<IRatingRepository>();
-            _mockRepository.Setup(x => x.Add(It.IsAny<Rating>()));
-            _mockRepository.Setup(x => x.Get()).Returns(ratings);
+            _mockRatingRepository = new Mock<IRatingRepository>();
+            _mockRatingRepository.Setup(x => x.Add(It.IsAny<Rating>()));
+            _mockRatingRepository.Setup(x => x.Get()).Returns(ratings);
 
-            _ratingService = new RatingService(_mockRepository.Object);
+            _mockSongRepository = new Mock<ISongRepository>();
+            _mockSongRepository.Setup(y => y.Get(It.IsAny<Guid>())).Returns(new Song());
+
+            _mockUserRepository = new Mock<IUserRepository>();
+            _mockUserRepository.Setup(z => z.Get(It.IsAny<Guid>())).Returns(new User());
+            
+            _ratingService = new RatingService(_mockRatingRepository.Object);
         }
 
         [TestMethod]
@@ -38,17 +46,17 @@ namespace Gilligan.API.Tests.Unit.DomainServices
         {
             var result = _ratingService.Get();
 
-            _mockRepository.Verify(x => x.Get(), Times.AtLeastOnce);
+            _mockRatingRepository.Verify(x => x.Get(), Times.AtLeastOnce);
         }
 
         [TestMethod]
         public void AddRating_GivenRating_CallsRepositoryMethod()
         {
             var rating = new Rating();
-
+            
             _ratingService.AddRating(rating);
 
-            _mockRepository.Verify(x => x.Add(It.IsAny<Rating>()), Times.AtLeastOnce);
+            _mockRatingRepository.Verify(x => x.Add(It.IsAny<Rating>()), Times.AtLeastOnce);
         }
 
     }
