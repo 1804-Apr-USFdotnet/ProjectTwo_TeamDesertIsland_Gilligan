@@ -1,10 +1,7 @@
 ﻿using Microsoft.VisualStudio.TestTools.UnitTesting;
 using Gilligan.API.DomainServices;
 using Moq;
-using ApprovalTests;
-using ApprovalTests.Reporters;
 using System.Collections.Generic;
-using Gilligan.API.Repositories;
 using Gilligan.API.RepositoryContracts;
 using Gilligan.API.Models;
 using System;

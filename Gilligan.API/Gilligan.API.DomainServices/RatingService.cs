@@ -23,9 +23,7 @@ namespace Gilligan.API.DomainServices
 
         public List<Rating> Get()
         {
-            List<Rating> lsRatings = _ratingRepository.Get().ToList();
-            
-            return lsRatings;
+            return _ratingRepository.Get().ToList();
         }
     }
 }
