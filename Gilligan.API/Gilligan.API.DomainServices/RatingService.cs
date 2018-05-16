@@ -18,41 +18,13 @@ namespace Gilligan.API.DomainServices
 
         public void AddRating(Rating rating)
         {
-            if(rating == null)
-            {
-                throw new ArgumentException("Rating cannot be null!");
-            }
-            else
-            {
-                try
-                {
-                    _ratingRepository.Add(rating);
-                }
-                catch(Exception e)
-                {
-                    Console.WriteLine("Exception handled:\n" + e.Message + "\n");
-                    Console.WriteLine("Stack Trace:\n" + e.StackTrace + "\n");
-                    Console.WriteLine("Inner Exception:\n" + e.InnerException + "\n");
-                    Console.WriteLine("\n" + e.InnerException.Message);
-                }
-            }
+            _ratingRepository.Add(rating);
         }
 
         public List<Rating> Get()
         {
-            List<Rating> lsRatings = new List<Rating>();
-
-            try
-            {
-                lsRatings = _ratingRepository.Get().ToList();
-            }
-            catch(Exception e)
-            {
-                Console.WriteLine("Exception handled:\n" + e.Message + "\n");
-                Console.WriteLine("Stack Trace:\n" + e.StackTrace + "\n");
-                Console.WriteLine("Inner Exception:\n" + e.InnerException + "\n");
-                Console.WriteLine("\n" + e.InnerException.Message);
-            }
+            List<Rating> lsRatings = _ratingRepository.Get().ToList();
+            
             return lsRatings;
         }
     }
