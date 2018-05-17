@@ -12,6 +12,7 @@ namespace Gilligan.API.Tests.Unit.DomainServices
     public class RatingServiceTests
     {
         private readonly RatingService _ratingService;
+
         private readonly Mock<IRatingRepository> _mockRatingRepository;
         private readonly Mock<ISongRepository> _mockSongRepository;
         private readonly Mock<IUserRepository> _mockUserRepository;
@@ -28,17 +29,19 @@ namespace Gilligan.API.Tests.Unit.DomainServices
                 new Rating {RatedOn = new DateTime(2018,02,18), Value = 4}
             };
 
-            _mockRatingRepository = new Mock<IRatingRepository>();
-            _mockRatingRepository.Setup(x => x.Add(It.IsAny<Rating>()));
-            _mockRatingRepository.Setup(x => x.Get()).Returns(ratings);
-
             _mockSongRepository = new Mock<ISongRepository>();
             _mockSongRepository.Setup(y => y.Get(It.IsAny<Guid>())).Returns(new Song());
 
             _mockUserRepository = new Mock<IUserRepository>();
             _mockUserRepository.Setup(z => z.Get(It.IsAny<Guid>())).Returns(new User());
-            
-            _ratingService = new RatingService(_mockRatingRepository.Object);
+
+            _mockRatingRepository = new Mock<IRatingRepository>();
+            _mockRatingRepository.Setup(x => x.Add(It.IsAny<Rating>()));
+            _mockRatingRepository.Setup(x => x.Get()).Returns(ratings);
+
+            _ratingService = new RatingService(_mockRatingRepository.Object, 
+                _mockSongRepository.Object, _mockUserRepository.Object);
+
         }
 
         [TestMethod]
