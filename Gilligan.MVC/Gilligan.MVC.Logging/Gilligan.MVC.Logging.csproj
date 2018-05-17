@@ -40,7 +40,14 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="LogginService.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\Gilligan.MVC.DomainContracts\Gilligan.MVC.DomainContracts.csproj">
+      <Project>{F5ADEF88-537E-4C62-BC7B-350504E22209}</Project>
+      <Name>Gilligan.MVC.DomainContracts</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

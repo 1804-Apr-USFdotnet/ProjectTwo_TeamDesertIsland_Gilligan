@@ -40,7 +40,19 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="HttpService.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="UserService.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\Gilligan.MVC.DomainContracts\Gilligan.MVC.DomainContracts.csproj">
+      <Project>{F5ADEF88-537E-4C62-BC7B-350504E22209}</Project>
+      <Name>Gilligan.MVC.DomainContracts</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Gilligan.MVC.ViewModels\Gilligan.MVC.ViewModels.csproj">
+      <Project>{3F96A37C-7E37-48CE-83A8-63B8634FD7C2}</Project>
+      <Name>Gilligan.MVC.ViewModels</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

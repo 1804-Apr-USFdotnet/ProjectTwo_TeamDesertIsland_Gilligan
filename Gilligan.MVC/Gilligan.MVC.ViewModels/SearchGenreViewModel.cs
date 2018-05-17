@@ -1,13 +1,9 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using System.Collections.Generic;
 
 namespace Gilligan.MVC.ViewModels
 {
-    class SearchGenreViewModel
+    public class SearchGenreViewModel
     {
-        IEnumerable<SongViewModel> SongViewModels { get; set; }
+        public IEnumerable<SongViewModel> SongViewModels { get; set; }
     }
 }
