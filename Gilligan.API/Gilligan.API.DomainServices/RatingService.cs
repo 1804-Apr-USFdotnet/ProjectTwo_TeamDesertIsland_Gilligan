@@ -21,6 +21,11 @@ namespace Gilligan.API.DomainServices
 
         public void AddRating(Rating rating)
         {
+            if (rating == null)
+            {
+                throw new ArgumentException("Rating object is null!");
+            }
+            
             var song = _songRepository.Get(rating.Song.SongId);
             var user = _userRepository.Get(rating.User.UserId);
 
@@ -32,6 +37,11 @@ namespace Gilligan.API.DomainServices
 
         public List<Rating> Get()
         {
+            if(_ratingRepository.Get().ToList() == null)
+            {
+                throw new ArgumentException("The rating repository is empty!");
+            }
+
             return _ratingRepository.Get().ToList();
         }
     }
