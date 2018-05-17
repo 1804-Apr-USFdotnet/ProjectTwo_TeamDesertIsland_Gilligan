@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Net;
 using System.Net.Http;
+using System.Net.Http.Headers;
 using System.Threading.Tasks;
 using Gilligan.MVC.DomainContracts;
 
@@ -12,27 +13,43 @@ namespace Gilligan.MVC.DomainServices
 
         public HttpService()
         {
-            _httpClient = new HttpClient();
+            _httpClient = new HttpClient {BaseAddress = new Uri("/http://fixthis:12345")};
+            _httpClient.DefaultRequestHeaders.Accept.Clear();
+            _httpClient.DefaultRequestHeaders.Accept.Add(new MediaTypeWithQualityHeaderValue("application/json"));
         }
 
-        public async Task<T> GetEntityAsync<T>(Guid entityId)
+        public async Task<T> GetEntityAsync<T>(T entity, string uri)
         {
-            throw new NotImplementedException();
+            var reponse = await _httpClient.GetAsync(uri);
+
+            if (!reponse.IsSuccessStatusCode) return default(T);
+
+            return await reponse.Content.ReadAsAsync<T>();
         }
 
-        public async Task<HttpStatusCode> DeleteEntityAsync<T>(Guid entityId)
+        public async Task<HttpStatusCode> DeleteEntityAsync<T>(T entity, string uri)
         {
-            throw new NotImplementedException();
+            var response = await _httpClient.DeleteAsync(uri);
+
+            return response.StatusCode;
         }
 
-        public async Task<HttpStatusCode> CreateEntityAsync<T>(T entity)
+        public async Task<HttpStatusCode> CreateEntityAsync<T>(T entity, string uri)
         {
-            throw new NotImplementedException();
+            var response = await _httpClient.PostAsJsonAsync(uri, entity);
+
+            response.EnsureSuccessStatusCode();
+
+            return response.StatusCode;
         }
 
-        public async Task<HttpStatusCode> UpdateEntityAsync<T>(T entity)
+        public async Task<HttpStatusCode> UpdateEntityAsync<T>(T entity, string uri)
         {
-            throw new NotImplementedException();
+            var response = await _httpClient.PutAsJsonAsync(uri, entity);
+
+            response.EnsureSuccessStatusCode();
+
+            return response.StatusCode;
         }
     }
 }

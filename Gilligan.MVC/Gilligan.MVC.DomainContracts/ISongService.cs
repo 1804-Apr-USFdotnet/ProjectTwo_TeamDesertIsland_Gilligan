@@ -8,6 +8,6 @@ namespace Gilligan.MVC.DomainContracts
     {
         Task<HttpStatusCode> AddSongAsync(AddRemoveSongViewModel viewModel);
         Task<HttpStatusCode> RemoveSongAsync(AddRemoveSongViewModel viewModel);
-        Task<HttpStatusCode> RateSongAsync();
+        Task<HttpStatusCode> RateSongAsync(RatingViewModel viewModel);
     }
 }

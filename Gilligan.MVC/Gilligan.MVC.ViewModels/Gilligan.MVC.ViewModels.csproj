@@ -43,7 +43,7 @@
     <Compile Include="AddRemoveSongViewModel.cs" />
     <Compile Include="ArtistViewModel.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="ReviewViewModel.cs" />
+    <Compile Include="RatingViewModel.cs" />
     <Compile Include="SearchArtistViewModel.cs" />
     <Compile Include="SearchGenreViewModel.cs" />
     <Compile Include="SearchSongViewModel.cs" />

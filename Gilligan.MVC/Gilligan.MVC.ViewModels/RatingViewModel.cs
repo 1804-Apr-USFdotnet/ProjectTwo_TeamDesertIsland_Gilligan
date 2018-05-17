@@ -2,7 +2,7 @@
 
 namespace Gilligan.MVC.ViewModels
 {
-    public class ReviewViewModel
+    public class RatingViewModel
     {
         public Guid RatingId { get; set; }
         public string SongName { get; set; }

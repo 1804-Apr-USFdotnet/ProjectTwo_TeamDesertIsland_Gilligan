@@ -1,15 +1,15 @@
-﻿using System;
-using System.Net;
+﻿using System.Net;
 using System.Threading.Tasks;
+using Gilligan.MVC.DomainContracts;
 using Gilligan.MVC.ViewModels;
 
-namespace Gilligan.MVC.DomainContracts
+namespace Gilligan.MVC.DomainServices
 {
     public class SongService : ISongService
     {
-        private readonly IHttpService<SongViewModel> _httpService;
+        private readonly IHttpService _httpService;
 
-        public SongService(IHttpService<SongViewModel> httpService)
+        public SongService(IHttpService httpService)
         {
             _httpService = httpService;
         }
@@ -21,12 +21,12 @@ namespace Gilligan.MVC.DomainContracts
 
         public async Task<HttpStatusCode> RemoveSongAsync(AddRemoveSongViewModel viewModel)
         {
-            throw new NotImplementedException();
+            return await _httpService.DeleteEntityAsync(viewModel);
         }
 
-        public async Task<HttpStatusCode> RateSongAsync()
+        public async Task<HttpStatusCode> RateSongAsync(RatingViewModel viewModel)
         {
-            throw new NotImplementedException();
+            return await _httpService.CreateEntityAsync(viewModel);
         }
     }
 }
