@@ -1,9 +1,8 @@
-﻿using System;
-using Microsoft.VisualStudio.TestTools.UnitTesting;
+﻿using System.Collections.Generic;
 using Gilligan.API.Models;
-using System.Collections.Generic;
+using Microsoft.VisualStudio.TestTools.UnitTesting;
 
-namespace Gilligan.API.Tests.Unit
+namespace Gilligan.API.Tests.Unit.Models
 {
     [TestClass]
     public class SongTests
@@ -12,16 +11,18 @@ namespace Gilligan.API.Tests.Unit
         public void CalculateAverageRating_NoParameter_CalculatesCorrectAverage()
         {
             // Arrange
-            var song = new Song();
-            song.Ratings = new List<Rating>
+            var song = new Song
             {
+                Ratings = new List<Rating>
+                {
                 new Rating{Value = 2},
                 new Rating{Value = 0},
                 new Rating{Value = 4},
                 new Rating{Value = 4},
                 new Rating{Value = 0}
+                }
             };
-            var expectedValue = 2;
+            const int expectedValue = 2;
 
             // Act
             song.CalculateAverageRating();
