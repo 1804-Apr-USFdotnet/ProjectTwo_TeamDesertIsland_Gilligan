@@ -5,7 +5,7 @@ namespace Gilligan.API.Repositories
 {
     public class GilliganContext : DbContext, IDbContext
     {
-        public GilliganContext()
+        public GilliganContext() : base("name=GilliganConnectionString")
         {
             
         }
