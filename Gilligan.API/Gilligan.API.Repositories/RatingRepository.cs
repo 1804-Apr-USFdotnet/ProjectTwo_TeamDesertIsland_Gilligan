@@ -16,12 +16,13 @@ namespace Gilligan.API.Repositories
 
         public void Add(Rating rating)
         {
-            throw new NotImplementedException();
+            _dbContext.Ratings.Add(rating);
+            _dbContext.SaveChanges();
         }
 
         public IEnumerable<Rating> Get()
         {
-            throw new NotImplementedException();
+            return _dbContext.Ratings;
         }
     }
 }
