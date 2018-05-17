@@ -209,7 +209,6 @@
   </ItemGroup>
   <ItemGroup />
   <ItemGroup>
-    <Content Include="connections.config" />
     <None Include="packages.config" />
   </ItemGroup>
   <PropertyGroup>

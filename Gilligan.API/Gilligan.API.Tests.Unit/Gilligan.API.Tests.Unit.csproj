@@ -82,6 +82,7 @@
     <Compile Include="DomainServices\RatingServiceTests.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Models\SongTests.cs" />
+    <Compile Include="QueryObjects\TopRatedSongsQueryTests.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="app.config" />
@@ -92,10 +93,13 @@
       <Project>{17140d7a-a2d4-4ad6-8375-6f8ea4f960fa}</Project>
       <Name>Gilligan.API.Models</Name>
     </ProjectReference>
+    <ProjectReference Include="..\Gilligan.API.QueryObjects\Gilligan.API.QueryObjects.csproj">
+      <Project>{4CC2BC4C-99D5-4A1C-90A8-04E59B60060A}</Project>
+      <Name>Gilligan.API.QueryObjects</Name>
+    </ProjectReference>
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Mapping\" />
-    <Folder Include="QueryObjects\" />
     <Folder Include="Rest\" />
   </ItemGroup>
   <Import Project="$(VSToolsPath)\TeamTest\Microsoft.TestTools.targets" Condition="Exists('$(VSToolsPath)\TeamTest\Microsoft.TestTools.targets')" />
