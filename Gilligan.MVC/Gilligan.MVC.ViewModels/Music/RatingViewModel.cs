@@ -1,11 +1,8 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Web;
 
-namespace Gilligan.MVC.ViewModels
+namespace Gilligan.MVC.ViewModels.Music
 {
-    public class ReviewViewModel
+    public class RatingViewModel
     {
         public Guid RatingId { get; set; }
         public string SongName { get; set; }

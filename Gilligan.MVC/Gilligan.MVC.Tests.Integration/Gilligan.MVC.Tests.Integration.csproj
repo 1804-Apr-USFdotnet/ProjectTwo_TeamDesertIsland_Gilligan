@@ -48,6 +48,13 @@
     <Reference Include="System.Core" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="DomainServices\HttpServiceTests.cs" />
+    <Compile Include="DomainServices\SearchServiceTests.cs" />
+    <Compile Include="DomainServices\SongServiceTests.cs" />
+    <Compile Include="DomainServices\UserServiceTests.cs" />
+    <Compile Include="MVC\SearchControllerTests.cs" />
+    <Compile Include="MVC\SongControllerTests.cs" />
+    <Compile Include="MVC\UserControllerTests.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>

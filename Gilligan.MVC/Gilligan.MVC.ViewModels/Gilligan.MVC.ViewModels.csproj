@@ -40,14 +40,21 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="ArtistViewModel.cs" />
+    <Compile Include="Search\SearchType.cs" />
+    <Compile Include="User\AddRemoveSongViewModel.cs" />
+    <Compile Include="Music\AlbumViewModel.cs" />
+    <Compile Include="Music\ArtistViewModel.cs" />
+    <Compile Include="Music\GenreViewModel.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="ReviewViewModel.cs" />
-    <Compile Include="SearchArtistViewModel.cs" />
-    <Compile Include="SearchGenreViewModel.cs" />
-    <Compile Include="SearchSongViewModel.cs" />
-    <Compile Include="SearchViewModel.cs" />
-    <Compile Include="SongViewModel.cs" />
+    <Compile Include="Music\RatingViewModel.cs" />
+    <Compile Include="Search\SearchViewModel.cs" />
+    <Compile Include="Music\SongViewModel.cs" />
+    <Compile Include="User\DeleteUserViewModel.cs" />
+    <Compile Include="User\LogInUserViewModel.cs" />
+    <Compile Include="User\CreateUserViewModel.cs" />
+    <Compile Include="User\LogOutUserViewModel.cs" />
+    <Compile Include="User\UpdateUserViewModel.cs" />
   </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
