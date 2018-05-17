@@ -101,6 +101,7 @@
     <ProjectReference Include="..\Gilligan.API.QueryObjects\Gilligan.API.QueryObjects.csproj">
       <Project>{4CC2BC4C-99D5-4A1C-90A8-04E59B60060A}</Project>
       <Name>Gilligan.API.QueryObjects</Name>
+      </ProjectReference>
 
     <ProjectReference Include="..\Gilligan.API.Repositories\Gilligan.API.Repositories.csproj">
       <Project>{2187ac55-3505-4250-9297-c384ed175daa}</Project>
