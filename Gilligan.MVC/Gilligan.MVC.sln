@@ -14,6 +14,9 @@ EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Integration", "Integration", "{6042651E-D6DA-41F8-82B9-15221D7FAB25}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "ViewModels", "ViewModels", "{28CCF011-6E43-45D2-B23F-29B22F613B2A}"
+	ProjectSection(SolutionItems) = preProject
+		Gilligan.MVC.MVC\Models\ReviewViewModel.cs = Gilligan.MVC.MVC\Models\ReviewViewModel.cs
+	EndProjectSection
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Gilligan.MVC.MVC", "Gilligan.MVC.MVC\Gilligan.MVC.MVC.csproj", "{D1D2C529-A95C-45D2-B270-C338A7602A25}"
 EndProject
