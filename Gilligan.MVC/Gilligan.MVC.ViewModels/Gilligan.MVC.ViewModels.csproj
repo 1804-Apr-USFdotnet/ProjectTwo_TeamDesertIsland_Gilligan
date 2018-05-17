@@ -40,19 +40,19 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Search\SearchType.cs" />
     <Compile Include="User\AddRemoveSongViewModel.cs" />
     <Compile Include="Music\AlbumViewModel.cs" />
     <Compile Include="Music\ArtistViewModel.cs" />
     <Compile Include="Music\GenreViewModel.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="User\RatingViewModel.cs" />
-    <Compile Include="Search\SearchArtistViewModel.cs" />
-    <Compile Include="Search\SearchGenreViewModel.cs" />
-    <Compile Include="Search\SearchSongViewModel.cs" />
+    <Compile Include="Music\RatingViewModel.cs" />
     <Compile Include="Search\SearchViewModel.cs" />
     <Compile Include="Music\SongViewModel.cs" />
-    <Compile Include="User\UserViewModel.cs" />
+    <Compile Include="User\DeleteUserViewModel.cs" />
+    <Compile Include="User\LogInUserViewModel.cs" />
     <Compile Include="User\CreateUserViewModel.cs" />
+    <Compile Include="User\LogOutUserViewModel.cs" />
     <Compile Include="User\UpdateUserViewModel.cs" />
   </ItemGroup>
   <ItemGroup />

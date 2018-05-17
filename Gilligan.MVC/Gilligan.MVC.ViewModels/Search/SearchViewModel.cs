@@ -2,7 +2,7 @@
 {
     public class SearchViewModel
     {
-        private enum SearchType { Song, Artist, Genre}
+        public SearchType SearchType { get; set; }
         public string SearchString { get; set; }
     }
 }

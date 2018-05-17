@@ -1,5 +1,4 @@
-﻿using System;
-using System.Net;
+﻿using System.Net;
 using System.Threading.Tasks;
 using Gilligan.MVC.DomainContracts;
 using Gilligan.MVC.ViewModels.User;
@@ -15,24 +14,39 @@ namespace Gilligan.MVC.DomainServices
             _httpService = httpService;
         }
 
-        public async Task<HttpStatusCode> Register(CreateUserViewModel viewModel)
+        public async Task<HttpStatusCode> RegisterAsync(CreateUserViewModel viewModel)
         {
-            throw new NotImplementedException();
+            const string registerUri = "";
+
+            return await _httpService.CreateEntityAsync(viewModel, registerUri);
         }
 
-        public async Task<HttpStatusCode> LogInAsync()
+        public async Task<HttpStatusCode> LogInAsync(LogInUserViewModel viewModel)
         {
-            throw new NotImplementedException();
+            const string logInAsyncUri = "";
+
+            return await _httpService.UpdateEntityAsync(viewModel, logInAsyncUri);
         }
 
-        public async Task<HttpStatusCode> LogOutAsync()
+        public async Task<HttpStatusCode> LogOutAsync(LogOutUserViewModel viewModel)
         {
-            throw new NotImplementedException();
+            const string logOutAsyncUri = "";
+
+            return await _httpService.UpdateEntityAsync(viewModel, logOutAsyncUri);
         }
 
         public async Task<HttpStatusCode> UpdateAsync(UpdateUserViewModel viewModel)
         {
-            throw new NotImplementedException();
+            const string updateAsyncUri = "";
+
+            return await _httpService.UpdateEntityAsync(viewModel, updateAsyncUri);
+        }
+
+        public async Task<HttpStatusCode> DeleteAsync(DeleteUserViewModel viewModel)
+        {
+            const string deleteAsyncUri = "";
+
+            return await _httpService.DeleteEntityAsync(viewModel, deleteAsyncUri);
         }
     }
 }

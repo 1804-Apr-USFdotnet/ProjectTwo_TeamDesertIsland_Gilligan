@@ -1,6 +1,7 @@
 ﻿using System.Net;
 using System.Threading.Tasks;
 using Gilligan.MVC.DomainContracts;
+using Gilligan.MVC.ViewModels.Music;
 using Gilligan.MVC.ViewModels.User;
 
 namespace Gilligan.MVC.DomainServices

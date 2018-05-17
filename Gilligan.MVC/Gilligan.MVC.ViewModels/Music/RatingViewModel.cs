@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace Gilligan.MVC.ViewModels.User
+namespace Gilligan.MVC.ViewModels.Music
 {
     public class RatingViewModel
     {

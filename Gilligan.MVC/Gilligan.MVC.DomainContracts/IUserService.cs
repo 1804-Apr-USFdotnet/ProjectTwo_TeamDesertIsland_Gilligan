@@ -6,9 +6,10 @@ namespace Gilligan.MVC.DomainContracts
 {
     public interface IUserService
     {
-        Task<HttpStatusCode> Register(CreateUserViewModel viewModel);
-        Task<HttpStatusCode> LogInAsync();
-        Task<HttpStatusCode> LogOutAsync();
+        Task<HttpStatusCode> RegisterAsync(CreateUserViewModel viewModel);
+        Task<HttpStatusCode> LogInAsync(LogInUserViewModel viewModel);
+        Task<HttpStatusCode> LogOutAsync(LogOutUserViewModel viewModel);
         Task<HttpStatusCode> UpdateAsync(UpdateUserViewModel viewModel);
+        Task<HttpStatusCode> DeleteAsync(DeleteUserViewModel viewModel);
     }
 }

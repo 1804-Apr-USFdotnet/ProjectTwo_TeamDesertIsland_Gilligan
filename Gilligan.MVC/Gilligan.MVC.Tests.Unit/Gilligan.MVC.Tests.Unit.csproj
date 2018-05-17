@@ -48,10 +48,25 @@
     <Reference Include="System.Core" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="DomainServices\HttpServiceTests.cs" />
+    <Compile Include="DomainServices\SearchServiceTests.cs" />
+    <Compile Include="DomainServices\SongServiceTests.cs" />
+    <Compile Include="DomainServices\UserServiceTests.cs" />
+    <Compile Include="MVC\HomeControllerTests.cs" />
+    <Compile Include="MVC\SearchControllerTests.cs" />
+    <Compile Include="MVC\SongControllerTests.cs" />
+    <Compile Include="MVC\UserControllerTests.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />
+  </ItemGroup>
+  <ItemGroup />
+  <ItemGroup>
+    <ProjectReference Include="..\Gilligan.MVC.DomainServices\Gilligan.MVC.DomainServices.csproj">
+      <Project>{B4E60EF9-17E6-4236-8659-905DF5BCAE02}</Project>
+      <Name>Gilligan.MVC.DomainServices</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(VSToolsPath)\TeamTest\Microsoft.TestTools.targets" Condition="Exists('$(VSToolsPath)\TeamTest\Microsoft.TestTools.targets')" />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
