@@ -82,20 +82,39 @@
     <Compile Include="DomainServices\RatingServiceTests.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Models\SongTests.cs" />
+    <Compile Include="QueryObjects\TopRatedSongsQueryTests.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="app.config" />
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\Gilligan.API.DomainServices\Gilligan.API.DomainServices.csproj">
+      <Project>{f15b107b-fcb3-45dd-a467-643ebda6174c}</Project>
+      <Name>Gilligan.API.DomainServices</Name>
+    </ProjectReference>
     <ProjectReference Include="..\Gilligan.API.Models\Gilligan.API.Models.csproj">
       <Project>{17140d7a-a2d4-4ad6-8375-6f8ea4f960fa}</Project>
       <Name>Gilligan.API.Models</Name>
     </ProjectReference>
+
+    <ProjectReference Include="..\Gilligan.API.QueryObjects\Gilligan.API.QueryObjects.csproj">
+      <Project>{4CC2BC4C-99D5-4A1C-90A8-04E59B60060A}</Project>
+      <Name>Gilligan.API.QueryObjects</Name>
+      </ProjectReference>
+
+    <ProjectReference Include="..\Gilligan.API.Repositories\Gilligan.API.Repositories.csproj">
+      <Project>{2187ac55-3505-4250-9297-c384ed175daa}</Project>
+      <Name>Gilligan.API.Repositories</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Gilligan.API.RepositoryContracts\Gilligan.API.RepositoryContracts.csproj">
+      <Project>{d584250b-c8cd-4ac3-abfb-5356b104c253}</Project>
+      <Name>Gilligan.API.RepositoryContracts</Name>
+
+    </ProjectReference>
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Mapping\" />
-    <Folder Include="QueryObjects\" />
     <Folder Include="Rest\" />
   </ItemGroup>
   <Import Project="$(VSToolsPath)\TeamTest\Microsoft.TestTools.targets" Condition="Exists('$(VSToolsPath)\TeamTest\Microsoft.TestTools.targets')" />

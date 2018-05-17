@@ -432,5 +432,8 @@ __pycache__/
 
 
 # End of https://www.gitignore.io/api/csharp,visualstudio
-Gilligan.API/Gilligan.API.Rest/connections.config
+
 Gilligan.API/Gilligan.API.Tests.Integration/connections.config
+Gilligan.API/Gilligan.API.Rest/connections.config
+Gilligan.API/Gilligan.API.Rest/connectins.config
+
