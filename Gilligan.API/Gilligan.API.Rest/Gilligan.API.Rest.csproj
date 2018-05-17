@@ -209,7 +209,7 @@
   </ItemGroup>
   <ItemGroup />
   <ItemGroup>
-    <Content Include="connectins.config" />
+    <Content Include="connections.config" />
     <None Include="packages.config" />
   </ItemGroup>
   <PropertyGroup>
