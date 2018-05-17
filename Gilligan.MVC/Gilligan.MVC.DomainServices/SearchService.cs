@@ -1,4 +1,8 @@
-﻿using Gilligan.MVC.DomainContracts;
+﻿using System.Collections.Generic;
+using System.Threading.Tasks;
+using Gilligan.MVC.DomainContracts;
+using Gilligan.MVC.ViewModels.Music;
+using Gilligan.MVC.ViewModels.Search;
 
 namespace Gilligan.MVC.DomainServices
 {
@@ -11,24 +15,32 @@ namespace Gilligan.MVC.DomainServices
             _httpService = httpService;
         }
 
-        public void SearchSongsAsync()
+        public async Task<IEnumerable<SongViewModel>> SearchSongsAsync(SearchViewModel viewModel)
         {
-            throw new System.NotImplementedException();
+            const string searchSongsAsyncUri = "";
+
+            return await _httpService.GetEntityAsync(viewModel, new List<SongViewModel>(), searchSongsAsyncUri);
         }
 
-        public void SearchAlbumsAsync()
+        public async Task<IEnumerable<AlbumViewModel>> SearchAlbumsAsync(SearchViewModel viewModel)
         {
-            throw new System.NotImplementedException();
+            const string searchAlbumsAsyncUri = "";
+
+            return await _httpService.GetEntityAsync(viewModel, new List<AlbumViewModel>(), searchAlbumsAsyncUri);
         }
 
-        public void SearchGenresAsync()
+        public async Task<IEnumerable<GenreViewModel>> SearchGenresAsync(SearchViewModel viewModel)
         {
-            throw new System.NotImplementedException();
+            const string searchGenreAsyncUri = "";
+
+            return await _httpService.GetEntityAsync(viewModel, new List<GenreViewModel>(), searchGenreAsyncUri);
         }
 
-        public void SearchArtistsAsync()
+        public async Task<IEnumerable<ArtistViewModel>> SearchArtistsAsync(SearchViewModel viewModel)
         {
-            throw new System.NotImplementedException();
+            const string searchGenreAsyncUri = "";
+
+            return await _httpService.GetEntityAsync(viewModel, new List<ArtistViewModel>(), searchGenreAsyncUri);
         }
     }
 }

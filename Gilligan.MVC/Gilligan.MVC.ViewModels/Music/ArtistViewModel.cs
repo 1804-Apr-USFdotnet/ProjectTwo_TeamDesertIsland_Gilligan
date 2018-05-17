@@ -1,6 +1,6 @@
 ﻿using System.Collections.Generic;
 
-namespace Gilligan.MVC.ViewModels
+namespace Gilligan.MVC.ViewModels.Music
 {
     public class ArtistViewModel
     {

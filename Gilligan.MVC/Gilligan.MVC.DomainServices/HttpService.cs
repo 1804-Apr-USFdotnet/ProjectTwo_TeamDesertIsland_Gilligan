@@ -18,13 +18,13 @@ namespace Gilligan.MVC.DomainServices
             _httpClient.DefaultRequestHeaders.Accept.Add(new MediaTypeWithQualityHeaderValue("application/json"));
         }
 
-        public async Task<T> GetEntityAsync<T>(T entity, string uri)
+        public async Task<TO> GetEntityAsync<T, TO>(T input, TO output, string uri)
         {
             var reponse = await _httpClient.GetAsync(uri);
 
-            if (!reponse.IsSuccessStatusCode) return default(T);
+            if (!reponse.IsSuccessStatusCode) return default(TO);
 
-            return await reponse.Content.ReadAsAsync<T>();
+            return await reponse.Content.ReadAsAsync<TO>();
         }
 
         public async Task<HttpStatusCode> DeleteEntityAsync<T>(T entity, string uri)

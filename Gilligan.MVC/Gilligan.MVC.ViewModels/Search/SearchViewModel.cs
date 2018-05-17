@@ -1,4 +1,4 @@
-﻿namespace Gilligan.MVC.ViewModels
+﻿namespace Gilligan.MVC.ViewModels.Search
 {
     public class SearchViewModel
     {

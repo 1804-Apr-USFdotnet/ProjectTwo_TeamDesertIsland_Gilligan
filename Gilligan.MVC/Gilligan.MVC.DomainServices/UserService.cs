@@ -1,30 +1,36 @@
 ﻿using System;
+using System.Net;
 using System.Threading.Tasks;
 using Gilligan.MVC.DomainContracts;
-using Gilligan.MVC.ViewModels;
+using Gilligan.MVC.ViewModels.User;
 
 namespace Gilligan.MVC.DomainServices
 {
     public class UserService : IUserService
     {
-        private readonly IHttpService<UserViewModel> _httpService;
+        private readonly IHttpService _httpService;
 
-        public UserService(IHttpService<UserViewModel> httpService)
+        public UserService(IHttpService httpService)
         {
             _httpService = httpService;
         }
 
-        public void LogInAsync()
+        public async Task<HttpStatusCode> Register(CreateUserViewModel viewModel)
         {
             throw new NotImplementedException();
         }
 
-        public void LogOutAsync()
+        public async Task<HttpStatusCode> LogInAsync()
         {
             throw new NotImplementedException();
         }
 
-        public void UpdateInformationAsync()
+        public async Task<HttpStatusCode> LogOutAsync()
+        {
+            throw new NotImplementedException();
+        }
+
+        public async Task<HttpStatusCode> UpdateAsync(UpdateUserViewModel viewModel)
         {
             throw new NotImplementedException();
         }

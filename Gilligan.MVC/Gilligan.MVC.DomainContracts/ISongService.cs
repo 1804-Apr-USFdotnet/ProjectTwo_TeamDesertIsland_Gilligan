@@ -1,6 +1,7 @@
 ﻿using System.Net;
 using System.Threading.Tasks;
 using Gilligan.MVC.ViewModels;
+using Gilligan.MVC.ViewModels.User;
 
 namespace Gilligan.MVC.DomainContracts
 {

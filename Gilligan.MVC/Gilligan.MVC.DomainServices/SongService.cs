@@ -1,7 +1,7 @@
 ﻿using System.Net;
 using System.Threading.Tasks;
 using Gilligan.MVC.DomainContracts;
-using Gilligan.MVC.ViewModels;
+using Gilligan.MVC.ViewModels.User;
 
 namespace Gilligan.MVC.DomainServices
 {
@@ -16,17 +16,23 @@ namespace Gilligan.MVC.DomainServices
 
         public async Task<HttpStatusCode> AddSongAsync(AddRemoveSongViewModel viewModel)
         {
-            return await _httpService.CreateEntityAsync(viewModel);
+            const string addSongUri = "";
+
+            return await _httpService.UpdateEntityAsync(viewModel, addSongUri);
         }
 
         public async Task<HttpStatusCode> RemoveSongAsync(AddRemoveSongViewModel viewModel)
         {
-            return await _httpService.DeleteEntityAsync(viewModel);
+            const string removeSongUri = "";
+
+            return await _httpService.UpdateEntityAsync(viewModel, removeSongUri);
         }
 
         public async Task<HttpStatusCode> RateSongAsync(RatingViewModel viewModel)
         {
-            return await _httpService.CreateEntityAsync(viewModel);
+            const string rateSongUri = "";
+
+            return await _httpService.CreateEntityAsync(viewModel, rateSongUri);
         }
     }
 }
