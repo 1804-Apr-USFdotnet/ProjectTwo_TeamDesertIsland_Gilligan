@@ -1,4 +1,5 @@
 ﻿using System;
+using System.ComponentModel.DataAnnotations;
 
 namespace Gilligan.API.Models
 {
@@ -9,7 +10,10 @@ namespace Gilligan.API.Models
         public DateTime RatedOn { get; set; }
         public int Value { get; set; }
 
+        [Required]
         public virtual User User { get; set; }
+
+        [Required]
         public virtual Song Song { get; set; }
     }
 }

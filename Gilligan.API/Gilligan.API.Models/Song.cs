@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
 using System.Linq;
 
 namespace Gilligan.API.Models
@@ -12,6 +13,7 @@ namespace Gilligan.API.Models
         public double AverageRating { get; set; }
         public string SpotifyId { get; set; }
 
+        [Required]
         public virtual Album Album { get; set; }
         public virtual ICollection<Rating> Ratings { get; set; }
         public virtual ICollection<Artist> Artists { get; set; }

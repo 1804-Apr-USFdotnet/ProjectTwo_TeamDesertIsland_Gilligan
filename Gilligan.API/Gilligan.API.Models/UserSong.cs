@@ -1,4 +1,5 @@
 ﻿using System;
+using System.ComponentModel.DataAnnotations;
 
 namespace Gilligan.API.Models
 {
@@ -8,6 +9,7 @@ namespace Gilligan.API.Models
         public Guid UserSongId { get; set; }
         public Guid SongId { get; set; }
 
+        [Required]
         public virtual User User { get; set; }
     }
 }

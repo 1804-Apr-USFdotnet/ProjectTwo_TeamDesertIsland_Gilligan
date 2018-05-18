@@ -77,6 +77,9 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Repositories\RatingRepositoryTests.cs" />
     <Compile Include="Repositories\SongRepositoryTests.cs" />
+    <Compile Include="Repositories\ArtistRepositoryTests.cs" />
+    <Compile Include="Repositories\AlbumRepositoryTests.cs" />
+    <Compile Include="Repositories\GenreRepositoryTests.cs" />
     <Compile Include="Repositories\UserRepositoryTests.cs" />
   </ItemGroup>
   <ItemGroup>

@@ -36,8 +36,14 @@ namespace Gilligan.API.Tests.Unit.DomainServices
             _mockRatingRepository = new Mock<IRatingRepository>();
             _mockRatingRepository.Setup(x => x.Add(It.IsAny<Rating>()));
             _mockRatingRepository.Setup(x => x.Get()).Returns(ratings);
+
+            var mockArtistRepository = new Mock<IArtistRepository>();
+            var mockGenreRepository = new Mock<IGenreRepository>();
+            var mockAlbumRepository = new Mock<IAlbumRepository>();
            
-            _ratingService = new RatingService(_mockRatingRepository.Object, mockSongRepository.Object, mockUserRepository.Object);
+            _ratingService = new RatingService(_mockRatingRepository.Object, mockSongRepository.Object, 
+                mockUserRepository.Object, mockArtistRepository.Object,
+                mockGenreRepository.Object, mockAlbumRepository.Object);
         }
 
         [TestMethod]

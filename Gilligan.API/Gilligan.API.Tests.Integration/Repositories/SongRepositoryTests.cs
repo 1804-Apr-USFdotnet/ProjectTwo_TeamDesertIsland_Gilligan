@@ -1,4 +1,6 @@
 ﻿using System;
+using System.Collections.Generic;
+using System.Linq;
 using Gilligan.API.Models;
 using Gilligan.API.Repositories;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
@@ -30,7 +32,8 @@ namespace Gilligan.API.Tests.Integration.Repositories
             var song = new Song
             {
                 Id = Guid.NewGuid(),
-                SongId = Guid.NewGuid()
+                SongId = Guid.NewGuid(),
+                Album = new Album { Id = Guid.NewGuid(), ReleaseDate = DateTime.Today}
             };
 
             _context.Songs.Add(song);
@@ -39,6 +42,34 @@ namespace Gilligan.API.Tests.Integration.Repositories
             var result = _songRepository.Get(song.SongId);
 
             Assert.AreEqual(song, result);
+        }
+
+        [TestMethod]
+        public void Get_Empty_ReturnsAllSongs()
+        {
+            var songs = new List<Song>
+            {
+                new Song
+                {
+                    Id = Guid.NewGuid(),
+                    SongId = Guid.NewGuid(),
+                    Album = new Album { Id = Guid.NewGuid(), ReleaseDate = DateTime.Today }
+                },
+                new Song
+                {
+                    Id = Guid.NewGuid(),
+                    SongId = Guid.NewGuid(),
+                    Album = new Album { Id = Guid.NewGuid(), ReleaseDate = DateTime.Today }
+                }
+            };
+                       
+            
+            _context.Songs.AddRange(songs);
+            _context.SaveChanges();
+
+            var results = _songRepository.Get().ToList();
+
+            Assert.AreEqual(songs.Count, results.Count);
         }
     }
 }
