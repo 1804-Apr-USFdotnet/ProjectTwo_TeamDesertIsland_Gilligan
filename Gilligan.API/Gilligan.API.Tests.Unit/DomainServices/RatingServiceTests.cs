@@ -11,7 +11,7 @@ namespace Gilligan.API.Tests.Unit.DomainServices
     [TestClass]
     public class RatingServiceTests
     {
-        private readonly RatingService _ratingService;
+        private readonly SongService _ratingService;
 
         private readonly Mock<IRatingRepository> _mockRatingRepository;
         private readonly Mock<ISongRepository> _mockSongRepository;
@@ -39,7 +39,7 @@ namespace Gilligan.API.Tests.Unit.DomainServices
             _mockRatingRepository.Setup(x => x.Add(It.IsAny<Rating>()));
             _mockRatingRepository.Setup(x => x.Get()).Returns(ratings);
            
-            _ratingService = new RatingService(_mockRatingRepository.Object, _mockSongRepository.Object, _mockUserRepository.Object);
+            _ratingService = new SongService(_mockRatingRepository.Object, _mockSongRepository.Object, _mockUserRepository.Object);
         }
 
         [TestMethod]

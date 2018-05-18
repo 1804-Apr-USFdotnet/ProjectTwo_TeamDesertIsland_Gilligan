@@ -3,7 +3,7 @@ using Gilligan.API.Models;
 
 namespace Gilligan.API.DomainContracts
 {
-    public interface IRatingService
+    public interface ISongService
     {
         void AddRating(Rating rating);
         List<Rating> Get();
