@@ -1,12 +1,6 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace Gilligan.API.QueryObjects
+﻿namespace Gilligan.API.QueryObjects
 {
-    class TopRatedAlbumQuery
+    public class TopRatedAlbumQuery
     {
     }
 }

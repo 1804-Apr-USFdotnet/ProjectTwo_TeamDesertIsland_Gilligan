@@ -1,5 +1,6 @@
 ﻿using Gilligan.API.DomainContracts;
 using Gilligan.API.Models;
+using Gilligan.API.QueryObjects;
 using Gilligan.API.RepositoryContracts;
 
 namespace Gilligan.API.DomainServices
@@ -26,6 +27,30 @@ namespace Gilligan.API.DomainServices
             rating.User = user;
 
             _ratingRepository.Add(rating);
+        }
+
+        public AlbumRatings AlbumRatings()
+        {
+            var query = new TopRatedAlbumQuery();
+
+            return null;
+        }
+
+        public SongRatings SongRatings()
+        {
+            var songs = _songRepository.Get();
+
+            var query = new TopRatedSongsQuery(songs);
+        }
+
+        public ArtistRatings ArtistRatings()
+        {
+            throw new System.NotImplementedException();
+        }
+
+        public GenreRatings GeneRatings()
+        {
+            throw new System.NotImplementedException();
         }
     }
 }
