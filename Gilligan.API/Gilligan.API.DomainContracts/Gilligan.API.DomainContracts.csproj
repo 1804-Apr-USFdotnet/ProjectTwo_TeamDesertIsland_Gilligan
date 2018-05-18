@@ -43,7 +43,6 @@
     <Compile Include="ILoggingService.cs" />
     <Compile Include="IUserService.cs" />
     <Compile Include="IRatingService.cs" />
-    <Compile Include="ISearchService.cs" />
     <Compile Include="ISpotifyService.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>

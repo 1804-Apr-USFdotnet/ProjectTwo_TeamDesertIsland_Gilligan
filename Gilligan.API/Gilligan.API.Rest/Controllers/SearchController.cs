@@ -6,12 +6,12 @@ namespace Gilligan.API.Rest.Controllers
 {
     public class SearchController : ApiController
     {
-        private readonly ISearchService _searchService;
+        private readonly ISpotifyService _spotifyService;
         private readonly IMapper _mapper;
 
-        public SearchController(ISearchService searchService, IMapper mapper)
+        public SearchController(ISpotifyService spotifyService, IMapper mapper)
         {
-            _searchService = searchService;
+            _spotifyService = spotifyService;
             _mapper = mapper;
         }
     }

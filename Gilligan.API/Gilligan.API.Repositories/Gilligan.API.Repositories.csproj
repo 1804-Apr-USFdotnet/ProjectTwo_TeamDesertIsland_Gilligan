@@ -47,6 +47,9 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="AlbumRepository.cs" />
+    <Compile Include="ArtistRepository.cs" />
+    <Compile Include="GenreRepository.cs" />
     <Compile Include="GilliganContext.cs" />
     <Compile Include="GilliganTestContext.cs" />
     <Compile Include="IDbContext.cs" />

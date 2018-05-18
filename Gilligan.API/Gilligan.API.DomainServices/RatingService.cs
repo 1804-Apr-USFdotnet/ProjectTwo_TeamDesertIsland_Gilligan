@@ -10,12 +10,18 @@ namespace Gilligan.API.DomainServices
         private readonly IRatingRepository _ratingRepository;
         private readonly ISongRepository _songRepository;
         private readonly IUserRepository _userRepository;
+        private readonly IArtistRepository _artistRepository;
+        private readonly IGenreRepository _genreRepository;
+        private readonly IAlbumRepository _albumRepository;
 
-        public RatingService(IRatingRepository ratingRepository, ISongRepository songRepository, IUserRepository userRepository)
+        public RatingService(IRatingRepository ratingRepository, ISongRepository songRepository, IUserRepository userRepository, IArtistRepository artistRepository, IGenreRepository genreRepository, IAlbumRepository albumRepository)
         {
             _ratingRepository = ratingRepository;
             _songRepository = songRepository;
             _userRepository = userRepository;
+            _artistRepository = artistRepository;
+            _genreRepository = genreRepository;
+            _albumRepository = albumRepository;
         }
 
         public void AddRating(Rating rating)
@@ -29,28 +35,40 @@ namespace Gilligan.API.DomainServices
             _ratingRepository.Add(rating);
         }
 
-        public AlbumRatings AlbumRatings()
+        public AlbumRatings AlbumRatings(int takeAmount)
         {
+            var albums = _albumRepository.Get();
+
             var query = new TopRatedAlbumQuery();
 
             return null;
         }
 
-        public SongRatings SongRatings()
+        public SongRatings SongRatings(int takeAmount)
         {
             var songs = _songRepository.Get();
 
-            var query = new TopRatedSongsQuery(songs);
+            var query = new TopRatedSongsQuery(songs, takeAmount);
+
+            return null;
         }
 
-        public ArtistRatings ArtistRatings()
+        public ArtistRatings ArtistRatings(int takeAmount)
         {
-            throw new System.NotImplementedException();
+            var artists = _artistRepository.Get();
+
+            var query = new TopRatedArtistsQuery(artists, takeAmount);
+
+            return null;
         }
 
-        public GenreRatings GeneRatings()
+        public GenreRatings GenreRatings(int takeAmount)
         {
-            throw new System.NotImplementedException();
+            var albums = _genreRepository.Get();
+
+            var query = new TopRatedGenreQuery();
+
+            return null;
         }
     }
 }
