@@ -31,12 +31,23 @@ namespace Gilligan.API.QueryObjects
   
         public List<Artist> Weekly()
         {
-
+            return _list.Where(x => x.Songs.Any(y => y.Ratings.Any(z => z.RatedOn >= _oneWeekAgo)))
+                        .OrderByDescending(x => x.Songs.Average(y => y.AverageRating))
+                        .Take(_takeAmount).ToList();
         }
 
         public List<Artist> Daily()
         {
+            return _list.Where(x => x.Songs.Any(y => y.Ratings.Any(z => z.RatedOn == DateTime.Today)))
+                        .OrderByDescending(x => x.Songs.Average(y => y.AverageRating))
+                        .Take(_takeAmount).ToList();
+        }
 
+        public List<Artist> AllTime()
+        {
+            return _list.Where(x => x.Songs.Any(y => y.Ratings.Any()))
+                        .OrderByDescending(x => x.Songs.Average(y => y.AverageRating))
+                        .Take(_takeAmount).ToList();
         }
     }
 }
