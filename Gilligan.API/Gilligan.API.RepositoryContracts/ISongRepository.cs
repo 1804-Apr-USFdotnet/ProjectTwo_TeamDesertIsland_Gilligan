@@ -8,5 +8,6 @@ namespace Gilligan.API.RepositoryContracts
     {
         Song Get(Guid songId);
         IEnumerable<Song> Get();
+        Song Get(string name);
     }
 }

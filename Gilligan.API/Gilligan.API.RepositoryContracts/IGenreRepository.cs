@@ -6,5 +6,6 @@ namespace Gilligan.API.RepositoryContracts
     public interface IGenreRepository
     {
         IEnumerable<Genre> Get();
+        Genre Get(string name);
     }
 }

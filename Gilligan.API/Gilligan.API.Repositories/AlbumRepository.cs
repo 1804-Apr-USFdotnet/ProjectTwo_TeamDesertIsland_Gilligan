@@ -1,4 +1,5 @@
 ﻿using System.Collections.Generic;
+using System.Runtime.ExceptionServices;
 using Gilligan.API.Models;
 using Gilligan.API.RepositoryContracts;
 
@@ -16,6 +17,11 @@ namespace Gilligan.API.Repositories
         public IEnumerable<Album> Get()
         {
             return _context.Albums;
+        }
+
+        public Album Get(string name)
+        {
+            return 
         }
     }
 }

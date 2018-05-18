@@ -38,7 +38,7 @@ namespace Gilligan.API.Rest
             //Services
             builder.RegisterType<RatingService>().As<IRatingService>();
             builder.RegisterType<SpotifyService>().As<ISpotifyService>();
-            builder.RegisterType<UserService>().As<IUserService>();
+            builder.RegisterType<InventoryService>().As<IInventoryService>();
 
             //Repositories
             builder.RegisterType<AlbumRepository>().As<IAlbumRepository>();
