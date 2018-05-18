@@ -1,19 +1,16 @@
-﻿using System;
-using System.Collections.Generic;
-using Gilligan.API.DomainContracts;
+﻿using Gilligan.API.DomainContracts;
 using Gilligan.API.Models;
 using Gilligan.API.RepositoryContracts;
-using System.Linq;
 
 namespace Gilligan.API.DomainServices
 {
-    public class SongService : ISongService
+    public class RatingService : IRatingService
     {
         private readonly IRatingRepository _ratingRepository;
         private readonly ISongRepository _songRepository;
         private readonly IUserRepository _userRepository;
 
-        public SongService(IRatingRepository ratingRepository, ISongRepository songRepository, IUserRepository userRepository)
+        public RatingService(IRatingRepository ratingRepository, ISongRepository songRepository, IUserRepository userRepository)
         {
             _ratingRepository = ratingRepository;
             _songRepository = songRepository;
@@ -29,11 +26,6 @@ namespace Gilligan.API.DomainServices
             rating.User = user;
 
             _ratingRepository.Add(rating);
-        }
-
-        public List<Rating> Get()
-        {
-            return _ratingRepository.Get().ToList();
         }
     }
 }

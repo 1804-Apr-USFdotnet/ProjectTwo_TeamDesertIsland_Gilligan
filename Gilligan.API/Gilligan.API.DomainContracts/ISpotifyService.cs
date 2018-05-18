@@ -3,10 +3,10 @@ using Gilligan.API.Models;
 
 namespace Gilligan.API.DomainContracts
 {
-    public interface ISearchService
+    public interface ISpotifyService
     {
-        IEnumerable<Artist> SearchArtists(string artist);
         IEnumerable<Album> SearchAlbums(string album);
         IEnumerable<Song> SearchSongs(string song);
+        IEnumerable<Artist> SearchArtists(string artist);
     }
 }
