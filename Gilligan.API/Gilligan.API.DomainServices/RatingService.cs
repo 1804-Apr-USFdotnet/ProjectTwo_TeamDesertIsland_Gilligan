@@ -11,15 +11,13 @@ namespace Gilligan.API.DomainServices
         private readonly IArtistRepository _artistRepository;
         private readonly IGenreRepository _genreRepository;
         private readonly IAlbumRepository _albumRepository;
-        private readonly IInventoryService _inventoryService;
 
-        public RatingService(ISongRepository songRepository, IArtistRepository artistRepository, IGenreRepository genreRepository, IAlbumRepository albumRepository, IInventoryService inventoryService)
+        public RatingService(ISongRepository songRepository, IArtistRepository artistRepository, IGenreRepository genreRepository, IAlbumRepository albumRepository)
         {
             _songRepository = songRepository;
             _artistRepository = artistRepository;
             _genreRepository = genreRepository;
             _albumRepository = albumRepository;
-            _inventoryService = inventoryService;
         }
 
         public void AddRating(Rating rating)

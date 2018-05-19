@@ -7,7 +7,7 @@ namespace Gilligan.API.Models
     {
         public Guid Id { get; set; }
         public Guid RatingId { get; set; }
-        public DateTime RatedOn { get; set; }
+        public DateTime? RatedOn { get; set; }
         public int Value { get; set; }
 
         [Required]

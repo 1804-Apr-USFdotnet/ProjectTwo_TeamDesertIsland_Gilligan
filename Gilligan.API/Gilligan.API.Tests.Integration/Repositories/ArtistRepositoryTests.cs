@@ -42,5 +42,24 @@ namespace Gilligan.API.Tests.Integration.Repositories
 
             Assert.AreEqual(artists.Count, results.Count);
         }
+
+        [TestMethod]
+        public void Get_String_ReturnsCorrectArtists()
+        {
+            var artists = new List<Artist>
+            {
+                new Artist{Id = Guid.NewGuid(), Name = "Bob"},
+                new Artist{Id = Guid.NewGuid(), Name = "NotBob"}
+            };
+
+            _context.Artists.AddRange(artists);
+            _context.SaveChanges();
+
+            var results = _artistRepository.Get("Bob").ToList();
+
+            const int expected = 1;
+
+            Assert.AreEqual(expected, results.Count);
+        }
     }
 }

@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using Gilligan.API.RepositoryContracts;
 using Gilligan.API.Models;
 using System;
+using Gilligan.API.DomainContracts;
 using Gilligan.API.DomainServices;
 
 namespace Gilligan.API.Tests.Unit.DomainServices
@@ -40,6 +41,7 @@ namespace Gilligan.API.Tests.Unit.DomainServices
             var mockArtistRepository = new Mock<IArtistRepository>();
             var mockGenreRepository = new Mock<IGenreRepository>();
             var mockAlbumRepository = new Mock<IAlbumRepository>();
+            var mockIventoryService = new Mock<IInventoryService>();
            
             _ratingService = new RatingService(mockSongRepository.Object, mockArtistRepository.Object,
                 mockGenreRepository.Object, mockAlbumRepository.Object);

@@ -1,5 +1,5 @@
 ﻿using System.Collections.Generic;
-using System.Runtime.ExceptionServices;
+using System.Linq;
 using Gilligan.API.Models;
 using Gilligan.API.RepositoryContracts;
 
@@ -19,9 +19,9 @@ namespace Gilligan.API.Repositories
             return _context.Albums;
         }
 
-        public Album Get(string name)
+        public IEnumerable<Album> Get(string name)
         {
-            return 
+            return _context.Albums.Where(x => x.Name == name);
         }
     }
 }

@@ -42,5 +42,36 @@ namespace Gilligan.API.Tests.Integration.Repositories
 
             Assert.AreEqual(genres.Count, results.Count);
         }
+
+        [TestMethod]
+        public void Get_String_ReturnsCorrectGenres()
+        {
+            var genres = new List<Genre>
+            {
+                new Genre{Id = Guid.NewGuid(), Name = "Bob"},
+                new Genre{Id = Guid.NewGuid(), Name = "NotBob"}
+            };
+
+            _context.Genres.AddRange(genres);
+            _context.SaveChanges();
+
+            var result = _genreRepository.Get("Bob");
+
+            const int expected = 1;
+
+            Assert.AreEqual(expected, result);
+        }
+
+        [TestMethod]
+        public void Add_Genre_AddGenreToDatabase()
+        {
+            var genre = new Genre{Id = Guid.NewGuid()};
+
+            _genreRepository.Add(genre);
+
+            var genres = _context.Genres.ToList();
+
+            Assert.IsTrue(genres.Contains(genre));
+        }
     }
 }

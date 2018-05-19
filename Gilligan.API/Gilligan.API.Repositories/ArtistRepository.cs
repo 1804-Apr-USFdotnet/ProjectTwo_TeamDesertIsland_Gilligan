@@ -1,4 +1,5 @@
 ﻿using System.Collections.Generic;
+using System.Linq;
 using Gilligan.API.Models;
 using Gilligan.API.RepositoryContracts;
 
@@ -16,6 +17,11 @@ namespace Gilligan.API.Repositories
         public IEnumerable<Artist> Get()
         {
             return _context.Artists;
+        }
+
+        public IEnumerable<Artist> Get(string name)
+        {
+            return _context.Artists.Where(x => x.Name == name);
         }
     }
 }

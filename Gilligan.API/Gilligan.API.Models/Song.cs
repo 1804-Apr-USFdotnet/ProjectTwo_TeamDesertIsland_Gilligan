@@ -12,6 +12,7 @@ namespace Gilligan.API.Models
         public string Name { get; set; }
         public double AverageRating { get; set; }
         public string SpotifyId { get; set; }
+        public bool IsAttached { get; set; }
 
         [Required]
         public virtual Album Album { get; set; }

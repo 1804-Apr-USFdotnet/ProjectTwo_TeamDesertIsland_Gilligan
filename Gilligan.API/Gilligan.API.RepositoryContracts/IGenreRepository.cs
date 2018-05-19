@@ -7,5 +7,6 @@ namespace Gilligan.API.RepositoryContracts
     {
         IEnumerable<Genre> Get();
         Genre Get(string name);
+        void Add(Genre genre);
     }
 }

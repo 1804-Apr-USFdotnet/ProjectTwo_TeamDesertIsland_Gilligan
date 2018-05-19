@@ -90,6 +90,10 @@
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\Gilligan.API.DomainContracts\Gilligan.API.DomainContracts.csproj">
+      <Project>{B73BC5E0-8E57-4B91-B71E-631F81FBBA62}</Project>
+      <Name>Gilligan.API.DomainContracts</Name>
+    </ProjectReference>
     <ProjectReference Include="..\Gilligan.API.DomainServices\Gilligan.API.DomainServices.csproj">
       <Project>{f15b107b-fcb3-45dd-a467-643ebda6174c}</Project>
       <Name>Gilligan.API.DomainServices</Name>

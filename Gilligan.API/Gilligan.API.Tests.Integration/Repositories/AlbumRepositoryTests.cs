@@ -31,8 +31,8 @@ namespace Gilligan.API.Tests.Integration.Repositories
         {
             var albums = new List<Album>
             {
-                new Album{Id = Guid.NewGuid(), ReleaseDate = DateTime.Now},
-                new Album{Id = Guid.NewGuid(), ReleaseDate = DateTime.Today}
+                new Album{Id = Guid.NewGuid()},
+                new Album{Id = Guid.NewGuid()}
             };
 
             _context.Albums.AddRange(albums);
@@ -41,6 +41,25 @@ namespace Gilligan.API.Tests.Integration.Repositories
             var results = _albumRepository.Get().ToList();
 
             Assert.AreEqual(albums.Count, results.Count);
+        }
+
+        [TestMethod]
+        public void Get_String_ReturnsAllMatchingAlbums()
+        {
+            var albums = new List<Album>
+            {
+                new Album{Id = Guid.NewGuid(), Name = "Bob"},
+                new Album{Id = Guid.NewGuid(), Name = "NotBob"}
+            };
+
+            _context.Albums.AddRange(albums);
+            _context.SaveChanges();
+
+            var results = _albumRepository.Get("Bob").ToList();
+
+            const int expected = 1;
+
+            Assert.AreEqual(expected, results.Count);
         }
     }
 }
