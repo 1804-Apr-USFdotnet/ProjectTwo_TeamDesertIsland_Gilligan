@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace Gilligan.API.QueryObjects
 {
-    public class TopRatedGenreQuery
+    public class TopRatedAlbumQuery
     {
     }
 }

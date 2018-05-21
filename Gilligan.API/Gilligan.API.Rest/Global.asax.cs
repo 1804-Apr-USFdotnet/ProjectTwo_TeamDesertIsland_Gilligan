@@ -1,5 +1,6 @@
 ﻿using System.Web.Http;
 using System.Web.Mvc;
+using Autofac.Integration.WebApi;
 
 namespace Gilligan.API.Rest
 {
@@ -7,6 +8,7 @@ namespace Gilligan.API.Rest
     {
         protected void Application_Start()
         {
+            GlobalConfiguration.Configuration.DependencyResolver = new AutofacWebApiDependencyResolver(Bootstrapper.RegisterTypes());
             AreaRegistration.RegisterAllAreas();
             GlobalConfiguration.Configure(WebApiConfig.Register);
             FilterConfig.RegisterGlobalFilters(GlobalFilters.Filters);

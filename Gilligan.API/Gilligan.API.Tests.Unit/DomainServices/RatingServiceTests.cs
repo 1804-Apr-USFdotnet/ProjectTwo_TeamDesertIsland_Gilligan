@@ -1,21 +1,20 @@
 ﻿using Microsoft.VisualStudio.TestTools.UnitTesting;
-using Gilligan.API.DomainServices;
 using Moq;
 using System.Collections.Generic;
 using Gilligan.API.RepositoryContracts;
 using Gilligan.API.Models;
 using System;
+using Gilligan.API.DomainContracts;
+using Gilligan.API.DomainServices;
 
 namespace Gilligan.API.Tests.Unit.DomainServices
 {
     [TestClass]
     public class RatingServiceTests
     {
-        private readonly SongService _ratingService;
+        private readonly RatingService _ratingService;
 
         private readonly Mock<IRatingRepository> _mockRatingRepository;
-        private readonly Mock<ISongRepository> _mockSongRepository;
-        private readonly Mock<IUserRepository> _mockUserRepository;
 
         public RatingServiceTests()
         {
@@ -29,25 +28,23 @@ namespace Gilligan.API.Tests.Unit.DomainServices
                 new Rating {RatedOn = new DateTime(2018,02,18), Value = 4}
             };
 
-            _mockSongRepository = new Mock<ISongRepository>();
-            _mockSongRepository.Setup(y => y.Get(It.IsAny<Guid>())).Returns(new Song());
+            var mockSongRepository = new Mock<ISongRepository>();
+            mockSongRepository.Setup(y => y.Get(It.IsAny<Guid>())).Returns(new Song());
 
-            _mockUserRepository = new Mock<IUserRepository>();
-            _mockUserRepository.Setup(z => z.Get(It.IsAny<Guid>())).Returns(new User());
+            var mockUserRepository = new Mock<IUserRepository>();
+            mockUserRepository.Setup(z => z.Get(It.IsAny<Guid>())).Returns(new User());
 
             _mockRatingRepository = new Mock<IRatingRepository>();
             _mockRatingRepository.Setup(x => x.Add(It.IsAny<Rating>()));
             _mockRatingRepository.Setup(x => x.Get()).Returns(ratings);
+
+            var mockArtistRepository = new Mock<IArtistRepository>();
+            var mockGenreRepository = new Mock<IGenreRepository>();
+            var mockAlbumRepository = new Mock<IAlbumRepository>();
+            var mockIventoryService = new Mock<IInventoryService>();
            
-            _ratingService = new SongService(_mockRatingRepository.Object, _mockSongRepository.Object, _mockUserRepository.Object);
-        }
-
-        [TestMethod]
-        public void Get_NoParameter_CallsRepositoryMethod()
-        {
-            var result = _ratingService.Get();
-
-            _mockRatingRepository.Verify(x => x.Get(), Times.AtLeastOnce);
+            _ratingService = new RatingService(mockSongRepository.Object, mockArtistRepository.Object,
+                mockGenreRepository.Object, mockAlbumRepository.Object);
         }
 
         [TestMethod]
@@ -63,6 +60,5 @@ namespace Gilligan.API.Tests.Unit.DomainServices
 
             _mockRatingRepository.Verify(x => x.Add(It.IsAny<Rating>()), Times.AtLeastOnce);
         }
-
     }
 }

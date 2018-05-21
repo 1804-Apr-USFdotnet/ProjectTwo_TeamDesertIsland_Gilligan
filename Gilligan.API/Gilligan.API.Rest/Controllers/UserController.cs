@@ -4,14 +4,14 @@ using Gilligan.API.DomainContracts;
 
 namespace Gilligan.API.Rest.Controllers
 {
-    public class RatingController : ApiController
+    public class UserController : ApiController
     {
-        private readonly IRatingService _ratingService;
+        private readonly IInventoryService _userService;
         private readonly IMapper _mapper;
 
-        public RatingController(IRatingService ratingService, IMapper mapper)
+        public UserController(IInventoryService userService, IMapper mapper)
         {
-            _ratingService = ratingService;
+            _userService = userService;
             _mapper = mapper;
         }
     }

@@ -36,8 +36,7 @@ namespace Gilligan.API.QueryObjects
 
         public List<Song> AllTime()
         {
-            return _list.Where(y => y.Ratings.Any())
-                        .OrderByDescending(x => x.AverageRating)
+            return _list.OrderByDescending(x => x.AverageRating)
                         .Take(_takeAmount).ToList();
         }
     }

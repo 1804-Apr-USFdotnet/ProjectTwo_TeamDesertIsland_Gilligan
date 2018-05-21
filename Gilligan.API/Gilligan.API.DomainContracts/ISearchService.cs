@@ -1,13 +1,14 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using System.Collections.Generic;
+using Gilligan.API.Models;
 
 namespace Gilligan.API.DomainContracts
 {
-    interface ISearchService
+    public interface ISearchService
     {
-        
+        IEnumerable<Song> SearchSpotifySongs(string name);
+        IEnumerable<Song> SearchLocalSongs(string name);
+        IEnumerable<Album> SearchLocalAlbums(string name);
+        IEnumerable<Artist> SearchLocalArtists(string name);
+        IEnumerable<Genre> SearchLocalGenres(string name);
     }
 }
