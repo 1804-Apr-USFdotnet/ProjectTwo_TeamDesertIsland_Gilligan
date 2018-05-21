@@ -88,13 +88,217 @@ namespace Gilligan.API.Tests.Unit.QueryObjects
         [TestMethod]
         public void Weekly_Empty_ReturnsAlbumsRatedInLastWeek()
         {
+            _albums = new List<Album>
+            {
+                new Album
+                {
+                    Songs = new List<Song>
+                    {
+                        new Song
+                        {
+                            AverageRating = 1.0,
+                            Ratings = new List<Rating>
+                            {
+                                new Rating
+                                {
+                                    RatedOn = DateTime.Today
+                                }
+                            }
+                        },
+                        new Song
+                        {
+                            AverageRating = 3.0,
+                            Ratings = new List<Rating>
+                            {
+                                new Rating
+                                {
+                                    RatedOn = DateTime.Today
+                                }
+                            }
+                        }
+                    }
+                },
+                new Album
+                {
+                    Songs = new List<Song>
+                    {
+                        new Song
+                        {
+                            AverageRating = 1.0,
+                            Ratings = new List<Rating>
+                            {
+                                new Rating
+                                {
+                                    RatedOn = new DateTime(2000, 1, 1)
+                                }
+                            }
+                        },
+                        new Song
+                        {
+                            AverageRating = 3.0,
+                            Ratings = new List<Rating>
+                            {
+                                new Rating
+                                {
+                                    RatedOn = new DateTime(1999, 1, 1)
+                                }
+                            }
+                        }
+                    }
+                }
+            };
 
+            _query = new TopRatedAlbumsQuery(_albums, 3);
+
+            var result = _query.Weekly();
+
+            const int expected = 1;
+
+            Assert.AreEqual(expected, result.Count);
         }
 
         [TestMethod]
         public void Daily_Empty_ReturnsAlbumsRatedThatDay()
         {
+            _albums = new List<Album>
+            {
+                new Album
+                {
+                    Songs = new List<Song>
+                    {
+                        new Song
+                        {
+                            AverageRating = 1.0,
+                            Ratings = new List<Rating>
+                            {
+                                new Rating
+                                {
+                                    RatedOn = DateTime.Today
+                                }
+                            }
+                        },
+                        new Song
+                        {
+                            AverageRating = 3.0,
+                            Ratings = new List<Rating>
+                            {
+                                new Rating
+                                {
+                                    RatedOn = DateTime.Today
+                                }
+                            }
+                        }
+                    }
+                },
+                new Album
+                {
+                    Songs = new List<Song>
+                    {
+                        new Song
+                        {
+                            AverageRating = 1.0,
+                            Ratings = new List<Rating>
+                            {
+                                new Rating
+                                {
+                                    RatedOn = new DateTime(2000, 1, 1)
+                                }
+                            }
+                        },
+                        new Song
+                        {
+                            AverageRating = 3.0,
+                            Ratings = new List<Rating>
+                            {
+                                new Rating
+                                {
+                                    RatedOn = new DateTime(1999, 1, 1)
+                                }
+                            }
+                        }
+                    }
+                }
+            };
 
+            _query = new TopRatedAlbumsQuery(_albums, 3);
+
+            var result = _query.Daily();
+
+            const int expected = 1;
+
+            Assert.AreEqual(expected, result.Count);
+        }
+
+        [TestMethod]
+        public void AllTime_Empty_ReturnsAlbumsRatedAllTime()
+        {
+            _albums = new List<Album>
+            {
+                new Album
+                {
+                    Songs = new List<Song>
+                    {
+                        new Song
+                        {
+                            AverageRating = 1.0,
+                            Ratings = new List<Rating>
+                            {
+                                new Rating
+                                {
+                                    RatedOn = DateTime.Today
+                                }
+                            }
+                        },
+                        new Song
+                        {
+                            AverageRating = 3.0,
+                            Ratings = new List<Rating>
+                            {
+                                new Rating
+                                {
+                                    RatedOn = DateTime.Today
+                                }
+                            }
+                        }
+                    }
+                },
+                new Album
+                {
+                    Songs = new List<Song>
+                    {
+                        new Song
+                        {
+                            AverageRating = 1.0,
+                            Ratings = new List<Rating>
+                            {
+                                new Rating
+                                {
+                                    RatedOn = new DateTime(2000, 1, 1)
+                                }
+                            }
+                        },
+                        new Song
+                        {
+                            AverageRating = 3.0,
+                            Ratings = new List<Rating>
+                            {
+                                new Rating
+                                {
+                                    RatedOn = new DateTime(1999, 1, 1)
+                                }
+                            }
+                        }
+                    }
+                }
+            };
+
+            _query = new TopRatedAlbumsQuery(_albums, 3);
+
+            var result = _query.AllTime();
+
+            const int expected = 2;
+
+            Assert.AreEqual(expected, result.Count);
         }
 
         [TestMethod]

@@ -11,10 +11,8 @@ namespace Gilligan.API.QueryObjects
             private readonly int _takeAmount;
             private readonly DateTime _oneMonthAgo;
             private readonly DateTime _oneWeekAgo;
-            private readonly IEnumerable<Song> _songs;
-            
 
-            public TopRatedGenreQuery(IEnumerable<Genre> list, int takeAmount)//, IEnumerable<Song> songs)
+            public TopRatedGenreQuery(IEnumerable<Genre> list, int takeAmount)
             {
                 _list = list;
                 _takeAmount = takeAmount;
@@ -25,15 +23,15 @@ namespace Gilligan.API.QueryObjects
             public List<Genre> Monthly()
             {
                 return _list.Where(w => w.Artists.Any(x => x.Songs.Any(y => y.Ratings.Any(z => z.RatedOn >= _oneMonthAgo))))
-                        .OrderByDescending(x => x.Artists.SelectMany(y => y.Songs.Select(z => z.AverageRating)).Average())
-                        .Take(_takeAmount)
-                        .ToList();
+                            .OrderByDescending(x => x.Artists.SelectMany(y => y.Songs.Select(z => z.AverageRating)).Average())
+                            .Take(_takeAmount)
+                            .ToList();
             }
 
             public List<Genre> Weekly()
             {
                 return _list.Where(w => w.Artists.Any(x => x.Songs.Any(y => y.Ratings.Any(z => z.RatedOn >= _oneWeekAgo))))
-                            //.OrderByDescending(x => x.Artists.Join(y => y.Songs()))
+                            .OrderByDescending(x => x.Artists.SelectMany(y => y.Songs.Select(z => z.AverageRating)).Average())
                             .Take(_takeAmount)
                             .ToList();
             }
@@ -41,17 +39,17 @@ namespace Gilligan.API.QueryObjects
             public List<Genre> Daily()
             {
                 return _list.Where(w => w.Artists.Any(x => x.Songs.Any(y => y.Ratings.Any(z => z.RatedOn == DateTime.Today))))
-                            //.OrderByDescending(x => x.Artists.Any(y => y.Songs.Average(z => z.AverageRating)))
+                            .OrderByDescending(x => x.Artists.SelectMany(y => y.Songs.Select(z => z.AverageRating)).Average())
                             .Take(_takeAmount)
                             .ToList();
             }
 
             public List<Genre> AllTime()
             {
-                //return _list.OrderByDescending(x => x.Artists.Any(y => y.Songs.Average(z => z.AverageRating)))
-                //            .Take(_takeAmount)
-                //            .ToList();
-                return null;
+                return _list.Where(w => w.Artists.Any(x => x.Songs.Any(y => y.Ratings.Any())))
+                            .OrderByDescending(x => x.Artists.SelectMany(y => y.Songs.Select(z => z.AverageRating)).Average())
+                            .Take(_takeAmount)
+                            .ToList();
             }
     }
 }
