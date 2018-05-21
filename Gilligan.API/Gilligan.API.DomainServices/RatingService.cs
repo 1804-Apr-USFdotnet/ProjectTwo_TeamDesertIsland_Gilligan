@@ -29,7 +29,7 @@ namespace Gilligan.API.DomainServices
         {
             var albums = _albumRepository.Get();
 
-            var query = new TopRatedAlbumQuery();
+            var query = new TopRatedAlbumsQuery(albums, takeAmount);
 
             return null;
         }
@@ -56,7 +56,7 @@ namespace Gilligan.API.DomainServices
         {
             var albums = _genreRepository.Get();
 
-            var query = new TopRatedGenreQuery();
+            var query = new TopRatedGenreQuery(albums, takeAmount);
 
             return null;
         }

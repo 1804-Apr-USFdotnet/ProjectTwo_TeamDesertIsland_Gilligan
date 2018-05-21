@@ -43,7 +43,7 @@ namespace Gilligan.API.DomainServices
 
         public void AddSong(Song song)
         {
-            throw new NotImplementedException();
+            _songRepository
         }
 
         public void AddAlbum(Album album)
@@ -56,7 +56,7 @@ namespace Gilligan.API.DomainServices
             throw new NotImplementedException();
         }
 
-        public void AdllGenre(Genre genre)
+        public void AddGenre(Genre genre)
         {
             throw new NotImplementedException();
         }

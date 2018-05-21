@@ -71,37 +71,5 @@ namespace Gilligan.API.Tests.Integration.Repositories
 
             Assert.AreEqual(songs.Count, results.Count);
         }
-
-        [TestMethod]
-        public void Get_String_ReturnsCorrectSongs()
-        {
-            var songs = new List<Song>
-            {
-                new Song
-                {
-                    Id = Guid.NewGuid(),
-                    SongId = Guid.NewGuid(),
-                    Name = "Bob",
-                    Album = new Album { Id = Guid.NewGuid()}
-                },
-                new Song
-                {
-                    Id = Guid.NewGuid(),
-                    SongId = Guid.NewGuid(),
-                    Name = "NotBob",
-                    Album = new Album { Id = Guid.NewGuid()}
-                }
-            };
-
-
-            _context.Songs.AddRange(songs);
-            _context.SaveChanges();
-
-            var results = _songRepository.Get("Bob").ToList();
-
-            const int expected = 1;
-
-            Assert.AreEqual(expected, results.Count);
-        }
     }
 }

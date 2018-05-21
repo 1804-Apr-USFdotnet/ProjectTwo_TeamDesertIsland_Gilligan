@@ -9,6 +9,6 @@ namespace Gilligan.API.DomainContracts
         void AddSong(Song song);
         void AddAlbum(Album album);
         void AddArtist(Artist artist);
-        void AdllGenre(Genre genre);
+        void AddGenre(Genre genre);
     }
 }

@@ -82,8 +82,11 @@
     <Compile Include="DomainServices\RatingServiceTests.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Models\SongTests.cs" />
+    <Compile Include="QueryObjects\MusicEntityPartialSearchQueryTests.cs" />
     <Compile Include="QueryObjects\TopRatedSongsQueryTests.cs" />
     <Compile Include="QueryObjects\TopRatedArtistsQueryTests.cs" />
+    <Compile Include="QueryObjects\TopRatedGenreQueryTests.cs" />
+    <Compile Include="QueryObjects\TopRatedAlbumQueryTests.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="app.config" />
