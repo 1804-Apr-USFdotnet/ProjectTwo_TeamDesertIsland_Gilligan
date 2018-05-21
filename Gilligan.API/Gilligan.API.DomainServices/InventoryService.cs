@@ -1,5 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.Linq;
 using Gilligan.API.DomainContracts;
 using Gilligan.API.Models;
@@ -24,7 +23,7 @@ namespace Gilligan.API.DomainServices
             _userRepository = userRepository;
         }
 
-        public void AddSongToUser(Song song)
+        public void AddSongToUser(Song song, User user)
         {
             throw new System.NotImplementedException();
         }
@@ -42,63 +41,24 @@ namespace Gilligan.API.DomainServices
             _songRepository.SaveChanges();
         }
 
-        public IEnumerable<Genre> CreateGenreIsNotExists(Song song)
+        public void AddSong(Song song)
         {
-            var genres = song.Artists.FirstOrDefault().Genres;
-
-            var songGenres = new List<Genre>();
-
-            foreach (var i in genres)
-            {
-                var searchResult = _genreRepository.Get(i.Name);
-
-                if (_genreRepository.Get(i.Name) == null)
-                {
-                    var genre = new Genre
-                    {
-                        Id = Guid.NewGuid(),
-                        GenreId = Guid.NewGuid(),
-                        Name = i.Name
-                    };
-                    _genreRepository.Add(genre);
-                    songGenres.Add(genre);
-                }
-                songGenres.Add(searchResult);
-            }
-
-            return songGenres;
+            throw new NotImplementedException();
         }
 
-        public IEnumerable<Artist> CreateArtistIfNotExists(Song song)
+        public void AddAlbum(Album album)
         {
-            throw new System.NotImplementedException();
+            throw new NotImplementedException();
         }
 
-        public Album CreateAlbumIfNotExists(Song song)
+        public void AddArtist(Artist artist)
         {
-            throw new System.NotImplementedException();
+            throw new NotImplementedException();
         }
 
-        public Song CreateSongIfNotExists(Song song)
+        public void AdllGenre(Genre genre)
         {
-            var searchResult = _songRepository.Get(song.SongId);
-
-            if (searchResult == null)
-            {
-                var newSong = new Song
-                {
-                    Album = CreateAlbumIfNotExists(song),
-                    Artists = CreateArtistIfNotExists(song).ToList(),
-
-                };
-                var genres = CreateGenreIsNotExists(song);
-                var artist = CreateArtistIfNotExists(song);
-                var album = CreateAlbumIfNotExists(song);
-
-                return newSong;
-            }
-
-            return searchResult;
+            throw new NotImplementedException();
         }
     }
 }
