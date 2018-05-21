@@ -1,6 +1,7 @@
 ﻿using System.Collections.Generic;
 using Gilligan.API.DomainContracts;
 using Gilligan.API.Models;
+using Gilligan.API.QueryObjects;
 using Gilligan.API.RepositoryContracts;
 
 namespace Gilligan.API.DomainServices
@@ -20,24 +21,40 @@ namespace Gilligan.API.DomainServices
             _genreRepository = genreRepository;
         }
 
-        public IEnumerable<Song> SearchLocalSongs(string name)
+        public IEnumerable<Song> SearchLocalSongs(string value)
         {
-            return _songRepository.Get(name);
+            var songs = _songRepository.Get();
+
+            var query = new MusicEntityPartialSearchQuery();
+
+            return query.AsExpression(songs, value);
         }
 
-        public IEnumerable<Album> SearchLocalAlbums(string name)
+        public IEnumerable<Album> SearchLocalAlbums(string value)
         {
-            return _albumRepository.Get(name);
+            var albums = _albumRepository.Get();
+
+            var query = new MusicEntityPartialSearchQuery();
+
+            return query.AsExpression(albums, value);
         }
 
-        public IEnumerable<Artist> SearchLocalArtists(string name)
+        public IEnumerable<Artist> SearchLocalArtists(string value)
         {
-            return _artistRepository.Get(name);
+            var artists = _artistRepository.Get();
+
+            var query = new MusicEntityPartialSearchQuery();
+
+            return query.AsExpression(artists, value);
         }
 
-        public IEnumerable<Genre> SearchLocalGenres(string name)
+        public IEnumerable<Genre> SearchLocalGenres(string value)
         {
-            return _genreRepository.Get(name);
+            var genres = _genreRepository.Get();
+
+            var query = new MusicEntityPartialSearchQuery();
+
+            return query.AsExpression(genres, value);
         }
     }
 }

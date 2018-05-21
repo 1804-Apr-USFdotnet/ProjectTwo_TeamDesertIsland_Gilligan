@@ -1,5 +1,4 @@
 ﻿using System.Collections.Generic;
-using System.Linq;
 using Gilligan.API.Models;
 using Gilligan.API.RepositoryContracts;
 
@@ -17,11 +16,6 @@ namespace Gilligan.API.Repositories
         public IEnumerable<Genre> Get()
         {
             return _context.Genres;
-        }
-
-        public IEnumerable<Genre> Get(string name)
-        {
-            return _context.Genres.Where(x => x.Name == name);
         }
 
         public void Add(Genre genre)

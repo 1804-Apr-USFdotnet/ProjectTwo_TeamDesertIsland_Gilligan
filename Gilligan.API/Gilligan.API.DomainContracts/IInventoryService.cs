@@ -1,5 +1,4 @@
-﻿using System.Collections.Generic;
-using Gilligan.API.Models;
+﻿using Gilligan.API.Models;
 
 namespace Gilligan.API.DomainContracts
 {

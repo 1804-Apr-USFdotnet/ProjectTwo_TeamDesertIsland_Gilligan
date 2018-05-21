@@ -6,6 +6,5 @@ namespace Gilligan.API.RepositoryContracts
     public interface IArtistRepository
     {
         IEnumerable<Artist> Get();
-        IEnumerable<Artist> Get(string name);
     }
 }

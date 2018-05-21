@@ -25,11 +25,6 @@ namespace Gilligan.API.Repositories
             return _context.Songs;
         }
 
-        public IEnumerable<Song> Get(string name)
-        {
-            return _context.Songs.Where(x => x.Name == name);
-        }
-
         public void SaveChanges()
         {
             _context.SaveChanges();
