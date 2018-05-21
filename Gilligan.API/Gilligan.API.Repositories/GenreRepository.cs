@@ -19,9 +19,9 @@ namespace Gilligan.API.Repositories
             return _context.Genres;
         }
 
-        public Genre Get(string name)
+        public IEnumerable<Genre> Get(string name)
         {
-            return _context.Genres.First(x => x.Name == name);
+            return _context.Genres.Where(x => x.Name == name);
         }
 
         public void Add(Genre genre)
