@@ -84,6 +84,8 @@
     <Compile Include="Models\SongTests.cs" />
     <Compile Include="QueryObjects\TopRatedSongsQueryTests.cs" />
     <Compile Include="QueryObjects\TopRatedArtistsQueryTests.cs" />
+    <Compile Include="QueryObjects\TopRatedAlbumQueryTests.cs" />
+    <Compile Include="QueryObjects\TopRatedGenreQueryTests.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="app.config" />
