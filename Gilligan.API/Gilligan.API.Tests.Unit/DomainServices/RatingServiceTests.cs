@@ -38,9 +38,9 @@ namespace Gilligan.API.Tests.Unit.DomainServices
             var mockGenreRepository = new Mock<IGenreRepository>();
             var mockAlbumRepository = new Mock<IAlbumRepository>();
             var mockIventoryService = new Mock<IInventoryService>();
-           
+            
             _ratingService = new RatingService(mockSongRepository.Object, mockArtistRepository.Object,
-                mockGenreRepository.Object, mockAlbumRepository.Object);
+                mockGenreRepository.Object, mockAlbumRepository.Object, mockUserRepository.Object);
         }
 
         [TestMethod]

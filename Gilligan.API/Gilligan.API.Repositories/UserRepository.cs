@@ -28,5 +28,10 @@ namespace Gilligan.API.Repositories
             _context.UserSongs.Remove(userSongToDelete);
             _context.SaveChanges();
         }
+
+        public void SaveChanges()
+        {
+            _context.SaveChanges();
+        }
     }
 }

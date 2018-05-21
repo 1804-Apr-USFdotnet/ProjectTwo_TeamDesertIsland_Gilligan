@@ -7,5 +7,6 @@ namespace Gilligan.API.RepositoryContracts
     {
         User Get(Guid userId);
         void DeleteUserSong(User user, Song song);
+        void SaveChanges();
     }
 }

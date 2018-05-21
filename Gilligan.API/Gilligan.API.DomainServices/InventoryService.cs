@@ -1,5 +1,4 @@
 ﻿using System;
-using System.Linq;
 using Gilligan.API.DomainContracts;
 using Gilligan.API.Models;
 using Gilligan.API.RepositoryContracts;
@@ -25,7 +24,18 @@ namespace Gilligan.API.DomainServices
 
         public void AddSongToUser(Song song, User user)
         {
-            throw new System.NotImplementedException();
+            var userToUpdate = _userRepository.Get(user.UserId);
+
+            var userSong = new UserSong
+            {
+                Id = Guid.NewGuid(),
+                UserSongId = Guid.NewGuid()
+                SongId = song.SongId
+            };
+
+            userToUpdate.UserSongs.Add(userSong);
+
+            _userRepository.SaveChanges();
         }
 
         public void RemoveSongFromUser(Song song, User user)
