@@ -17,5 +17,11 @@ namespace Gilligan.API.Repositories
         {
             return _context.Albums;
         }
+
+        public void Add(Album album)
+        {
+            _context.Albums.Add(album);
+            _context.SaveChanges();
+        }
     }
 }

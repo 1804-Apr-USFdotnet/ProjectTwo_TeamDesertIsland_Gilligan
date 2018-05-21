@@ -71,5 +71,21 @@ namespace Gilligan.API.Tests.Integration.Repositories
 
             Assert.AreEqual(songs.Count, results.Count);
         }
+
+        [TestMethod]
+        public void Add_Song_AddsSongToDatabase()
+        {
+            var song = new Song
+            {
+                Id = Guid.NewGuid(),
+                Album = new Album {Id = Guid.NewGuid()}
+            };
+
+            _songRepository.Add(song);
+
+            var songs = _context.Songs.ToList();
+
+            Assert.IsTrue(songs.Contains(song));
+        }
     }
 }

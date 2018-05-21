@@ -42,5 +42,17 @@ namespace Gilligan.API.Tests.Integration.Repositories
 
             Assert.AreEqual(artists.Count, results.Count);
         }
+
+        [TestMethod]
+        public void Add_Artist_AddsArtistToDatabase()
+        {
+            var artist = new Artist{Id = Guid.NewGuid()};
+
+            _artistRepository.Add(artist);
+
+            var artists = _context.Artists.ToList();
+
+            Assert.IsTrue(artists.Contains(artist));
+        }
     }
 }

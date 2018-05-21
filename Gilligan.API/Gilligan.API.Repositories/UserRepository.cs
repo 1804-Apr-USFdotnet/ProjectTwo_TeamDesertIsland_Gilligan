@@ -18,5 +18,15 @@ namespace Gilligan.API.Repositories
         {
             return _context.Users.First(x => x.UserId == userId);
         }
+
+        public void DeleteUserSong(User user, Song song)
+        {
+            var userToUpdate = _context.Users.First(x => x.UserId == user.UserId);
+
+            var userSongToDelete =  userToUpdate.UserSongs.First(x => x.SongId == song.SongId);
+
+            _context.UserSongs.Remove(userSongToDelete);
+            _context.SaveChanges();
+        }
     }
 }

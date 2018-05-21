@@ -17,5 +17,11 @@ namespace Gilligan.API.Repositories
         {
             return _context.Artists;
         }
+
+        public void Add(Artist artist)
+        {
+            _context.Artists.Add(artist);
+            _context.SaveChanges();
+        }
     }
 }

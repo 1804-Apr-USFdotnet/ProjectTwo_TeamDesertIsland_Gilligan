@@ -25,6 +25,12 @@ namespace Gilligan.API.Repositories
             return _context.Songs;
         }
 
+        public void Add(Song song)
+        {
+            _context.Songs.Add(song);
+            _context.SaveChanges();
+        }
+
         public void SaveChanges()
         {
             _context.SaveChanges();

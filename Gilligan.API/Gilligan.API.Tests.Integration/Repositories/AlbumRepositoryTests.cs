@@ -42,5 +42,20 @@ namespace Gilligan.API.Tests.Integration.Repositories
 
             Assert.AreEqual(albums.Count, results.Count);
         }
+
+        [TestMethod]
+        public void Add_Album_AddsAlbumToDatabase()
+        {
+            var album = new Album
+            {
+                Id = Guid.NewGuid()
+            };
+
+            _albumRepository.Add(album);
+
+            var albums = _context.Albums.ToList();
+
+            Assert.IsTrue(albums.Contains(album));
+        }
     }
 }

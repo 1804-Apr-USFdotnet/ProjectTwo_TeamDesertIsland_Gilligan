@@ -30,11 +30,9 @@ namespace Gilligan.API.DomainServices
 
         public void RemoveSongFromUser(Song song, User user)
         {
-            var userToUpdate = _userRepository.Get(user.UserId);
+            _userRepository.DeleteUserSong(user, song);
 
-            var userSong = userToUpdate.UserSongs.First(x => x.SongId == song.SongId);
-
-            var songToUpdate = _songRepository.Get(userSong.SongId);
+            var songToUpdate = _songRepository.Get(song.SongId);
 
             songToUpdate.IsAttached = false;
 
@@ -43,22 +41,22 @@ namespace Gilligan.API.DomainServices
 
         public void AddSong(Song song)
         {
-            _songRepository
+            _songRepository.Add(song);
         }
 
         public void AddAlbum(Album album)
         {
-            throw new NotImplementedException();
+            _albumRepository.Add(album);
         }
 
         public void AddArtist(Artist artist)
         {
-            throw new NotImplementedException();
+            _artistRepository.Add(artist);
         }
 
         public void AddGenre(Genre genre)
         {
-            throw new NotImplementedException();
+            _genreRepository.Add(genre);
         }
     }
 }
