@@ -4,8 +4,8 @@ namespace Gilligan.API.DomainContracts
 {
     public interface IInventoryService
     {
-        void AddSongToUser(Song song, User user);
-        void RemoveSongFromUser(Song song, User user);
+        void AddSongToUser(UserSong userSong);
+        void RemoveSongFromUser(UserSong userSong);
         void AddSong(Song song);
         void AddAlbum(Album album);
         void AddArtist(Artist artist);

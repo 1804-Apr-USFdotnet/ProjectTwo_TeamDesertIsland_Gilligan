@@ -24,10 +24,9 @@ namespace Gilligan.API.Rest.Controllers
         {
             if (!ModelState.IsValid) return BadRequest("Invalid Model State");
 
-            var song = _mapper.Map<Song>(viewModel.SongViewModel);
-            var user = _mapper.Map<User>(viewModel.UserViewModel);
+            var userSong = _mapper.Map<UserSong>(viewModel);
 
-            _inventoryService.AddSongToUser(song, user);
+            _inventoryService.AddSongToUser(userSong);
 
             return Ok();
         }
@@ -38,10 +37,9 @@ namespace Gilligan.API.Rest.Controllers
         {
             if (!ModelState.IsValid) return BadRequest("Invalid Model State");
 
-            var song = _mapper.Map<Song>(viewModel.SongId);
-            var user = _mapper.Map<User>(viewModel.UserId);
+            var userSong = _mapper.Map<UserSong>(viewModel);
 
-            _inventoryService.RemoveSongFromUser(song, user);
+            _inventoryService.RemoveSongFromUser(userSong);
 
             return Ok();
         }
@@ -55,6 +53,45 @@ namespace Gilligan.API.Rest.Controllers
             var song = _mapper.Map<Song>(viewModel);
 
             _inventoryService.AddSong(song);
+
+            return Ok();
+        }
+
+        [HttpPost]
+        [Route("album")]
+        public IHttpActionResult AddAlbumToInventory(AddAlbumViewModel viewModel)
+        {
+            if (!ModelState.IsValid) return BadRequest("Invalid Model State");
+
+            var album = _mapper.Map<Album>(viewModel);
+
+            _inventoryService.AddAlbum(album);
+
+            return Ok();
+        }
+
+        [HttpPost]
+        [Route("artist")]
+        public IHttpActionResult AddArtistToInventory(AddArtistViewModel viewModel)
+        {
+            if (!ModelState.IsValid) return BadRequest("Invalid Model State");
+
+            var artist = _mapper.Map<Artist>(viewModel);
+            
+            _inventoryService.AddArtist(artist);
+
+            return Ok();
+        }
+
+        [HttpPost]
+        [Route("genre")]
+        public IHttpActionResult AddGenreToInventory(AddGenreViewModel viewModel)
+        {
+            if (!ModelState.IsValid) return BadRequest("Invalid Model State");
+
+            var genre = _mapper.Map<Genre>(viewModel);
+
+            _inventoryService.AddGenre(genre);
 
             return Ok();
         }

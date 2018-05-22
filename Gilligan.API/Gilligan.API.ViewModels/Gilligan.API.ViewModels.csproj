@@ -40,6 +40,9 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="AddAlbumViewModel.cs" />
+    <Compile Include="AddArtistViewModel.cs" />
+    <Compile Include="AddGenreViewModel.cs" />
     <Compile Include="AddRatingViewModel.cs" />
     <Compile Include="AddRemoveUserSongViewModel.cs" />
     <Compile Include="AddSongViewModel.cs" />

@@ -67,10 +67,16 @@ namespace Gilligan.API.Tests.Integration.Repositories
                 }
             };
 
+            var userSong = new UserSong
+            {
+                SongId = song.SongId,
+                User = new User { UserId = user.UserId}
+            };
+
             _context.Users.Add(user);
             _context.SaveChanges();
 
-            _userRepository.DeleteUserSong(user, song);
+            _userRepository.DeleteUserSong(userSong);
 
             var updatedUser = _context.Users.Find(user.Id);
 

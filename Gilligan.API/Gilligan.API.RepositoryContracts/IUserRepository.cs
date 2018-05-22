@@ -6,7 +6,7 @@ namespace Gilligan.API.RepositoryContracts
     public interface IUserRepository
     {
         User Get(Guid userId);
-        void DeleteUserSong(User user, Song song);
+        void DeleteUserSong(UserSong userSong);
         void SaveChanges();
     }
 }

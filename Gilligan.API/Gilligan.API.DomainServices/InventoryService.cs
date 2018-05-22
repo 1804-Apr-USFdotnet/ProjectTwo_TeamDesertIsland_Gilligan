@@ -22,27 +22,27 @@ namespace Gilligan.API.DomainServices
             _userRepository = userRepository;
         }
 
-        public void AddSongToUser(Song song, User user)
+        public void AddSongToUser(UserSong userSong)
         {
-            var userToUpdate = _userRepository.Get(user.UserId);
+            var userToUpdate = _userRepository.Get(userSong.User.UserId);
 
-            var userSong = new UserSong
+            var userSongToAdd = new UserSong
             {
                 Id = Guid.NewGuid(),
                 UserSongId = Guid.NewGuid(),
-                SongId = song.SongId
+                SongId = userSong.SongId
             };
 
-            userToUpdate.UserSongs.Add(userSong);
+            userToUpdate.UserSongs.Add(userSongToAdd);
 
             _userRepository.SaveChanges();
         }
 
-        public void RemoveSongFromUser(Song song, User user)
+        public void RemoveSongFromUser(UserSong userSong)
         {
-            _userRepository.DeleteUserSong(user, song);
+            _userRepository.DeleteUserSong(userSong);
 
-            var songToUpdate = _songRepository.Get(song.SongId);
+            var songToUpdate = _songRepository.Get(userSong.SongId);
 
             songToUpdate.IsAttached = false;
 

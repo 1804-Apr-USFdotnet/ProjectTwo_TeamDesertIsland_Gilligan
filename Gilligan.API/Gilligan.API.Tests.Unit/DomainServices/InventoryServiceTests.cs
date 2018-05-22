@@ -44,10 +44,13 @@ namespace Gilligan.API.Tests.Unit.DomainServices
         [TestMethod]
         public void AddSongToUser_SongUser_CallsUserRepoGet()
         {
-            var user = new User {UserId = Guid.NewGuid()};
-            var song = new Song{SongId = Guid.NewGuid()};
+            var userSong = new UserSong
+            {
+                SongId = Guid.NewGuid(),
+                User = new User { UserId = Guid.NewGuid()}
+            };
 
-            _inventoryService.AddSongToUser(song, user);
+            _inventoryService.AddSongToUser(userSong);
 
             _userRepository.Verify(x => x.Get(It.IsAny<Guid>()), Times.AtLeastOnce);
         }
@@ -55,10 +58,13 @@ namespace Gilligan.API.Tests.Unit.DomainServices
         [TestMethod]
         public void AddSongToUser_SongUser_CallsUserRepoSave()
         {
-            var user = new User { UserId = Guid.NewGuid() };
-            var song = new Song { SongId = Guid.NewGuid() };
+            var userSong = new UserSong
+            {
+                SongId = Guid.NewGuid(),
+                User = new User { UserId = Guid.NewGuid() }
+            };
 
-            _inventoryService.AddSongToUser(song, user);
+            _inventoryService.AddSongToUser(userSong);
 
             _userRepository.Verify(x => x.SaveChanges(), Times.AtLeastOnce);
         }
@@ -66,21 +72,27 @@ namespace Gilligan.API.Tests.Unit.DomainServices
         [TestMethod]
         public void RemoveSongFromUser_SongUser_CallsUserRepoDeleteUserSong()
         {
-            var user = new User { UserId = Guid.NewGuid() };
-            var song = new Song { SongId = Guid.NewGuid() };
+            var userSong = new UserSong
+            {
+                SongId = Guid.NewGuid(),
+                User = new User { UserId = Guid.NewGuid() }
+            };
 
-            _inventoryService.RemoveSongFromUser(song, user);
+            _inventoryService.RemoveSongFromUser(userSong);
 
-            _userRepository.Verify(x => x.DeleteUserSong(It.IsAny<User>(), It.IsAny<Song>()), Times.AtLeastOnce);
+            _userRepository.Verify(x => x.DeleteUserSong(It.IsAny<UserSong>()), Times.AtLeastOnce);
         }
 
         [TestMethod]
         public void RemoveSongFromUser_SongUser_CallsSongRepoGet()
         {
-            var user = new User { UserId = Guid.NewGuid() };
-            var song = new Song { SongId = Guid.NewGuid() };
+            var userSong = new UserSong
+            {
+                SongId = Guid.NewGuid(),
+                User = new User { UserId = Guid.NewGuid() }
+            };
 
-            _inventoryService.RemoveSongFromUser(song, user);
+            _inventoryService.RemoveSongFromUser(userSong);
 
             _songRepository.Verify(x => x.Get(It.IsAny<Guid>()), Times.AtLeastOnce);
         }
@@ -88,10 +100,13 @@ namespace Gilligan.API.Tests.Unit.DomainServices
         [TestMethod]
         public void RemoveSongFromUser_SongUser_CallsSongRepoSave()
         {
-            var user = new User { UserId = Guid.NewGuid() };
-            var song = new Song { SongId = Guid.NewGuid() };
+            var userSong = new UserSong
+            {
+                SongId = Guid.NewGuid(),
+                User = new User { UserId = Guid.NewGuid() }
+            };
 
-            _inventoryService.RemoveSongFromUser(song, user);
+            _inventoryService.RemoveSongFromUser(userSong);
 
             _songRepository.Verify(x => x.SaveChanges(), Times.AtLeastOnce);
         }
