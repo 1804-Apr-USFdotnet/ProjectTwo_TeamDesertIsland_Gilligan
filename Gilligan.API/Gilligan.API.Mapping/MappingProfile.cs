@@ -75,6 +75,62 @@ namespace Gilligan.API.Mapping
                 .ForMember(d => d.Id, o => o.Ignore())
                 .AfterMap((s, d) => d.Id = Guid.NewGuid())
                 .ForMember(d => d.Artists, o => o.Ignore());
+
+            CreateMap<AddRatingViewModel, Rating>()
+                .ForMember(d => d.Id, o => o.Ignore())
+                .AfterMap((s, d) => d.Id = Guid.NewGuid())
+                .ForMember(d => d.RatingId, o => o.Ignore())
+                .AfterMap((s, d) => d.RatingId = Guid.NewGuid())
+                .ForMember(d => d.User, o => o.MapFrom(s => s.UserId))
+                .ForMember(d => d.Song, o => o.MapFrom(s => s.SongId));
+
+            CreateMap<Guid, Song>()
+                .ForMember(d => d.Id, o => o.Ignore())
+                .ForMember(d => d.SongId, o => o.MapFrom(s => s))
+                .ForMember(d => d.Name, o => o.Ignore())
+                .ForMember(d => d.AverageRating, o => o.Ignore())
+                .ForMember(d => d.IsAttached, o => o.Ignore())
+                .ForMember(d => d.Album, o => o.Ignore())
+                .ForMember(d => d.Ratings, o => o.Ignore())
+                .ForMember(d => d.Artists, o => o.Ignore());
+
+            CreateMap<Genre, GenreViewModel>()
+                .ForMember(d => d.ArtistViewModels, o => o.MapFrom(s => s.Artists));
+
+            CreateMap<Artist, ArtistViewModel>()
+                .ForMember(d => d.SongViewModels, o => o.MapFrom(s => s.Songs))
+                .ForMember(d => d.GenreViewModels, o => o.MapFrom(s => s.Genres));
+
+            CreateMap<Album, AlbumViewModel>()
+                .ForMember(d => d.SongViewModels, o => o.MapFrom(s => s.Songs));
+
+            CreateMap<Song, SongViewModel>()
+                .ForMember(d => d.ArtistViewModel, o => o.MapFrom(s => s.Artists))
+                .ForMember(d => d.AlbumViewModel, o => o.MapFrom(s => s.Album));
+
+            CreateMap<SongRatings, SongRatingsViewModel>()
+                .ForMember(d => d.TopDailyRatedSongViewModels, o => o.MapFrom(s => s.TopDailyRatedSongs))
+                .ForMember(d => d.TopWeeklyRatedSongViewModels, o => o.MapFrom(s => s.TopWeeklyRatedSongs))
+                .ForMember(d => d.TopMonthlyRatedSongViewModels, o => o.MapFrom(s => s.TopMonthlyRatedSongs))
+                .ForMember(d => d.TopAllTimeRatedSongViewModels, o => o.MapFrom(s => s.TopAllTimeRatedSongs));
+
+            CreateMap<ArtistRatings, ArtistRatingsViewModel>()
+                .ForMember(d => d.TopDailyArtistViewModels, o => o.MapFrom(s => s.TopDailyRatedArtists))
+                .ForMember(d => d.TopWeeklyRatedArtistViewModels, o => o.MapFrom(s => s.TopWeeklyRatedArtists))
+                .ForMember(d => d.TopMonthlyRatedArtistViewModels, o => o.MapFrom(s => s.TopMonthlyRatedArtists))
+                .ForMember(d => d.TopAllTimeRatedArtistViewModels, o => o.MapFrom(s => s.TopAllTimedRatedArtists));
+
+            CreateMap<AlbumRatings, AlbumRatingsViewModel>()
+                .ForMember(d => d.TopDailyAlbumViewModels, o => o.MapFrom(s => s.TopDailyRatedAlbums))
+                .ForMember(d => d.TopWeeklyRatedAlbumViewModels, o => o.MapFrom(s => s.TopWeeklyRatedAlbums))
+                .ForMember(d => d.TopMonthlyRatedAlbumViewModels, o => o.MapFrom(s => s.TopMonthlyRatedAlbums))
+                .ForMember(d => d.TopAllTimeRatedAlbumViewModels, o => o.MapFrom(s => s.TopAllTimeRatedAlbums));
+
+            CreateMap<GenreRatings, GenreRatingsViewModel>()
+                .ForMember(d => d.TopDailyRatedGenreViewModels, o => o.MapFrom(s => s.TopDailyRatedGenres))
+                .ForMember(d => d.TopWeeklyRatedGenreViewModels, o => o.MapFrom(s => s.TopWeeklyRatedGenres))
+                .ForMember(d => d.TopMonthlyRatedGenreViewModels, o => o.MapFrom(s => s.TopMonthlyRatedGenres))
+                .ForMember(d => d.TopAllTimeRatedGenreViewModels, o => o.MapFrom(s => s.TopAllTimeRatedGenres));
         }
     }
 }
