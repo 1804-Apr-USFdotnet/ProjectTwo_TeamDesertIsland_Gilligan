@@ -41,7 +41,11 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="AddRatingViewModel.cs" />
+    <Compile Include="AddRemoveUserSongViewModel.cs" />
+    <Compile Include="AddSongViewModel.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="SongViewModel.cs" />
+    <Compile Include="UserViewModel.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

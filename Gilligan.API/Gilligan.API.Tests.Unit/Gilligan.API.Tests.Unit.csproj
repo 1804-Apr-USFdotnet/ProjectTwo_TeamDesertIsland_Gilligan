@@ -79,7 +79,10 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="DomainServices\InventoryServiceTests.cs" />
     <Compile Include="DomainServices\RatingServiceTests.cs" />
+    <Compile Include="DomainServices\SearchServiceTests.cs" />
+    <Compile Include="Mapping\MappingProfileTests.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Models\SongTests.cs" />
     <Compile Include="QueryObjects\MusicEntityPartialSearchQueryTests.cs" />
@@ -101,6 +104,10 @@
       <Project>{f15b107b-fcb3-45dd-a467-643ebda6174c}</Project>
       <Name>Gilligan.API.DomainServices</Name>
     </ProjectReference>
+    <ProjectReference Include="..\Gilligan.API.Mapping\Gilligan.API.Mapping.csproj">
+      <Project>{90271917-DDED-4AD2-88BD-C18BD04ED7BC}</Project>
+      <Name>Gilligan.API.Mapping</Name>
+    </ProjectReference>
     <ProjectReference Include="..\Gilligan.API.Models\Gilligan.API.Models.csproj">
       <Project>{17140d7a-a2d4-4ad6-8375-6f8ea4f960fa}</Project>
       <Name>Gilligan.API.Models</Name>
@@ -119,7 +126,6 @@
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>
-    <Folder Include="Mapping\" />
     <Folder Include="Rest\" />
   </ItemGroup>
   <Import Project="$(VSToolsPath)\TeamTest\Microsoft.TestTools.targets" Condition="Exists('$(VSToolsPath)\TeamTest\Microsoft.TestTools.targets')" />

@@ -29,7 +29,7 @@ namespace Gilligan.API.DomainServices
             var userSong = new UserSong
             {
                 Id = Guid.NewGuid(),
-                UserSongId = Guid.NewGuid()
+                UserSongId = Guid.NewGuid(),
                 SongId = song.SongId
             };
 
