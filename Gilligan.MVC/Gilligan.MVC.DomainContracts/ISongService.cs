@@ -7,8 +7,8 @@ namespace Gilligan.MVC.DomainContracts
 {
     public interface ISongService
     {
-        Task<HttpStatusCode> AddSongAsync(AddRemoveSongViewModel viewModel);
-        Task<HttpStatusCode> RemoveSongAsync(AddRemoveSongViewModel viewModel);
+        Task<HttpStatusCode> AddSongAsync(AddRemoveUserSongViewModel viewModel);
+        Task<HttpStatusCode> RemoveSongAsync(AddRemoveUserSongViewModel viewModel);
         Task<HttpStatusCode> RateSongAsync(RatingViewModel viewModel);
     }
 }

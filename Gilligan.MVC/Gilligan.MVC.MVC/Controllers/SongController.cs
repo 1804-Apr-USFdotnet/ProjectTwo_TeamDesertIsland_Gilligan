@@ -18,7 +18,7 @@ namespace Gilligan.MVC.MVC.Controllers
         }
 
         //AddSongAsync
-        public async Task<ActionResult> AddSongAsync(AddRemoveSongViewModel viewModel)
+        public async Task<ActionResult> AddSongAsync(AddRemoveUserSongViewModel viewModel)
         {
             if (!ModelState.IsValid) return View("", viewModel);
 
@@ -30,7 +30,7 @@ namespace Gilligan.MVC.MVC.Controllers
         }
 
         //RemoveSongAsync
-        public async Task<ActionResult> RemoveSongAsync(AddRemoveSongViewModel viewModel)
+        public async Task<ActionResult> RemoveSongAsync(AddRemoveUserSongViewModel viewModel)
         {
             if (!ModelState.IsValid) return View("", viewModel);
 

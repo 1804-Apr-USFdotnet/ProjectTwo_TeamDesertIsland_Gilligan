@@ -15,14 +15,14 @@ namespace Gilligan.MVC.DomainServices
             _httpService = httpService;
         }
 
-        public async Task<HttpStatusCode> AddSongAsync(AddRemoveSongViewModel viewModel)
+        public async Task<HttpStatusCode> AddSongAsync(AddRemoveUserSongViewModel viewModel)
         {
             const string addSongUri = "";
 
             return await _httpService.UpdateEntityAsync(viewModel, addSongUri);
         }
 
-        public async Task<HttpStatusCode> RemoveSongAsync(AddRemoveSongViewModel viewModel)
+        public async Task<HttpStatusCode> RemoveSongAsync(AddRemoveUserSongViewModel viewModel)
         {
             const string removeSongUri = "";
 

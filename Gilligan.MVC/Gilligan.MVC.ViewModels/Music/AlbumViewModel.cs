@@ -4,9 +4,9 @@ namespace Gilligan.MVC.ViewModels.Music
 {
     public class AlbumViewModel
     {
+        public Guid AlbumId { get; set; }
+        public DateTime? ReleaseDate { get; set; }
         public string Name { get; set; }
-        public string Artist { get; set; }
-        public string Genre { get; set; }
         public IEnumerable<SongViewModel> SongViewModels { get; set; }
     }
 }
