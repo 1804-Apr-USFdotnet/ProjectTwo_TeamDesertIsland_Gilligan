@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using Gilligan.API.Models;
 
 namespace Gilligan.API.RepositoryContracts
@@ -7,5 +8,6 @@ namespace Gilligan.API.RepositoryContracts
     {
         IEnumerable<Album> Get();
         void Add(Album album);
+        Album Get(Guid albumId);
     }
 }

@@ -54,5 +54,34 @@ namespace Gilligan.API.Tests.Integration.Repositories
 
             Assert.IsTrue(artists.Contains(artist));
         }
+
+        [TestMethod]
+        public void Get_ListArtists_ReturnsCorrectArtists()
+        {
+            var first = new Artist{Id = Guid.NewGuid(), ArtistId = Guid.NewGuid()};
+            var second = new Artist { Id = Guid.NewGuid(), ArtistId = Guid.NewGuid()};
+            var third = new Artist { Id = Guid.NewGuid(), ArtistId = Guid.NewGuid() };
+
+            var list = new List<Artist>
+            {
+                first,
+                second,
+                third
+            };
+
+            _context.Artists.AddRange(list);
+            _context.SaveChanges();
+
+            var searchList = new List<Artist>
+            {
+                new Artist{ArtistId = first.ArtistId},
+                new Artist{ArtistId = second.ArtistId},
+                new Artist{ArtistId = third.ArtistId}
+            };
+
+            var result = _artistRepository.Get(searchList).ToList();
+
+            Assert.AreEqual(list.Count, result.Count);
+        }
     }
 }

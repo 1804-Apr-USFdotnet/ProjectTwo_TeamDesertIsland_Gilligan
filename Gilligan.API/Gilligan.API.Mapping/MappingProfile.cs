@@ -11,7 +11,9 @@ namespace Gilligan.API.Mapping
         {
             CreateMap<AddRemoveUserSongViewModel, UserSong>()
                 .ForMember(d => d.Id, o => o.Ignore())
+                .AfterMap((s, d) => d.Id = Guid.NewGuid())
                 .ForMember(d => d.UserSongId, o => o.Ignore())
+                .AfterMap((s, d) => d.UserSongId = Guid.NewGuid())
                 .ForMember(d => d.User, o => o.MapFrom(s => s.UserId));
 
             CreateMap<Guid, User>()

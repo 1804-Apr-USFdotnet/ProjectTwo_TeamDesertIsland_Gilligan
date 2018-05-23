@@ -19,6 +19,7 @@ namespace Gilligan.API.Models
         public User()
         {
             Ratings = new HashSet<Rating>();
+            UserSongs = new HashSet<UserSong>();
         }
     }
 }

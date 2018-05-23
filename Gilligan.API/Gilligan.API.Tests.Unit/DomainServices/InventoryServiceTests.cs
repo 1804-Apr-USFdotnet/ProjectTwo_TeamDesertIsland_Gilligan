@@ -42,7 +42,7 @@ namespace Gilligan.API.Tests.Unit.DomainServices
         }
 
         [TestMethod]
-        public void AddSongToUser_SongUser_CallsUserRepoGet()
+        public void AddSongToUser_UserSong_CallsUserRepoGet()
         {
             var userSong = new UserSong
             {
@@ -56,7 +56,21 @@ namespace Gilligan.API.Tests.Unit.DomainServices
         }
 
         [TestMethod]
-        public void AddSongToUser_SongUser_CallsUserRepoSave()
+        public void AddSongToUser_UserSong_CallSongRepoGet()
+        {
+            var userSong = new UserSong
+            {
+                SongId = Guid.NewGuid(),
+                User = new User { UserId = Guid.NewGuid() }
+            };
+
+            _inventoryService.AddSongToUser(userSong);
+
+            _songRepository.Verify(x => x.Get(It.IsAny<Guid>()), Times.AtLeastOnce);
+        }
+
+        [TestMethod]
+        public void AddSongToUser_UserSong_CallsUserRepoSave()
         {
             var userSong = new UserSong
             {
@@ -70,7 +84,21 @@ namespace Gilligan.API.Tests.Unit.DomainServices
         }
 
         [TestMethod]
-        public void RemoveSongFromUser_SongUser_CallsUserRepoDeleteUserSong()
+        public void AddSongToUser_UserSong_CallsSongRepoSave()
+        {
+            var userSong = new UserSong
+            {
+                SongId = Guid.NewGuid(),
+                User = new User { UserId = Guid.NewGuid() }
+            };
+
+            _inventoryService.AddSongToUser(userSong);
+
+            _songRepository.Verify(x => x.SaveChanges(), Times.AtLeastOnce);
+        }
+
+        [TestMethod]
+        public void RemoveSongFromUser_UserSong_CallsUserRepoDeleteUserSong()
         {
             var userSong = new UserSong
             {
@@ -84,7 +112,7 @@ namespace Gilligan.API.Tests.Unit.DomainServices
         }
 
         [TestMethod]
-        public void RemoveSongFromUser_SongUser_CallsSongRepoGet()
+        public void RemoveSongFromUser_UserSong_CallsSongRepoGet()
         {
             var userSong = new UserSong
             {
@@ -98,7 +126,7 @@ namespace Gilligan.API.Tests.Unit.DomainServices
         }
 
         [TestMethod]
-        public void RemoveSongFromUser_SongUser_CallsSongRepoSave()
+        public void RemoveSongFromUser_UserSong_CallsSongRepoSave()
         {
             var userSong = new UserSong
             {

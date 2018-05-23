@@ -1,4 +1,6 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
+using System.Linq;
 using Gilligan.API.Models;
 using Gilligan.API.RepositoryContracts;
 
@@ -22,6 +24,11 @@ namespace Gilligan.API.Repositories
         {
             _context.Albums.Add(album);
             _context.SaveChanges();
+        }
+
+        public Album Get(Guid albumId)
+        {
+            return _context.Albums.First(x => x.AlbumId == albumId);
         }
     }
 }

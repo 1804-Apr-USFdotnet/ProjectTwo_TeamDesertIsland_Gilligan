@@ -57,5 +57,18 @@ namespace Gilligan.API.Tests.Integration.Repositories
 
             Assert.IsTrue(albums.Contains(album));
         }
+
+        [TestMethod]
+        public void Get_Guid_ReturnsCorrectAlbum()
+        {
+            var album = new Album{Id = Guid.NewGuid(), AlbumId = Guid.NewGuid()};
+
+            _context.Albums.Add(album);
+            _context.SaveChanges();
+
+            var result = _albumRepository.Get(album.AlbumId);
+
+            Assert.AreEqual(album, result);
+        }
     }
 }

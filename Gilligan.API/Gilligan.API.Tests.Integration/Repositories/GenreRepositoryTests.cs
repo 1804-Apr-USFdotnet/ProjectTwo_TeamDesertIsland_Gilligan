@@ -54,5 +54,32 @@ namespace Gilligan.API.Tests.Integration.Repositories
 
             Assert.IsTrue(genres.Contains(genre));
         }
+
+        [TestMethod]
+        public void Get_ListGenres_ReturnsCorrectGenres()
+        {
+            var first = new Genre{Id = Guid.NewGuid(), GenreId = Guid.NewGuid()};
+            var second = new Genre { Id = Guid.NewGuid(), GenreId = Guid.NewGuid() };
+            var third = new Genre { Id = Guid.NewGuid(), GenreId = Guid.NewGuid() };
+
+            var list = new List<Genre>
+            {
+                first, second, third
+            };
+
+            _context.Genres.AddRange(list);
+            _context.SaveChanges();
+
+            var searchList = new List<Genre>
+            {
+                new Genre{GenreId = first.GenreId},
+                new Genre{GenreId = second.GenreId},
+                new Genre{GenreId = third.GenreId}
+            };
+
+            var results = _genreRepository.Get(searchList).ToList();
+
+            Assert.AreEqual(list.Count, results.Count);
+        }
     }
 }

@@ -1,4 +1,4 @@
-﻿using System;
+﻿using System.Linq;
 using Gilligan.API.DomainContracts;
 using Gilligan.API.Models;
 using Gilligan.API.RepositoryContracts;
@@ -25,16 +25,15 @@ namespace Gilligan.API.DomainServices
         public void AddSongToUser(UserSong userSong)
         {
             var userToUpdate = _userRepository.Get(userSong.User.UserId);
+            var songToUpdate = _songRepository.Get(userSong.SongId);
 
-            var userSongToAdd = new UserSong
-            {
-                Id = Guid.NewGuid(),
-                UserSongId = Guid.NewGuid(),
-                SongId = userSong.SongId
-            };
+            userSong.User = null;
 
-            userToUpdate.UserSongs.Add(userSongToAdd);
+            userToUpdate.UserSongs.Add(userSong);
 
+            songToUpdate.IsAttached = true;
+
+            _songRepository.SaveChanges();
             _userRepository.SaveChanges();
         }
 
@@ -51,6 +50,12 @@ namespace Gilligan.API.DomainServices
 
         public void AddSong(Song song)
         {
+            var album = _albumRepository.Get(song.Album.AlbumId);
+            var artists = _artistRepository.Get(song.Artists).ToList();
+
+            song.Album = album;
+            song.Artists = artists;
+
             _songRepository.Add(song);
         }
 
@@ -61,6 +66,10 @@ namespace Gilligan.API.DomainServices
 
         public void AddArtist(Artist artist)
         {
+            var genres = _genreRepository.Get(artist.Genres).ToList();
+
+            artist.Genres = genres;
+
             _artistRepository.Add(artist);
         }
 

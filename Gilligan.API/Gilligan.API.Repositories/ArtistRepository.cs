@@ -1,4 +1,5 @@
 ﻿using System.Collections.Generic;
+using System.Linq;
 using Gilligan.API.Models;
 using Gilligan.API.RepositoryContracts;
 
@@ -22,6 +23,11 @@ namespace Gilligan.API.Repositories
         {
             _context.Artists.Add(artist);
             _context.SaveChanges();
+        }
+
+        public IEnumerable<Artist> Get(IEnumerable<Artist> artists)
+        {
+            return artists.Select(i => _context.Artists.First(x => x.ArtistId == i.ArtistId)).ToList();
         }
     }
 }
