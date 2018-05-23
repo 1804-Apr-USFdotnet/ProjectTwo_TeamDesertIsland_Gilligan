@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Linq;
 using Autofac;
 using AutoMapper;
 using Gilligan.API.DomainServices;
@@ -30,6 +31,9 @@ namespace Gilligan.API.Tests.Integration.Rest
         [TestInitialize]
         public void ClearTables()
         {
+            _context.Albums.RemoveRange(_context.Albums);
+            _context.Artists.RemoveRange(_context.Artists);
+            _context.Genres.RemoveRange(_context.Genres);
             _context.Users.RemoveRange(_context.Users);
             _context.Songs.RemoveRange(_context.Songs);
             _context.SaveChanges();
@@ -81,6 +85,90 @@ namespace Gilligan.API.Tests.Integration.Rest
             const int expected = 0;
 
             Assert.AreEqual(expected, updatedUser.UserSongs.Count);
+        }
+
+        [TestMethod]
+        public void AddSongToInventory_AddSongViewModel_AddsSongToDatabase()
+        {
+            var album = new Album
+            {
+                Id = Guid.NewGuid(),
+                AlbumId = Guid.NewGuid()
+            };
+
+            var artist = new Artist
+            {
+                Id = Guid.NewGuid(),
+                ArtistId = Guid.NewGuid()
+            };
+
+            var viewModel = new AddSongViewModel
+            {
+                AlbumId = album.AlbumId,
+                Name = "Basic B",
+                ArtistIds = new List<Guid> { artist.ArtistId}
+            };
+
+            _context.Albums.Add(album);
+            _context.Artists.Add(artist);
+            _context.SaveChanges();
+
+            _inventoryController.AddSongToInventory(viewModel);
+
+            var songs = _context.Songs.ToList();
+
+            const int expected = 1;
+
+            Assert.AreEqual(expected, songs.Count);
+        }
+
+        [TestMethod]
+        public void AddAlbumToInventory_AddAlbumViewModel_AddsAlbumToDatabase()
+        {
+            var viewModel = new AddAlbumViewModel{Name = "Me"};
+
+            _inventoryController.AddAlbumToInventory(viewModel);
+
+            var albums = _context.Albums.ToList();
+
+            const int expected = 1;
+
+            Assert.AreEqual(expected, albums.Count);
+        }
+
+        [TestMethod]
+        public void AddArtistToInventory_AddArtistViewModel_AddsArtistToDatabase()
+        {
+            var genre = new Genre{Id = Guid.NewGuid(), GenreId = Guid.NewGuid()};
+
+            _context.Genres.Add(genre);
+            _context.SaveChanges();
+
+            var viewModel = new AddArtistViewModel{GenreIds = new List<Guid>{genre.GenreId}};
+
+            _inventoryController.AddArtistToInventory(viewModel);
+
+            const int expected = 1;
+
+            var artists = _context.Artists.ToList();
+
+            Assert.AreEqual(expected, artists.Count);
+        }
+
+        [TestMethod]
+        public void AddGenreToInventory_AddGenreViewModel_AddsGenreToDatabase()
+        {
+            var genre = new Genre {Id = Guid.NewGuid(), GenreId = Guid.NewGuid()};
+
+            var viewModel = new AddGenreViewModel{GenreId = genre.GenreId};
+
+            _inventoryController.AddGenreToInventory(viewModel);
+
+            var genres = _context.Genres.ToList();
+
+            const int expected = 1;
+
+            Assert.AreEqual(expected, genres.Count);
         }
     }
 }
