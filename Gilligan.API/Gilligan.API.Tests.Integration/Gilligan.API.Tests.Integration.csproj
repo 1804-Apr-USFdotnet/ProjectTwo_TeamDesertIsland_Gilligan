@@ -94,6 +94,8 @@
     <Compile Include="Repositories\GenreRepositoryTests.cs" />
     <Compile Include="Repositories\UserRepositoryTests.cs" />
     <Compile Include="Rest\InventoryControllerTests.cs" />
+    <Compile Include="Rest\RatingControllerTests.cs" />
+    <Compile Include="Rest\SearchControllerTests.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />

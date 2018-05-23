@@ -27,9 +27,11 @@ namespace Gilligan.API.Tests.Unit.DomainServices
 
             _artistRepository = new Mock<IArtistRepository>();
             _artistRepository.Setup(x => x.Add(It.IsAny<Artist>()));
+            _artistRepository.Setup(x => x.Get(It.IsAny<IEnumerable<Artist>>())).Returns(new List<Artist>());
 
             _albumRepository = new Mock<IAlbumRepository>();
             _albumRepository.Setup(x => x.Add(It.IsAny<Album>()));
+            _albumRepository.Setup(x => x.Get(It.IsAny<Guid>())).Returns(new Album());
 
             _genreRepository = new Mock<IGenreRepository>();
             _genreRepository.Setup(x => x.Add(It.IsAny<Genre>()));
@@ -142,7 +144,7 @@ namespace Gilligan.API.Tests.Unit.DomainServices
         [TestMethod]
         public void AddSong_Song_CallsSongRepoAdd()
         {
-            var song = new Song();
+            var song = new Song{Artists = new List<Artist>(), Album = new Album()};
 
             _inventoryService.AddSong(song);
 

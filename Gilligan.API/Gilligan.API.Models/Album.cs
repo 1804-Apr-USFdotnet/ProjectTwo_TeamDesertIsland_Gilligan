@@ -10,6 +10,11 @@ namespace Gilligan.API.Models
         public DateTime? ReleaseDate { get; set; }
         public string Name { get; set; }
 
-        public ICollection<Song> Songs { get; set; }
+        public virtual ICollection<Song> Songs { get; set; }
+
+        public Album()
+        {
+            Songs = new HashSet<Song>();
+        }
     }
 }
