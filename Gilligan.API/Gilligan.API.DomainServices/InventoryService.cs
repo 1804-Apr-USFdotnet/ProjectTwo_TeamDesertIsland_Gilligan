@@ -1,5 +1,4 @@
-﻿using System;
-using System.Linq;
+﻿using System.Linq;
 using Gilligan.API.DomainContracts;
 using Gilligan.API.Models;
 using Gilligan.API.RepositoryContracts;
@@ -23,16 +22,24 @@ namespace Gilligan.API.DomainServices
             _userRepository = userRepository;
         }
 
-        public void AddSongToUser(Song song, User user)
+        public void AddSongToUser(UserSong userSong)
         {
-            throw new System.NotImplementedException();
+            var userToUpdate = _userRepository.Get(userSong.User.UserId);
+            var songToUpdate = _songRepository.Get(userSong.SongId);
+
+            userSong.User = null;
+
+            userToUpdate.UserSongs.Add(userSong);
+
+            songToUpdate.IsAttached = true;
+
+            _songRepository.SaveChanges();
+            _userRepository.SaveChanges();
         }
 
-        public void RemoveSongFromUser(Song song, User user)
+        public void RemoveSongFromUser(UserSong userSong)
         {
-            var userToUpdate = _userRepository.Get(user.UserId);
-
-            var userSong = userToUpdate.UserSongs.First(x => x.SongId == song.SongId);
+            _userRepository.DeleteUserSong(userSong);
 
             var songToUpdate = _songRepository.Get(userSong.SongId);
 
@@ -43,22 +50,32 @@ namespace Gilligan.API.DomainServices
 
         public void AddSong(Song song)
         {
-            throw new NotImplementedException();
+            var album = _albumRepository.Get(song.Album.AlbumId);
+            var artists = _artistRepository.Get(song.Artists).ToList();
+
+            song.Album = album;
+            song.Artists = artists;
+
+            _songRepository.Add(song);
         }
 
         public void AddAlbum(Album album)
         {
-            throw new NotImplementedException();
+            _albumRepository.Add(album);
         }
 
         public void AddArtist(Artist artist)
         {
-            throw new NotImplementedException();
+            var genres = _genreRepository.Get(artist.Genres).ToList();
+
+            artist.Genres = genres;
+
+            _artistRepository.Add(artist);
         }
 
-        public void AdllGenre(Genre genre)
+        public void AddGenre(Genre genre)
         {
-            throw new NotImplementedException();
+            _genreRepository.Add(genre);
         }
     }
 }

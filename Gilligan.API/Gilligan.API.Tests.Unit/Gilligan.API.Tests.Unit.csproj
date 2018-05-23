@@ -66,9 +66,16 @@
     <Reference Include="Moq, Version=4.8.0.0, Culture=neutral, PublicKeyToken=69f491c39445e920, processorArchitecture=MSIL">
       <HintPath>..\packages\Moq.4.8.2\lib\net45\Moq.dll</HintPath>
     </Reference>
+    <Reference Include="Newtonsoft.Json, Version=6.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
+      <HintPath>..\packages\Newtonsoft.Json.6.0.4\lib\net45\Newtonsoft.Json.dll</HintPath>
+    </Reference>
     <Reference Include="System" />
     <Reference Include="System.Configuration" />
     <Reference Include="System.Core" />
+    <Reference Include="System.Net.Http, Version=4.2.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL" />
+    <Reference Include="System.Net.Http.Formatting, Version=5.2.6.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.AspNet.WebApi.Client.5.2.6\lib\net45\System.Net.Http.Formatting.dll</HintPath>
+    </Reference>
     <Reference Include="System.Runtime.Serialization" />
     <Reference Include="System.Threading.Tasks.Extensions, Version=4.1.1.0, Culture=neutral, PublicKeyToken=cc7b13ffcd2ddd51, processorArchitecture=MSIL">
       <HintPath>..\packages\System.Threading.Tasks.Extensions.4.4.0\lib\netstandard2.0\System.Threading.Tasks.Extensions.dll</HintPath>
@@ -77,13 +84,28 @@
     <Reference Include="System.ValueTuple, Version=4.0.2.0, Culture=neutral, PublicKeyToken=cc7b13ffcd2ddd51, processorArchitecture=MSIL">
       <HintPath>..\packages\System.ValueTuple.4.4.0\lib\net47\System.ValueTuple.dll</HintPath>
     </Reference>
+    <Reference Include="System.Web.Http, Version=5.2.6.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.AspNet.WebApi.Core.5.2.6\lib\net45\System.Web.Http.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.Http.WebHost, Version=5.2.6.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.AspNet.WebApi.WebHost.5.2.6\lib\net45\System.Web.Http.WebHost.dll</HintPath>
+    </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="DomainServices\InventoryServiceTests.cs" />
     <Compile Include="DomainServices\RatingServiceTests.cs" />
+    <Compile Include="DomainServices\SearchServiceTests.cs" />
+    <Compile Include="Mapping\MappingProfileTests.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Models\SongTests.cs" />
+    <Compile Include="QueryObjects\MusicEntityPartialSearchQueryTests.cs" />
     <Compile Include="QueryObjects\TopRatedSongsQueryTests.cs" />
     <Compile Include="QueryObjects\TopRatedArtistsQueryTests.cs" />
+    <Compile Include="QueryObjects\TopRatedGenreQueryTests.cs" />
+    <Compile Include="QueryObjects\TopRatedAlbumQueryTests.cs" />
+    <Compile Include="Rest\InventoryControllerTests.cs" />
+    <Compile Include="Rest\RatingControllerTests.cs" />
+    <Compile Include="Rest\SearchControllerTests.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="app.config" />
@@ -97,6 +119,10 @@
     <ProjectReference Include="..\Gilligan.API.DomainServices\Gilligan.API.DomainServices.csproj">
       <Project>{f15b107b-fcb3-45dd-a467-643ebda6174c}</Project>
       <Name>Gilligan.API.DomainServices</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Gilligan.API.Mapping\Gilligan.API.Mapping.csproj">
+      <Project>{90271917-DDED-4AD2-88BD-C18BD04ED7BC}</Project>
+      <Name>Gilligan.API.Mapping</Name>
     </ProjectReference>
     <ProjectReference Include="..\Gilligan.API.Models\Gilligan.API.Models.csproj">
       <Project>{17140d7a-a2d4-4ad6-8375-6f8ea4f960fa}</Project>
@@ -114,11 +140,16 @@
       <Project>{d584250b-c8cd-4ac3-abfb-5356b104c253}</Project>
       <Name>Gilligan.API.RepositoryContracts</Name>
     </ProjectReference>
+    <ProjectReference Include="..\Gilligan.API.Rest\Gilligan.API.Rest.csproj">
+      <Project>{55A1E21A-562E-441F-9A08-0901FE74B6F2}</Project>
+      <Name>Gilligan.API.Rest</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Gilligan.API.ViewModels\Gilligan.API.ViewModels.csproj">
+      <Project>{8464CCF4-7071-4C64-9CD8-DE61E5C8EE6F}</Project>
+      <Name>Gilligan.API.ViewModels</Name>
+    </ProjectReference>
   </ItemGroup>
-  <ItemGroup>
-    <Folder Include="Mapping\" />
-    <Folder Include="Rest\" />
-  </ItemGroup>
+  <ItemGroup />
   <Import Project="$(VSToolsPath)\TeamTest\Microsoft.TestTools.targets" Condition="Exists('$(VSToolsPath)\TeamTest\Microsoft.TestTools.targets')" />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">

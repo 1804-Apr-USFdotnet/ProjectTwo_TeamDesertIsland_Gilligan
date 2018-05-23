@@ -19,9 +19,15 @@ namespace Gilligan.API.Repositories
             return _context.Artists;
         }
 
-        public IEnumerable<Artist> Get(string name)
+        public void Add(Artist artist)
         {
-            return _context.Artists.Where(x => x.Name == name);
+            _context.Artists.Add(artist);
+            _context.SaveChanges();
+        }
+
+        public IEnumerable<Artist> Get(IEnumerable<Artist> artists)
+        {
+            return artists.Select(i => _context.Artists.First(x => x.ArtistId == i.ArtistId)).ToList();
         }
     }
 }

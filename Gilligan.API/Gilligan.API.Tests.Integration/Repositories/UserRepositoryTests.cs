@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 using Gilligan.API.Models;
 using Gilligan.API.Repositories;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
@@ -21,6 +22,7 @@ namespace Gilligan.API.Tests.Integration.Repositories
         public void ClearTable()
         {
             _context.Users.RemoveRange(_context.Users);
+            _context.Songs.RemoveRange(_context.Songs);
             _context.SaveChanges();
         }
 
@@ -40,6 +42,47 @@ namespace Gilligan.API.Tests.Integration.Repositories
             var result = _userRepository.Get(user.UserId);
 
             Assert.AreEqual(user, result);
+        }
+
+        [TestMethod]
+        public void DeleteUserSong_UserAndSong_RemoveUserSongFromUser()
+        {
+            var song = new Song
+            {
+                Id = Guid.NewGuid(),
+                SongId = Guid.NewGuid()
+            };
+
+            var user = new User
+            {
+                Id = Guid.NewGuid(),
+                UserId = Guid.NewGuid(),
+                UserSongs = new List<UserSong>
+                {
+                    new UserSong
+                    {
+                        Id = Guid.NewGuid(), 
+                        SongId = song.SongId
+                    }
+                }
+            };
+
+            var userSong = new UserSong
+            {
+                SongId = song.SongId,
+                User = new User { UserId = user.UserId}
+            };
+
+            _context.Users.Add(user);
+            _context.SaveChanges();
+
+            _userRepository.DeleteUserSong(userSong);
+
+            var updatedUser = _context.Users.Find(user.Id);
+
+            const int expected = 0;
+
+            Assert.AreEqual(expected, updatedUser.UserSongs.Count);
         }
     }
 }

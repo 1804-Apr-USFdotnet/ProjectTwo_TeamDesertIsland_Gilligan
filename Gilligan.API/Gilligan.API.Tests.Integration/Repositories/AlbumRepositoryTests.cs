@@ -44,22 +44,31 @@ namespace Gilligan.API.Tests.Integration.Repositories
         }
 
         [TestMethod]
-        public void Get_String_ReturnsAllMatchingAlbums()
+        public void Add_Album_AddsAlbumToDatabase()
         {
-            var albums = new List<Album>
+            var album = new Album
             {
-                new Album{Id = Guid.NewGuid(), Name = "Bob"},
-                new Album{Id = Guid.NewGuid(), Name = "NotBob"}
+                Id = Guid.NewGuid()
             };
 
-            _context.Albums.AddRange(albums);
+            _albumRepository.Add(album);
+
+            var albums = _context.Albums.ToList();
+
+            Assert.IsTrue(albums.Contains(album));
+        }
+
+        [TestMethod]
+        public void Get_Guid_ReturnsCorrectAlbum()
+        {
+            var album = new Album{Id = Guid.NewGuid(), AlbumId = Guid.NewGuid()};
+
+            _context.Albums.Add(album);
             _context.SaveChanges();
 
-            var results = _albumRepository.Get("Bob").ToList();
+            var result = _albumRepository.Get(album.AlbumId);
 
-            const int expected = 1;
-
-            Assert.AreEqual(expected, results.Count);
+            Assert.AreEqual(album, result);
         }
     }
 }

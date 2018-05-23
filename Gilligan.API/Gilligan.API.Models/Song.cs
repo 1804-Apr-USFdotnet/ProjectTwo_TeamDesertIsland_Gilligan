@@ -11,7 +11,6 @@ namespace Gilligan.API.Models
         public Guid SongId { get; set; }
         public string Name { get; set; }
         public double AverageRating { get; set; }
-        public string SpotifyId { get; set; }
         public bool IsAttached { get; set; }
 
         [Required]

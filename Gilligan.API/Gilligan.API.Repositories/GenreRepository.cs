@@ -19,15 +19,15 @@ namespace Gilligan.API.Repositories
             return _context.Genres;
         }
 
-        public IEnumerable<Genre> Get(string name)
-        {
-            return _context.Genres.Where(x => x.Name == name);
-        }
-
         public void Add(Genre genre)
         {
             _context.Genres.Add(genre);
             _context.SaveChanges();
+        }
+
+        public IEnumerable<Genre> Get(IEnumerable<Genre> genres)
+        {
+            return genres.Select(i => _context.Genres.First(x => x.GenreId == i.GenreId)).ToList();
         }
     }
 }

@@ -73,35 +73,19 @@ namespace Gilligan.API.Tests.Integration.Repositories
         }
 
         [TestMethod]
-        public void Get_String_ReturnsCorrectSongs()
+        public void Add_Song_AddsSongToDatabase()
         {
-            var songs = new List<Song>
+            var song = new Song
             {
-                new Song
-                {
-                    Id = Guid.NewGuid(),
-                    SongId = Guid.NewGuid(),
-                    Name = "Bob",
-                    Album = new Album { Id = Guid.NewGuid()}
-                },
-                new Song
-                {
-                    Id = Guid.NewGuid(),
-                    SongId = Guid.NewGuid(),
-                    Name = "NotBob",
-                    Album = new Album { Id = Guid.NewGuid()}
-                }
+                Id = Guid.NewGuid(),
+                Album = new Album {Id = Guid.NewGuid()}
             };
 
+            _songRepository.Add(song);
 
-            _context.Songs.AddRange(songs);
-            _context.SaveChanges();
+            var songs = _context.Songs.ToList();
 
-            var results = _songRepository.Get("Bob").ToList();
-
-            const int expected = 1;
-
-            Assert.AreEqual(expected, results.Count);
+            Assert.IsTrue(songs.Contains(song));
         }
     }
 }

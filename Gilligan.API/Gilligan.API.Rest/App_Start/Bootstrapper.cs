@@ -29,6 +29,8 @@ namespace Gilligan.API.Rest
             });
             var mapper = mapperConfiguration.CreateMapper();
 
+            builder.RegisterInstance(mapper).As<IMapper>();
+
             //EF
             builder.RegisterType<GilliganContext>().As<IDbContext>().InstancePerLifetimeScope();
 

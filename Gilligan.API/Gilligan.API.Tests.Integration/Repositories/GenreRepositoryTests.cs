@@ -44,25 +44,6 @@ namespace Gilligan.API.Tests.Integration.Repositories
         }
 
         [TestMethod]
-        public void Get_String_ReturnsCorrectGenres()
-        {
-            var genres = new List<Genre>
-            {
-                new Genre{Id = Guid.NewGuid(), Name = "Bob"},
-                new Genre{Id = Guid.NewGuid(), Name = "NotBob"}
-            };
-
-            _context.Genres.AddRange(genres);
-            _context.SaveChanges();
-
-            var result = _genreRepository.Get("Bob");
-
-            const int expected = 1;
-
-            Assert.AreEqual(expected, result);
-        }
-
-        [TestMethod]
         public void Add_Genre_AddGenreToDatabase()
         {
             var genre = new Genre{Id = Guid.NewGuid()};
@@ -72,6 +53,33 @@ namespace Gilligan.API.Tests.Integration.Repositories
             var genres = _context.Genres.ToList();
 
             Assert.IsTrue(genres.Contains(genre));
+        }
+
+        [TestMethod]
+        public void Get_ListGenres_ReturnsCorrectGenres()
+        {
+            var first = new Genre{Id = Guid.NewGuid(), GenreId = Guid.NewGuid()};
+            var second = new Genre { Id = Guid.NewGuid(), GenreId = Guid.NewGuid() };
+            var third = new Genre { Id = Guid.NewGuid(), GenreId = Guid.NewGuid() };
+
+            var list = new List<Genre>
+            {
+                first, second, third
+            };
+
+            _context.Genres.AddRange(list);
+            _context.SaveChanges();
+
+            var searchList = new List<Genre>
+            {
+                new Genre{GenreId = first.GenreId},
+                new Genre{GenreId = second.GenreId},
+                new Genre{GenreId = third.GenreId}
+            };
+
+            var results = _genreRepository.Get(searchList).ToList();
+
+            Assert.AreEqual(list.Count, results.Count);
         }
     }
 }

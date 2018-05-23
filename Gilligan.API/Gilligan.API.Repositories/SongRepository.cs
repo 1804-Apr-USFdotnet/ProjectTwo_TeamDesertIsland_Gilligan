@@ -25,9 +25,10 @@ namespace Gilligan.API.Repositories
             return _context.Songs;
         }
 
-        public IEnumerable<Song> Get(string name)
+        public void Add(Song song)
         {
-            return _context.Songs.Where(x => x.Name == name);
+            _context.Songs.Add(song);
+            _context.SaveChanges();
         }
 
         public void SaveChanges()

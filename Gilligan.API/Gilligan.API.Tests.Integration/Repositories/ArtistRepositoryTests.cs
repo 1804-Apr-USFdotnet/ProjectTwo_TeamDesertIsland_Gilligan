@@ -44,22 +44,44 @@ namespace Gilligan.API.Tests.Integration.Repositories
         }
 
         [TestMethod]
-        public void Get_String_ReturnsCorrectArtists()
+        public void Add_Artist_AddsArtistToDatabase()
         {
-            var artists = new List<Artist>
+            var artist = new Artist{Id = Guid.NewGuid()};
+
+            _artistRepository.Add(artist);
+
+            var artists = _context.Artists.ToList();
+
+            Assert.IsTrue(artists.Contains(artist));
+        }
+
+        [TestMethod]
+        public void Get_ListArtists_ReturnsCorrectArtists()
+        {
+            var first = new Artist{Id = Guid.NewGuid(), ArtistId = Guid.NewGuid()};
+            var second = new Artist { Id = Guid.NewGuid(), ArtistId = Guid.NewGuid()};
+            var third = new Artist { Id = Guid.NewGuid(), ArtistId = Guid.NewGuid() };
+
+            var list = new List<Artist>
             {
-                new Artist{Id = Guid.NewGuid(), Name = "Bob"},
-                new Artist{Id = Guid.NewGuid(), Name = "NotBob"}
+                first,
+                second,
+                third
             };
 
-            _context.Artists.AddRange(artists);
+            _context.Artists.AddRange(list);
             _context.SaveChanges();
 
-            var results = _artistRepository.Get("Bob").ToList();
+            var searchList = new List<Artist>
+            {
+                new Artist{ArtistId = first.ArtistId},
+                new Artist{ArtistId = second.ArtistId},
+                new Artist{ArtistId = third.ArtistId}
+            };
 
-            const int expected = 1;
+            var result = _artistRepository.Get(searchList).ToList();
 
-            Assert.AreEqual(expected, results.Count);
+            Assert.AreEqual(list.Count, result.Count);
         }
     }
 }

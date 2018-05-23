@@ -40,8 +40,28 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="AddAlbumViewModel.cs" />
+    <Compile Include="AddArtistViewModel.cs" />
+    <Compile Include="AddGenreViewModel.cs" />
     <Compile Include="AddRatingViewModel.cs" />
+    <Compile Include="AddRemoveUserSongViewModel.cs" />
+    <Compile Include="AddSongViewModel.cs" />
+    <Compile Include="AlbumRatingsViewModel.cs" />
+    <Compile Include="AlbumViewModel.cs" />
+    <Compile Include="ArtistRatingsViewModel.cs" />
+    <Compile Include="ArtistViewModel.cs" />
+    <Compile Include="GenreRatingsViewModel.cs" />
+    <Compile Include="GenreViewModel.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="SongRatingsViewModel.cs" />
+    <Compile Include="SongViewModel.cs" />
+    <Compile Include="UserViewModel.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\Gilligan.API.Models\Gilligan.API.Models.csproj">
+      <Project>{17140d7a-a2d4-4ad6-8375-6f8ea4f960fa}</Project>
+      <Name>Gilligan.API.Models</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

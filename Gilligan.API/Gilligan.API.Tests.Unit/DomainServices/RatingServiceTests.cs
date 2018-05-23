@@ -1,10 +1,9 @@
 ﻿using Microsoft.VisualStudio.TestTools.UnitTesting;
 using Moq;
-using System.Collections.Generic;
 using Gilligan.API.RepositoryContracts;
 using Gilligan.API.Models;
 using System;
-using Gilligan.API.DomainContracts;
+using System.Collections.Generic;
 using Gilligan.API.DomainServices;
 
 namespace Gilligan.API.Tests.Unit.DomainServices
@@ -13,52 +12,107 @@ namespace Gilligan.API.Tests.Unit.DomainServices
     public class RatingServiceTests
     {
         private readonly RatingService _ratingService;
-
-        private readonly Mock<IRatingRepository> _mockRatingRepository;
+        private readonly Mock<ISongRepository> _songRepository;
+        private readonly Mock<IArtistRepository> _artistRepository;
+        private readonly Mock<IAlbumRepository> _albumRepository;
+        private readonly Mock<IGenreRepository> _genreRepository;
+        private readonly Mock<IUserRepository> _userRepository;
 
         public RatingServiceTests()
         {
-            var ratings = new List<Rating>
-            {
-                new Rating {RatedOn = new DateTime(2017,03,14), Value = 4},
-                new Rating {RatedOn = new DateTime(2016,07,24), Value = 2},
-                new Rating {RatedOn = new DateTime(2018,01,10), Value = 2},
-                new Rating {RatedOn = new DateTime(2015,09,11), Value = 0},
-                new Rating {RatedOn = new DateTime(2017,07,07), Value = 0},
-                new Rating {RatedOn = new DateTime(2018,02,18), Value = 4}
-            };
+            _songRepository = new Mock<ISongRepository>();
+            _songRepository.Setup(y => y.Get(It.IsAny<Guid>())).Returns(new Song());
+            _songRepository.Setup(x => x.Get()).Returns(new List<Song>());
+            _songRepository.Setup(x => x.SaveChanges());
 
-            var mockSongRepository = new Mock<ISongRepository>();
-            mockSongRepository.Setup(y => y.Get(It.IsAny<Guid>())).Returns(new Song());
+            _userRepository = new Mock<IUserRepository>();
+            _userRepository.Setup(z => z.Get(It.IsAny<Guid>())).Returns(new User());
 
-            var mockUserRepository = new Mock<IUserRepository>();
-            mockUserRepository.Setup(z => z.Get(It.IsAny<Guid>())).Returns(new User());
+            _artistRepository = new Mock<IArtistRepository>();
+            _artistRepository.Setup(x => x.Get()).Returns(new List<Artist>());
 
-            _mockRatingRepository = new Mock<IRatingRepository>();
-            _mockRatingRepository.Setup(x => x.Add(It.IsAny<Rating>()));
-            _mockRatingRepository.Setup(x => x.Get()).Returns(ratings);
+            _genreRepository = new Mock<IGenreRepository>();
+            _genreRepository.Setup(x => x.Get()).Returns(new List<Genre>());
 
-            var mockArtistRepository = new Mock<IArtistRepository>();
-            var mockGenreRepository = new Mock<IGenreRepository>();
-            var mockAlbumRepository = new Mock<IAlbumRepository>();
-            var mockIventoryService = new Mock<IInventoryService>();
-           
-            _ratingService = new RatingService(mockSongRepository.Object, mockArtistRepository.Object,
-                mockGenreRepository.Object, mockAlbumRepository.Object);
+            _albumRepository = new Mock<IAlbumRepository>();
+            _albumRepository.Setup(x => x.Get()).Returns(new List<Album>());
+            
+            _ratingService = new RatingService(_songRepository.Object, _artistRepository.Object,
+                _genreRepository.Object, _albumRepository.Object, _userRepository.Object);
         }
 
         [TestMethod]
-        public void AddRating_GivenRating_CallsRepositoryMethod()
+        public void AddRating_Rating_CallsSongRepoGet()
         {
             var rating = new Rating
             {
-                Song = new Song(),
-                User = new User()
+                Song = new Song{SongId = Guid.NewGuid()},
+                User = new User { UserId = Guid.NewGuid()}
             };
             
             _ratingService.AddRating(rating);
 
-            _mockRatingRepository.Verify(x => x.Add(It.IsAny<Rating>()), Times.AtLeastOnce);
+            _songRepository.Verify(x => x.Get(It.IsAny<Guid>()), Times.AtLeastOnce);
+        }
+
+        [TestMethod]
+        public void AddRating_Rating_CallsUserRepoGet()
+        {
+            var rating = new Rating
+            {
+                Song = new Song { SongId = Guid.NewGuid() },
+                User = new User { UserId = Guid.NewGuid() }
+            };
+
+            _ratingService.AddRating(rating);
+
+            _userRepository.Verify(x => x.Get(It.IsAny<Guid>()), Times.AtLeastOnce);
+        }
+
+        [TestMethod]
+        public void AddRating_Rating_CallsSongRepoSaveChanges()
+        {
+            var rating = new Rating
+            {
+                Song = new Song { SongId = Guid.NewGuid() },
+                User = new User { UserId = Guid.NewGuid() }
+            };
+
+            _ratingService.AddRating(rating);
+
+            _songRepository.Verify(x => x.SaveChanges(), Times.AtLeastOnce);
+        }
+
+        [TestMethod]
+        public void AlbumRating_IntTakeAmount_CallsAlbumRepoGet()
+        {
+            _ratingService.AlbumRatings(new int());
+
+            _albumRepository.Verify(x => x. Get(), Times.AtLeastOnce);
+        }
+
+        [TestMethod]
+        public void SongRatings_IntTakeAmount_CallsAlbumRepoGet()
+        {
+            _ratingService.SongRatings(new int());
+
+            _songRepository.Verify(x => x.Get(), Times.AtLeastOnce);
+        }
+
+        [TestMethod]
+        public void ArtistRatings_IntTakeAmount_CallsArtistRepoGet()
+        {
+            _ratingService.ArtistRatings(new int());
+
+            _artistRepository.Verify(x => x.Get(), Times.AtLeastOnce);
+        }
+
+        [TestMethod]
+        public void GenreRatings_IntTakeAmount_CallsGenreRepoGet()
+        {
+            _ratingService.GenreRatings(new int());
+
+            _genreRepository.Verify(x => x.Get(), Times.AtLeastOnce);
         }
     }
 }

@@ -316,5 +316,35 @@ namespace Gilligan.API.Tests.Unit.QueryObjects
 
             Assert.AreEqual(expected, result.Count);
         }
+
+        [TestMethod]
+        public void Daily_Empty_ReturnsSongsRatedOnThatDay()
+        {
+            _songs = new List<Song>
+            {
+                new Song
+                {
+                    Ratings = new List<Rating>
+                    {
+                        new Rating{RatedOn = DateTime.Today}
+                    }
+                },
+                new Song
+                {
+                    Ratings = new List<Rating>
+                    {
+                        new Rating{RatedOn = new DateTime(2000, 1, 1)}
+                    }
+                }
+            };
+
+            _query = new TopRatedSongsQuery(_songs, 3);
+
+            var result = _query.Daily();
+
+            const int expected = 1;
+
+            Assert.AreEqual(expected, result.Count);
+        }
     }
 }

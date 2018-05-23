@@ -188,6 +188,7 @@
     <Compile Include="App_Start\Bootstrapper.cs" />
     <Compile Include="App_Start\FilterConfig.cs" />
     <Compile Include="App_Start\WebApiConfig.cs" />
+    <Compile Include="Controllers\InventoryController.cs" />
     <Compile Include="Controllers\RatingController.cs" />
     <Compile Include="Controllers\SearchController.cs" />
     <Compile Include="Controllers\UserController.cs" />
@@ -227,6 +228,10 @@
       <Project>{90271917-DDED-4AD2-88BD-C18BD04ED7BC}</Project>
       <Name>Gilligan.API.Mapping</Name>
     </ProjectReference>
+    <ProjectReference Include="..\Gilligan.API.Models\Gilligan.API.Models.csproj">
+      <Project>{17140D7A-A2D4-4AD6-8375-6F8EA4F960FA}</Project>
+      <Name>Gilligan.API.Models</Name>
+    </ProjectReference>
     <ProjectReference Include="..\Gilligan.API.Repositories\Gilligan.API.Repositories.csproj">
       <Project>{2187AC55-3505-4250-9297-C384ED175DAA}</Project>
       <Name>Gilligan.API.Repositories</Name>
@@ -234,6 +239,10 @@
     <ProjectReference Include="..\Gilligan.API.RepositoryContracts\Gilligan.API.RepositoryContracts.csproj">
       <Project>{D584250B-C8CD-4AC3-ABFB-5356B104C253}</Project>
       <Name>Gilligan.API.RepositoryContracts</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Gilligan.API.ViewModels\Gilligan.API.ViewModels.csproj">
+      <Project>{8464CCF4-7071-4C64-9CD8-DE61E5C8EE6F}</Project>
+      <Name>Gilligan.API.ViewModels</Name>
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>
