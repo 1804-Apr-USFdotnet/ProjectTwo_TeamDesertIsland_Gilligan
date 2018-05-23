@@ -1,11 +1,13 @@
-﻿using System.Collections.Generic;
-using Gilligan.API.Models;
+﻿using Gilligan.API.Models;
 
 namespace Gilligan.API.DomainContracts
 {
     public interface IRatingService
     {
         void AddRating(Rating rating);
-        List<Rating> Get();
+        AlbumRatings AlbumRatings(int takeAmount);
+        SongRatings SongRatings(int takeAmount);
+        ArtistRatings ArtistRatings(int takeAmount);
+        GenreRatings GenreRatings(int takeAmount);
     }
 }

@@ -40,7 +40,18 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="IHttpService.cs" />
+    <Compile Include="ILoggingService.cs" />
+    <Compile Include="ISearchService.cs" />
+    <Compile Include="ISongService.cs" />
+    <Compile Include="IUserService.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\Gilligan.MVC.ViewModels\Gilligan.MVC.ViewModels.csproj">
+      <Project>{3F96A37C-7E37-48CE-83A8-63B8634FD7C2}</Project>
+      <Name>Gilligan.MVC.ViewModels</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

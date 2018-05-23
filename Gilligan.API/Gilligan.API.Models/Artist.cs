@@ -8,7 +8,6 @@ namespace Gilligan.API.Models
         public Guid Id { get; set; }
         public Guid ArtistId { get; set; }
         public string Name { get; set; }
-        public string SpotifyId { get; set; }
 
         public virtual ICollection<Song> Songs { get; set; }
         public virtual ICollection<Genre> Genres { get; set; }

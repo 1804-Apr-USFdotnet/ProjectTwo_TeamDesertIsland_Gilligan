@@ -24,20 +24,32 @@ namespace Gilligan.API.QueryObjects
         {
             return _list.Where(x => x.Ratings.Any(z => z.RatedOn >= _oneMonthAgo))
                         .OrderByDescending(x => x.AverageRating)
-                        .Take(_takeAmount).ToList();
+                        .Take(_takeAmount)
+                        .ToList();
         }
 
         public List<Song> Weekly()
         {
-            return _list.Where(x => x.Ratings.Any(z => z.RatedOn > _oneWeekAgo))
+            return _list.Where(x => x.Ratings.Any(z => z.RatedOn >= _oneWeekAgo))
                         .OrderByDescending(x => x.AverageRating)
-                        .Take(_takeAmount).ToList();
+                        .Take(_takeAmount)
+                        .ToList();
         }
 
         public List<Song> AllTime()
         {
-            return _list.OrderByDescending(x => x.AverageRating)
-                        .Take(_takeAmount).ToList();
+            return _list.Where(x => x.Ratings.Any())
+                        .OrderByDescending(x => x.AverageRating)
+                        .Take(_takeAmount)
+                        .ToList();
+        }
+
+        public List<Song> Daily()
+        {
+            return _list.Where(x => x.Ratings.Any(y => y.RatedOn >= DateTime.Today))
+                        .OrderByDescending(x => x.AverageRating)
+                        .Take(_takeAmount)
+                        .ToList();
         }
     }
 }

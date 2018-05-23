@@ -9,7 +9,7 @@ namespace Gilligan.API.Models
         public Guid UserId { get; set; }
         public string FirstName { get; set; }
         public string LastName { get; set; }
-        public DateTime DateOfBirth { get; set; }
+        public DateTime? DateOfBirth { get; set; }
         public int ZipCode { get; set; }
         public string Email { get; set; }
 
@@ -19,6 +19,7 @@ namespace Gilligan.API.Models
         public User()
         {
             Ratings = new HashSet<Rating>();
+            UserSongs = new HashSet<UserSong>();
         }
     }
 }

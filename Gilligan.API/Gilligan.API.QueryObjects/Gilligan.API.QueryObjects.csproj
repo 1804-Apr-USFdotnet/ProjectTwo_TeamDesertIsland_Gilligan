@@ -40,7 +40,11 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="MusicEntityPartialSearchQuery.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="TopRatedAlbumQuery.cs" />
+    <Compile Include="TopRatedArtistsQuery.cs" />
+    <Compile Include="TopRatedGenreQuery.cs" />
     <Compile Include="TopRatedSongsQuery.cs" />
   </ItemGroup>
   <ItemGroup>

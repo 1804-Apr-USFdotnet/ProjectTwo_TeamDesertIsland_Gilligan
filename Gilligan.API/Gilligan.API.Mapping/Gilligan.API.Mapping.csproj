@@ -44,10 +44,21 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="MappingProfile.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\Gilligan.API.Models\Gilligan.API.Models.csproj">
+      <Project>{17140D7A-A2D4-4AD6-8375-6F8EA4F960FA}</Project>
+      <Name>Gilligan.API.Models</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Gilligan.API.ViewModels\Gilligan.API.ViewModels.csproj">
+      <Project>{8464CCF4-7071-4C64-9CD8-DE61E5C8EE6F}</Project>
+      <Name>Gilligan.API.ViewModels</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

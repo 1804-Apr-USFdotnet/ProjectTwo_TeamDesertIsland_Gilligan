@@ -48,6 +48,12 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="Autofac, Version=4.8.1.0, Culture=neutral, PublicKeyToken=17863af14b0044da, processorArchitecture=MSIL">
+      <HintPath>..\packages\Autofac.4.8.1\lib\net45\Autofac.dll</HintPath>
+    </Reference>
+    <Reference Include="Autofac.Integration.Mvc, Version=4.0.0.0, Culture=neutral, PublicKeyToken=17863af14b0044da, processorArchitecture=MSIL">
+      <HintPath>..\packages\Autofac.Mvc5.4.0.2\lib\net45\Autofac.Integration.Mvc.dll</HintPath>
+    </Reference>
     <Reference Include="Microsoft.AI.DependencyCollector, Version=2.6.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
       <HintPath>..\packages\Microsoft.ApplicationInsights.DependencyCollector.2.6.1\lib\net45\Microsoft.AI.DependencyCollector.dll</HintPath>
     </Reference>
@@ -141,10 +147,15 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="App_Start\Bootstrapper.cs" />
     <Compile Include="App_Start\BundleConfig.cs" />
     <Compile Include="App_Start\FilterConfig.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="Controllers\HomeController.cs" />
+    <Compile Include="Controllers\SearchController.cs" />
+    <Compile Include="Controllers\SongController.cs" />
+    <Compile Include="Controllers\UserController.cs" />
+    <Compile Include="Filters\ExceptionFilter.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
@@ -229,8 +240,9 @@
     <Content Include="Scripts\popper-utils.js.map" />
   </ItemGroup>
   <ItemGroup>
-    <Folder Include="App_Data\" />
-    <Folder Include="Models\" />
+    <Folder Include="Views\Search\" />
+    <Folder Include="Views\Song\" />
+    <Folder Include="Views\User\" />
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />
@@ -242,6 +254,24 @@
   </ItemGroup>
   <ItemGroup>
     <TypeScriptCompile Include="Scripts\index.d.ts" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\Gilligan.MVC.DomainContracts\Gilligan.MVC.DomainContracts.csproj">
+      <Project>{F5ADEF88-537E-4C62-BC7B-350504E22209}</Project>
+      <Name>Gilligan.MVC.DomainContracts</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Gilligan.MVC.DomainServices\Gilligan.MVC.DomainServices.csproj">
+      <Project>{B4E60EF9-17E6-4236-8659-905DF5BCAE02}</Project>
+      <Name>Gilligan.MVC.DomainServices</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Gilligan.MVC.Logging\Gilligan.MVC.Logging.csproj">
+      <Project>{17EC23E8-8053-4CC7-971D-70164C619FC9}</Project>
+      <Name>Gilligan.MVC.Logging</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Gilligan.MVC.ViewModels\Gilligan.MVC.ViewModels.csproj">
+      <Project>{3F96A37C-7E37-48CE-83A8-63B8634FD7C2}</Project>
+      <Name>Gilligan.MVC.ViewModels</Name>
+    </ProjectReference>
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
