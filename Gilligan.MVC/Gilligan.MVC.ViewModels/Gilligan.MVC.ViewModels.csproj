@@ -31,6 +31,7 @@
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="System" />
+    <Reference Include="System.ComponentModel.DataAnnotations" />
     <Reference Include="System.Core" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
@@ -47,6 +48,9 @@
     <Compile Include="Music\AddSongViewModel.cs" />
     <Compile Include="Music\AlbumRatingsViewModel.cs" />
     <Compile Include="Music\ArtistRatingViewModel.cs" />
+    <Compile Include="Music\GenreRatingViewModel.cs" />
+    <Compile Include="Music\SongRatingsViewModel.cs" />
+    <Compile Include="Music\UserViewModel.cs" />
     <Compile Include="Search\SearchType.cs" />
     <Compile Include="User\AddRemoveUserSongViewModel.cs" />
     <Compile Include="Music\AlbumViewModel.cs" />

@@ -238,16 +238,9 @@
     <Content Include="Scripts\popper.js.map" />
     <Content Include="Scripts\popper-utils.min.js.map" />
     <Content Include="Scripts\popper-utils.js.map" />
-    <Content Include="Views\Song\ArtistView.cshtml" />
-    <Content Include="Views\Song\SongDetailsView.cshtml" />
-    <Content Include="Views\Song\AlbumView.cshtml" />
-    <Content Include="Views\Song\GenreView.cshtml" />
-    <Content Include="Views\Song\RatingView.cshtml" />
-    <Content Include="Views\Song\RatingEditView.cshtml" />
-    <Content Include="Views\Song\AlbumListView.cshtml" />
-    <Content Include="Views\Song\ArtistListView.cshtml" />
-    <Content Include="Views\Song\GenreListView.cshtml" />
-    <Content Include="Views\Song\RatingListView.cshtml" />
+    <Content Include="Views\Song\AddAlbum.cshtml" />
+    <Content Include="Views\Song\Song.cshtml" />
+    <Content Include="Views\Song\Album.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Views\Search\" />
