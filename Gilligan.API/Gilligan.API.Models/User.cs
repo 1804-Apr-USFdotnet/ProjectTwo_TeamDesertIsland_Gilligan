@@ -12,6 +12,8 @@ namespace Gilligan.API.Models
         public DateTime? DateOfBirth { get; set; }
         public int ZipCode { get; set; }
         public string Email { get; set; }
+        public string UserName { get; set; }
+        public string Password { get; set; }    
 
         public virtual ICollection<Rating> Ratings { get; set; }
         public virtual ICollection<UserSong> UserSongs { get; set; }
