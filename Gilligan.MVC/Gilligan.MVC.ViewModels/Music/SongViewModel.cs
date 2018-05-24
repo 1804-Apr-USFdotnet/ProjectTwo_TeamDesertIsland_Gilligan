@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 
 namespace Gilligan.MVC.ViewModels.Music
 {
@@ -6,8 +7,9 @@ namespace Gilligan.MVC.ViewModels.Music
     {
         public Guid SongId { get; set; }
         public string Name { get; set; }
-        public string Artist { get; set; }
-        public string Genre { get; set; }
-        public double Rating { get; set; }
+        public double AverageRating { get; set; }
+        public bool IsAttached { get; set; }
+        public AlbumViewModel AlbumViewModel { get; set; }
+        public IEnumerable<ArtistViewModel> ArtistViewModel { get; set; }
     }
 }
