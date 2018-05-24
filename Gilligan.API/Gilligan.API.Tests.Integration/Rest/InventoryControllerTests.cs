@@ -160,7 +160,7 @@ namespace Gilligan.API.Tests.Integration.Rest
         {
             var genre = new Genre {Id = Guid.NewGuid(), GenreId = Guid.NewGuid()};
 
-            var viewModel = new AddGenreViewModel{GenreId = genre.GenreId};
+            var viewModel = new AddGenreViewModel();
 
             _inventoryController.AddGenreToInventory(viewModel);
 

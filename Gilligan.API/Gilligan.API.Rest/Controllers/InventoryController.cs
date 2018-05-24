@@ -1,4 +1,5 @@
-﻿using System.Web.Http;
+﻿using System.Collections.Generic;
+using System.Web.Http;
 using AutoMapper;
 using Gilligan.API.DomainContracts;
 using Gilligan.API.Models;
@@ -57,6 +58,17 @@ namespace Gilligan.API.Rest.Controllers
             return Ok();
         }
 
+        [HttpGet]
+        [Route("song")]
+        public IHttpActionResult GetSongs()
+        {
+            var songs = _inventoryService.AllSongs();
+
+            var viewModel = _mapper.Map<IEnumerable<SongViewModel>>(songs);
+
+            return Ok(viewModel);
+        }
+
         [HttpPost]
         [Route("album")]
         public IHttpActionResult AddAlbumToInventory(AddAlbumViewModel viewModel)
@@ -68,6 +80,17 @@ namespace Gilligan.API.Rest.Controllers
             _inventoryService.AddAlbum(album);
 
             return Ok();
+        }
+
+        [HttpGet]
+        [Route("album")]
+        public IHttpActionResult GetAlbums()
+        {
+            var albums = _inventoryService.AllAlbums();
+
+            var viewModel = _mapper.Map<IEnumerable<AlbumViewModel>>(albums);
+
+            return Ok(viewModel);
         }
 
         [HttpPost]
@@ -83,6 +106,17 @@ namespace Gilligan.API.Rest.Controllers
             return Ok();
         }
 
+        [HttpGet]
+        [Route("artist")]
+        public IHttpActionResult GetArtists()
+        {
+            var artists = _inventoryService.AllArists();
+
+            var viewModel = _mapper.Map<IEnumerable<ArtistViewModel>>(artists);
+
+            return Ok(viewModel);
+        }
+
         [HttpPost]
         [Route("genre")]
         public IHttpActionResult AddGenreToInventory(AddGenreViewModel viewModel)
@@ -94,6 +128,17 @@ namespace Gilligan.API.Rest.Controllers
             _inventoryService.AddGenre(genre);
 
             return Ok();
+        }
+
+        [HttpGet]
+        [Route("route")]
+        public IHttpActionResult GetGenres()
+        {
+            var genres = _inventoryService.AllGenres();
+
+            var viewModel = _mapper.Map<IEnumerable<GenreViewModel>>(genres);
+
+            return Ok(viewModel);
         }
     }
 }

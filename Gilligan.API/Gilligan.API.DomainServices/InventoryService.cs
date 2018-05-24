@@ -1,4 +1,5 @@
-﻿using System.Linq;
+﻿using System.Collections.Generic;
+using System.Linq;
 using Gilligan.API.DomainContracts;
 using Gilligan.API.Models;
 using Gilligan.API.RepositoryContracts;
@@ -76,6 +77,26 @@ namespace Gilligan.API.DomainServices
         public void AddGenre(Genre genre)
         {
             _genreRepository.Add(genre);
+        }
+
+        public List<Song> AllSongs()
+        {
+            return _songRepository.Get().ToList();
+        }
+
+        public List<Artist> AllArists()
+        {
+            return _artistRepository.Get().ToList();
+        }
+
+        public List<Album> AllAlbums()
+        {
+            return _albumRepository.Get().ToList();
+        }
+
+        public List<Genre> AllGenres()
+        {
+            return _genreRepository.Get().ToList();
         }
     }
 }

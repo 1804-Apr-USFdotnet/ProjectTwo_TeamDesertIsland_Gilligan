@@ -76,6 +76,8 @@ namespace Gilligan.API.Mapping
             CreateMap<AddGenreViewModel, Genre>()
                 .ForMember(d => d.Id, o => o.Ignore())
                 .AfterMap((s, d) => d.Id = Guid.NewGuid())
+                .ForMember(d => d.GenreId, o => o.Ignore())
+                .AfterMap((s, d) => d.GenreId = Guid.NewGuid())
                 .ForMember(d => d.Artists, o => o.Ignore());
 
             CreateMap<AddRatingViewModel, Rating>()
