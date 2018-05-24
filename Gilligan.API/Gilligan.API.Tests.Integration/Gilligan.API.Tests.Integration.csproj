@@ -100,6 +100,7 @@
   <ItemGroup>
     <None Include="App.config" />
     <None Include="packages.config" />
+    <None Include="Connections.config" />
   </ItemGroup>
   <ItemGroup />
   <ItemGroup>
