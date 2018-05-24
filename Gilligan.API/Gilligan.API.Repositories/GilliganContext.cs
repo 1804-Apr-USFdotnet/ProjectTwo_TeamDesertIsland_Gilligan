@@ -1,9 +1,10 @@
 ﻿using System.Data.Entity;
 using Gilligan.API.Models;
+using Microsoft.AspNet.Identity.EntityFramework;
 
 namespace Gilligan.API.Repositories
 {
-    public class GilliganContext : DbContext, IDbContext
+    public class GilliganContext : IdentityDbContext<IdentityUser>, IDbContext
     {
         public GilliganContext() : base("name=GilliganConnectionString")
         {

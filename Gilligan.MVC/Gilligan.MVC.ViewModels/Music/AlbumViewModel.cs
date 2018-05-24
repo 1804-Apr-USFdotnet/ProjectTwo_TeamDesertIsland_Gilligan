@@ -1,6 +1,13 @@
-﻿namespace Gilligan.MVC.ViewModels.Music
+﻿using System;
+using System.Collections.Generic;
+
+namespace Gilligan.MVC.ViewModels.Music
 {
     public class AlbumViewModel
     {
+        public Guid AlbumId { get; set; }
+        public DateTime? ReleaseDate { get; set; }
+        public string Name { get; set; }
+        public IEnumerable<SongViewModel> SongViewModels { get; set; }
     }
 }

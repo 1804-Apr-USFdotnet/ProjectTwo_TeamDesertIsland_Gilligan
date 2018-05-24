@@ -13,7 +13,7 @@ namespace Gilligan.MVC.DomainServices
 
         public HttpService()
         {
-            _httpClient = new HttpClient {BaseAddress = new Uri("/http://fixthis:12345")};
+            _httpClient = new HttpClient {BaseAddress = new Uri("http://localhost:53794/") };
             _httpClient.DefaultRequestHeaders.Accept.Clear();
             _httpClient.DefaultRequestHeaders.Accept.Add(new MediaTypeWithQualityHeaderValue("application/json"));
         }
