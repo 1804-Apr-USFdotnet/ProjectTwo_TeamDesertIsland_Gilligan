@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Web.Http;
+using System.Web.Http.Cors;
 
 namespace Gilligan.API.Rest
 {
@@ -13,7 +14,8 @@ namespace Gilligan.API.Rest
         public static void Register(HttpConfiguration config)
         {
             // Web API configuration and services
-            config.EnableCors();
+            config.EnableCors(new EnableCorsAttribute("*", "*", "*"));
+            
             config.Filters.Add(new AuthorizeAttribute());
 
             // Web API routes
