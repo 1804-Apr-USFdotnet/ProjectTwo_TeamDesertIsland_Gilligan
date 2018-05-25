@@ -131,7 +131,7 @@ namespace Gilligan.API.Rest.Controllers
         }
 
         [HttpGet]
-        [Route("route")]
+        [Route("genre")]
         public IHttpActionResult GetGenres()
         {
             var genres = _inventoryService.AllGenres();

@@ -9,7 +9,7 @@ namespace Gilligan.API.Models
         public Guid GenreId { get; set; }
         public string Name { get; set; }
 
-        public ICollection<Artist> Artists { get; set; }
+        public virtual ICollection<Artist> Artists { get; set; }
 
         public Genre()
         {
