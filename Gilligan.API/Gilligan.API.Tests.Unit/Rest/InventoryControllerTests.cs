@@ -1,4 +1,5 @@
-﻿using System.Web.Http.Results;
+﻿using System.Collections.Generic;
+using System.Web.Http.Results;
 using Autofac;
 using AutoMapper;
 using Gilligan.API.DomainContracts;
@@ -29,6 +30,10 @@ namespace Gilligan.API.Tests.Unit.Rest
             _inventoryService.Setup(x => x.AddArtist(It.IsAny<Artist>()));
             _inventoryService.Setup(x => x.AddGenre(It.IsAny<Genre>()));
             _inventoryService.Setup(x => x.AddAlbum(It.IsAny<Album>()));
+            _inventoryService.Setup(x => x.AllSongs()).Returns(new List<Song>());
+            _inventoryService.Setup(x => x.AllArists()).Returns(new List<Artist>());
+            _inventoryService.Setup(x => x.AllAlbums()).Returns(new List<Album>());
+            _inventoryService.Setup(x => x.AllGenres()).Returns(new List<Genre>());
 
             _inventoryController = new InventoryController(_inventoryService.Object, mapper);
         }
@@ -188,5 +193,78 @@ namespace Gilligan.API.Tests.Unit.Rest
 
             Assert.IsInstanceOfType(result, typeof(OkResult));
         }
+
+        [TestMethod]
+        public void GetSongs_Empty_ReturnsOk()
+        {
+            var result = _inventoryController.GetSongs();
+
+            Assert.IsInstanceOfType(result, typeof(OkNegotiatedContentResult<IEnumerable<SongViewModel>>));
+        }
+
+        [TestMethod]
+        public void GetSongs_Empty_ReturnsCorrectViewModel()
+        {
+            var result = _inventoryController.GetSongs();
+
+            var resultType = result as OkNegotiatedContentResult<IEnumerable<SongViewModel>>;
+
+            Assert.IsInstanceOfType(resultType.Content, typeof(IEnumerable<SongViewModel>));
+        }
+
+        [TestMethod]
+        public void GetAlbums_Empty_ReturnsOk()
+        {
+            var result = _inventoryController.GetAlbums();
+
+            Assert.IsInstanceOfType(result, typeof(OkNegotiatedContentResult<IEnumerable<AlbumViewModel>>));
+        }
+
+        [TestMethod]
+        public void GetAlbums_Empty_ReturnsCorrectViewModel()
+        {
+            var result = _inventoryController.GetAlbums();
+
+            var resultType = result as OkNegotiatedContentResult<IEnumerable<AlbumViewModel>>;
+
+            Assert.IsInstanceOfType(resultType.Content, typeof(IEnumerable<AlbumViewModel>));
+        }
+
+        [TestMethod]
+        public void GetArtists_Empty_ReturnsOk()
+        {
+            var result = _inventoryController.GetArtists();
+
+            Assert.IsInstanceOfType(result, typeof(OkNegotiatedContentResult<IEnumerable<ArtistViewModel>>));
+        }
+
+        [TestMethod]
+        public void GetArtists_Empty_ReturnsCorrectViewModel()
+        {
+            var result = _inventoryController.GetArtists();
+
+            var resultType = result as OkNegotiatedContentResult<IEnumerable<ArtistViewModel>>;
+
+            Assert.IsInstanceOfType(resultType.Content, typeof(IEnumerable<ArtistViewModel>));
+        }
+
+        [TestMethod]
+        public void GetGenres_Empty_ReturnsOk()
+        {
+            var result = _inventoryController.GetGenres();
+
+            Assert.IsInstanceOfType(result, typeof(OkNegotiatedContentResult<IEnumerable<GenreViewModel>>));       
+        }
+
+        [TestMethod]
+        public void GetGenres_Empty_ReturnsCorrectViewModel()
+        {
+            var result = _inventoryController.GetGenres();
+
+            var resultType = result as OkNegotiatedContentResult<IEnumerable<GenreViewModel>>;
+
+            Assert.IsInstanceOfType(resultType.Content, typeof(IEnumerable<GenreViewModel>));
+        }
     }
 }
+

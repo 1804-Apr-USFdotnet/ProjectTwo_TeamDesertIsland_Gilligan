@@ -308,7 +308,12 @@ namespace Gilligan.API.Tests.Integration.DomainServices
                 new Genre {Id = Guid.NewGuid()}
             };
 
-            //_context.Genres.
+            _context.Genres.AddRange(genres);
+            _context.SaveChanges();
+
+            var results = _inventoryService.AllGenres();
+
+            Assert.AreEqual(genres.Count, results.Count);
         }
     }
 }
