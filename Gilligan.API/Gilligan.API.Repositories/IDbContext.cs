@@ -6,7 +6,6 @@ namespace Gilligan.API.Repositories
     public interface IDbContext
     {
         int SaveChanges();
-
         
         DbSet<Album> Albums { get; set; }
         DbSet<Artist> Artists { get; set; }

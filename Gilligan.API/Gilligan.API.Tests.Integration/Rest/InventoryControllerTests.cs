@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Web.Http.Results;
 using Autofac;
 using AutoMapper;
 using Gilligan.API.DomainServices;
@@ -160,7 +161,7 @@ namespace Gilligan.API.Tests.Integration.Rest
         {
             var genre = new Genre {Id = Guid.NewGuid(), GenreId = Guid.NewGuid()};
 
-            var viewModel = new AddGenreViewModel{GenreId = genre.GenreId};
+            var viewModel = new AddGenreViewModel();
 
             _inventoryController.AddGenreToInventory(viewModel);
 
@@ -169,6 +170,82 @@ namespace Gilligan.API.Tests.Integration.Rest
             const int expected = 1;
 
             Assert.AreEqual(expected, genres.Count);
+        }
+
+        [TestMethod]
+        public void GetSongs_Empty_ReturnsAllSongs()
+        {
+            var songs = new List<Song>
+            {
+                new Song{Id = Guid.NewGuid(), Album =  new Album{Id = Guid.NewGuid()}},
+                new Song{Id = Guid.NewGuid(), Album =  new Album{Id = Guid.NewGuid()}}
+            };
+
+            _context.Songs.AddRange(songs);
+            _context.SaveChanges();
+
+            var response = _inventoryController.GetSongs();
+
+            var results = response as OkNegotiatedContentResult<IEnumerable<SongViewModel>>;
+
+            Assert.AreEqual(songs.Count, results.Content.ToList().Count);
+        }
+
+        [TestMethod]
+        public void GetArtists_Empty_ReturnsAllArtists()
+        {
+            var artists = new List<Artist>
+            {
+                new Artist{Id = Guid.NewGuid()},
+                new Artist{Id = Guid.NewGuid()}
+            };
+
+            _context.Artists.AddRange(artists);
+            _context.SaveChanges();
+
+            var response = _inventoryController.GetArtists();
+
+            var results = response as OkNegotiatedContentResult<IEnumerable<ArtistViewModel>>;
+
+            Assert.AreEqual(artists.Count, results.Content.ToList().Count);
+        }
+
+        [TestMethod]
+        public void GetAlbums_Empty_ReturnsAllAlbums()
+        {
+            var albums = new List<Album>
+            {
+                new Album{Id = Guid.NewGuid()},
+                new Album{Id = Guid.NewGuid()}
+            };
+
+            _context.Albums.AddRange(albums);
+            _context.SaveChanges();
+
+            var response = _inventoryController.GetAlbums();
+
+            var results = response as OkNegotiatedContentResult<IEnumerable<AlbumViewModel>>;
+
+            Assert.AreEqual(albums.Count, results.Content.ToList().Count);
+        }
+
+        [TestMethod]
+        public void GetGenres_Emtpy_ReturnsAllGenres()
+        {
+            var genres = new List<Genre>
+            {
+                new Genre{Id = Guid.NewGuid()},
+                new Genre{Id = Guid.NewGuid()}
+            };
+
+            _context.Genres.AddRange(genres);
+            _context.SaveChanges();
+
+            var response = _inventoryController.GetGenres();
+
+            var results = response as OkNegotiatedContentResult<IEnumerable<GenreViewModel>>;
+
+            Assert.AreEqual(genres.Count, results.Content.ToList().Count);
         }
     }
 }

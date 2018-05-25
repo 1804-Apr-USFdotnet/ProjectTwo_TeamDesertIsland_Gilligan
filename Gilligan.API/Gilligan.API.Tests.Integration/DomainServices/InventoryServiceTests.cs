@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using ApprovalTests.Namers;
 using Gilligan.API.DomainServices;
 using Gilligan.API.Models;
 using Gilligan.API.Repositories;
@@ -239,6 +240,80 @@ namespace Gilligan.API.Tests.Integration.DomainServices
             var genres = _context.Genres.ToList();
 
             Assert.IsTrue(genres.Contains(genre));
+        }
+
+        [TestMethod]
+        public void AllSongs_Empty_ReturnsAllSongsFromDatabase()
+        {
+            var songs = new List<Song>
+            {
+                new Song{
+                    Album = new Album {Id = Guid.NewGuid()},
+                    Id = Guid.NewGuid()
+                },
+                new Song{
+                    Album = new Album {Id = Guid.NewGuid()},
+                    Id = Guid.NewGuid()
+                }
+            };
+
+            _context.Songs.AddRange(songs);
+            _context.SaveChanges();
+
+            var results = _inventoryService.AllSongs();
+
+            Assert.AreEqual(songs.Count, results.Count);
+        }
+
+        [TestMethod]
+        public void AllAlbums_Empty_ReturnsAllAlbumsFromDatabase()
+        {
+            var albums = new List<Album>
+            {
+                new Album {Id = Guid.NewGuid()},
+                new Album {Id = Guid.NewGuid()}
+            };
+
+            _context.Albums.AddRange(albums);
+            _context.SaveChanges();
+
+            var results = _inventoryService.AllAlbums();
+
+            Assert.AreEqual(albums.Count, results.Count);
+        }
+
+        [TestMethod]
+        public void AllArtists_Empty_ReturnsAllArtistsFromDatabase()
+        {
+            var artists = new List<Artist>
+            {
+                new Artist{Id = Guid.NewGuid()},
+                new Artist{Id = Guid.NewGuid()}
+            };
+
+            _context.Artists.AddRange(artists);
+            _context.SaveChanges();
+
+            var results = _inventoryService.AllArists();
+
+            Assert.AreEqual(artists.Count, results.Count);
+        }
+
+        [TestMethod]
+        public void AllGenres_Empty_RetunsAllGenresFromDatabase()
+        {
+            var genres = new List<Genre>
+            {
+                new Genre {Id = Guid.NewGuid()},
+                new Genre {Id = Guid.NewGuid()}
+            };
+
+            _context.Genres.AddRange(genres);
+            _context.SaveChanges();
+
+            var results = _inventoryService.AllGenres();
+
+            Assert.AreEqual(genres.Count, results.Count);
         }
     }
 }
