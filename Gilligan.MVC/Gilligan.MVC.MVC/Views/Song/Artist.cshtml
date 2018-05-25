@@ -1,0 +1,77 @@
+﻿@model Gilligan.MVC.ViewModels.Music.ArtistViewModel
+
+@{
+    ViewBag.Title = "Artist";
+}
+
+<h2>Artist</h2>
+
+<div>
+    <h4>ArtistViewModel</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.ArtistId)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.ArtistId)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Name)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Name)
+        </dd>
+
+    </dl>
+</div>
+
+<div>
+    <table class="table">
+        <tr>
+            <th>
+                Songs
+            </th>
+            <th></th>
+        </tr>
+
+        @foreach (var item in Model.SongViewModels)
+        {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.Name)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.AverageRating)
+            </td>
+        </tr>
+        }
+    </table>
+</div>
+
+<div>
+    <table class="table">
+        <tr>
+            <th>
+                Genres
+            </th>
+            <th></th>
+        </tr>
+
+        @foreach (var item in Model.GenreViewModels)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Name)
+                </td>
+            </tr>
+        }
+    </table>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { /* id = Model.PrimaryKey */ }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>

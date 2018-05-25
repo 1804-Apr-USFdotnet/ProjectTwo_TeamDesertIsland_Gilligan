@@ -1,0 +1,60 @@
+﻿@model Gilligan.MVC.ViewModels.Music.GenreRatingViewModel
+
+@{
+    ViewBag.Title = "GenreRating";
+}
+
+<h2>GenreRating</h2>
+
+<div>
+    <h4>GenreRatingViewModel</h4>
+    <hr />
+    <dl class="dl-horizontal"></dl>
+</div>
+
+<div>
+    <table class="table">
+        <tr>
+            <th>
+                Top All Time Rated Songs
+            </th>
+            <th>
+
+            </th>
+            <th></th>
+        </tr>
+        >
+        @foreach (var item in Model.TopAllTimeRatedGenreViewModels)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Name)
+                </td>
+            </tr>
+
+            // list songs by genre
+        }
+    </table>
+</div>
+
+
+
+<p>
+    @Html.ActionLink("Create New", "Create")
+</p>
+<table class="table">
+    <tr>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.ActionLink("Edit", "Edit", new { /* id=item.PrimaryKey */ }) |
+            @Html.ActionLink("Details", "Details", new { /* id=item.PrimaryKey */ }) |
+            @Html.ActionLink("Delete", "Delete", new { /* id=item.PrimaryKey */ })
+        </td>
+    </tr>
+}
+
+</table>

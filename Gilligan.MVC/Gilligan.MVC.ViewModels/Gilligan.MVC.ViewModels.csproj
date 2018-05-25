@@ -49,13 +49,13 @@
     <Compile Include="Music\AlbumRatingsViewModel.cs" />
     <Compile Include="Music\ArtistRatingViewModel.cs" />
     <Compile Include="Music\GenreRatingViewModel.cs" />
+    <Compile Include="Music\GenreViewModel.cs" />
     <Compile Include="Music\SongRatingsViewModel.cs" />
     <Compile Include="Music\UserViewModel.cs" />
     <Compile Include="Search\SearchType.cs" />
     <Compile Include="User\AddRemoveUserSongViewModel.cs" />
     <Compile Include="Music\AlbumViewModel.cs" />
     <Compile Include="Music\ArtistViewModel.cs" />
-    <Compile Include="Music\GenreViewModel.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Music\RatingViewModel.cs" />
     <Compile Include="Search\SearchViewModel.cs" />

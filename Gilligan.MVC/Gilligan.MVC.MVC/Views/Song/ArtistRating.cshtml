@@ -1,0 +1,106 @@
+﻿@model Gilligan.MVC.ViewModels.Music.ArtistRatingViewModel
+
+@{
+    ViewBag.Title = "ArtistRating";
+}
+
+<h2>ArtistRating</h2>
+
+<div>
+    <h4>ArtistRatingViewModel</h4>
+    <hr />
+    <dl class="dl-horizontal">
+    </dl>
+</div>
+
+<div>
+    <table class="table">
+        <tr>
+            <th>
+                Top All Time Artists
+            </th>
+            <th>
+                Artist
+            </th>
+            <th></th>
+        </tr>
+
+        @foreach (var item in Model.TopAllTimeRatedArtistViewModels)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Name)
+                </td>
+            </tr>
+        }
+    </table>
+</div>
+
+<div>
+    <table class="table">
+        <tr>
+            <th>
+                Top Daily Artists
+            </th>
+            <th>
+                Artist
+            </th>
+            <th></th>
+        </tr>
+
+        @foreach (var item in Model.TopDailyArtistViewModels)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Name)
+                </td>
+            </tr>
+        }
+    </table>
+</div>
+
+<div>
+    <table class="table">
+        <tr>
+            <th>
+                Top Weekly Artists
+            </th>
+            <th>
+                Artist
+            </th>
+            <th></th>
+        </tr>
+
+        @foreach (var item in Model.TopWeeklyRatedArtistViewModels)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Name)
+                </td>
+            </tr>
+        }
+    </table>
+</div>
+
+<div>
+    <table class="table">
+        <tr>
+            <th>
+                Top Monthly Artists
+            </th>
+            <th>
+                Artist
+            </th>
+            <th></th>
+        </tr>
+
+        @foreach (var item in Model.TopMonthlyRatedArtistViewModels)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Name)
+                </td>
+            </tr>
+        }
+    </table>
+</div>

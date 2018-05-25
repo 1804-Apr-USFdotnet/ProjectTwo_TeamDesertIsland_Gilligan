@@ -1,0 +1,104 @@
+﻿@model Gilligan.MVC.ViewModels.Music.AlbumRatingsViewModel
+@{
+    ViewBag.Title = "AlbumRatings";
+}
+
+<h2>AlbumRatings</h2>
+
+<div>
+    <h4>AlbumRatingsViewModel</h4>
+    <hr />
+    <dl class="dl-horizontal"></dl>
+</div>
+
+<div>
+    <table class="table">
+        <tr>
+            <th>
+                Top All Time Album
+            </th>
+            <th>
+                Artist
+            </th>
+            <th></th>
+        </tr>
+
+        @foreach (var item in Model.TopAllTimeRatedAlbumViewModels)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Name)
+                </td>
+            </tr>
+        }
+    </table>
+</div>
+
+<div>
+    <table class="table">
+        <tr>
+            <th>
+                Top Daily Album
+            </th>
+            <th>
+                Artist
+            </th>
+            <th></th>
+        </tr>
+
+        @foreach (var item in Model.TopDailyAlbumViewModels)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Name)
+                </td>
+            </tr>
+        }
+    </table>
+</div>
+
+<div>
+    <table class="table">
+        <tr>
+            <th>
+                Top Weekly Albums
+            </th>
+            <th>
+                Album
+            </th>
+            <th></th>
+        </tr>
+
+        @foreach (var item in Model.TopWeeklyRatedAlbumViewModels)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Name)
+                </td>
+            </tr>
+        }
+    </table>
+</div>
+
+<div>
+    <table class="table">
+        <tr>
+            <th>
+                Top Monthly Albums
+            </th>
+            <th>
+                Album
+            </th>
+            <th></th>
+        </tr>
+
+        @foreach (var item in Model.TopMonthlyRatedAlbumViewModels)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Name)
+                </td>
+            </tr>
+        }
+    </table>
+</div>

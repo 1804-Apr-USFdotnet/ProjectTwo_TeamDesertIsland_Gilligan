@@ -49,5 +49,28 @@ namespace Gilligan.MVC.MVC.Controllers
 
             return View("", result);
         }
+
+        public ActionResult Search(SearchViewModel viewModel)
+        {
+            switch (viewModel.SearchType)
+            {
+                case SearchType.Artist:
+                    return RedirectToAction("SearchArtistsAsync", viewModel);
+                    break;
+                case SearchType.Genre:
+                    return RedirectToAction("SearchGenresAsync", viewModel);
+                    break;
+                case SearchType.Album:
+                    return RedirectToAction("SearchAlbumsAsync", viewModel);
+                    break;
+                case SearchType.Song:
+                    return RedirectToAction("SearchArtistsAsync", viewModel);
+                    break;
+                default:
+                    return RedirectToAction("Index");
+
+
+            }
+        }
     }
 }
