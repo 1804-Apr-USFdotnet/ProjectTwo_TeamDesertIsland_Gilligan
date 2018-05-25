@@ -533,3 +533,4 @@ Gilligan.API/Gilligan.API.Tests.Integration/connections.config
 Gilligan.API/Gilligan.API.Rest/connections.config
 Gilligan.API/Gilligan.API.Rest/connectins.config
 
+Gilligan.API/Gilligan.API.Tests.Integration/Rest/InventoryControllerTests.GetGenres_Empty_MapsNavProperties.received.txt
