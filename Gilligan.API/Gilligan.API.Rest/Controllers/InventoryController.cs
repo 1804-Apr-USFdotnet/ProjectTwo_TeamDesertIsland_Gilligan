@@ -19,6 +19,7 @@ namespace Gilligan.API.Rest.Controllers
             _mapper = mapper;
         }
 
+        [AllowAnonymous]
         [HttpPost]
         [Route("usersong")]
         public IHttpActionResult AddSongToUser(AddRemoveUserSongViewModel viewModel)
@@ -32,6 +33,7 @@ namespace Gilligan.API.Rest.Controllers
             return Ok();
         }
 
+        [AllowAnonymous]
         [HttpDelete]
         [Route("usersong")]
         public IHttpActionResult RemoveSongFromUser(AddRemoveUserSongViewModel viewModel)
@@ -45,6 +47,7 @@ namespace Gilligan.API.Rest.Controllers
             return Ok();
         }
 
+        [AllowAnonymous]
         [HttpPost]
         [Route("song")]
         public IHttpActionResult AddSongToInventory(AddSongViewModel viewModel)
@@ -58,6 +61,7 @@ namespace Gilligan.API.Rest.Controllers
             return Ok();
         }
 
+        [AllowAnonymous]
         [HttpGet]
         [Route("song")]
         public IHttpActionResult GetSongs()
@@ -69,6 +73,7 @@ namespace Gilligan.API.Rest.Controllers
             return Ok(viewModel);
         }
 
+        [AllowAnonymous]
         [HttpPost]
         [Route("album")]
         public IHttpActionResult AddAlbumToInventory(AddAlbumViewModel viewModel)
@@ -82,6 +87,7 @@ namespace Gilligan.API.Rest.Controllers
             return Ok();
         }
 
+        [AllowAnonymous]
         [HttpGet]
         [Route("album")]
         public IHttpActionResult GetAlbums()
@@ -93,6 +99,7 @@ namespace Gilligan.API.Rest.Controllers
             return Ok(viewModel);
         }
 
+        [AllowAnonymous]
         [HttpPost]
         [Route("artist")]
         public IHttpActionResult AddArtistToInventory(AddArtistViewModel viewModel)
@@ -106,6 +113,7 @@ namespace Gilligan.API.Rest.Controllers
             return Ok();
         }
 
+        [AllowAnonymous]
         [HttpGet]
         [Route("artist")]
         public IHttpActionResult GetArtists()

@@ -1,0 +1,34 @@
+<h6>Add An Artist</h6>
+
+<p *ngIf="!artists"><em>Loading...</em></p>
+
+<form #f="ngForm" (ngSubmit)="onSubmit(f)" *ngIf="genres">
+    <fieldset>
+        <legend>Add Artist:</legend>
+        <div>Name: <input type="text" ngModel name="artistName"></div>
+        <select ngModel ngDefaultControl name="artistGenreOne">
+                <option *ngFor="let genre of genres" [value]="genre.GenreId">{{genre.Name}}</option>
+        </select>
+        <select ngModel ngDefaultControl name="artistGenreTwo">
+                <option *ngFor="let genre of genres" [value]="genre.GenreId" >{{genre.Name}}</option>
+        </select>
+        <select ngModel ngDefaultControl name="artistGenreThree">
+                <option *ngFor="let genre of genres" [value]="genre.GenreId" >{{genre.Name}}</option>
+        </select>
+        <div><button type="submit">Sumbit</button></div>
+    </fieldset>
+</form>
+
+<ul *ngIf="artists">
+    <li *ngFor="let artist of artists">
+        {{ artist.Name }}
+        {{ artist.ArtistId }}
+    </li>
+</ul>
+
+<ul *ngIf="genres">
+    <li *ngFor="let genre of genres">
+    {{ genre.Name }} 
+    {{ genre.GenreId }}
+    </li>
+</ul>

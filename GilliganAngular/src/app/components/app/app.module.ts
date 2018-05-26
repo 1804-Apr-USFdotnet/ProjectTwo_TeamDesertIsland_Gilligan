@@ -6,16 +6,20 @@ import { AddGenreComponent } from '../addgenre/addgenre.component';
 import { HttpClientModule } from '@angular/common/http';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
+import { AddAlbumComponent } from '../addalbum/addalbum.component';
+import { AddArtistComponent } from '../addartist/addartist.component';
 
 const appRoutes: Routes = [
   { path: 'genre', component: AddGenreComponent },
-  { path: '', component: AddGenreComponent }
+  { path: '', component: AddGenreComponent },
+  { path: 'album', component: AddAlbumComponent },
+  { path: 'artist', component: AddArtistComponent }
 ];
 
 
 @NgModule({
   declarations: [
-    AppComponent, AddGenreComponent
+    AppComponent, AddGenreComponent, AddAlbumComponent, AddArtistComponent
   ],
   imports: [
     CommonModule,
