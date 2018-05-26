@@ -117,6 +117,7 @@ namespace Gilligan.API.Rest.Controllers
             return Ok(viewModel);
         }
 
+        [AllowAnonymous]
         [HttpPost]
         [Route("genre")]
         public IHttpActionResult AddGenreToInventory(AddGenreViewModel viewModel)
@@ -130,6 +131,7 @@ namespace Gilligan.API.Rest.Controllers
             return Ok();
         }
 
+        [AllowAnonymous]
         [HttpGet]
         [Route("genre")]
         public IHttpActionResult GetGenres()

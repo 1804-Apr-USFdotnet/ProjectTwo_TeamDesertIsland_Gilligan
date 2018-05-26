@@ -3,8 +3,9 @@ import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { AppComponent } from './app.component';
 import { AddGenreComponent } from '../addgenre/addgenre.component';
-import { HttpModule } from '@angular/http';
+import { HttpClientModule } from '@angular/common/http';
 import { CommonModule } from '@angular/common';
+import { FormsModule } from '@angular/forms';
 
 const appRoutes: Routes = [
   { path: 'genre', component: AddGenreComponent },
@@ -20,7 +21,8 @@ const appRoutes: Routes = [
     CommonModule,
     RouterModule.forRoot(appRoutes, {enableTracing: true}),
     BrowserModule,
-    HttpModule
+    HttpClientModule,
+    FormsModule
   ],
   providers: [],
   bootstrap: [AppComponent]
