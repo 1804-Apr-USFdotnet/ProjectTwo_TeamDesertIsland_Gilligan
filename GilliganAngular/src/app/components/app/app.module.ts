@@ -8,18 +8,19 @@ import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
 import { AddAlbumComponent } from '../addalbum/addalbum.component';
 import { AddArtistComponent } from '../addartist/addartist.component';
+import { AddSongComponent } from '../addsong/addsong.component';
 
 const appRoutes: Routes = [
   { path: 'genre', component: AddGenreComponent },
-  { path: '', component: AddGenreComponent },
   { path: 'album', component: AddAlbumComponent },
-  { path: 'artist', component: AddArtistComponent }
+  { path: 'artist', component: AddArtistComponent },
+  { path: 'song', component: AddSongComponent }
 ];
 
 
 @NgModule({
   declarations: [
-    AppComponent, AddGenreComponent, AddAlbumComponent, AddArtistComponent
+    AppComponent, AddGenreComponent, AddAlbumComponent, AddArtistComponent, AddSongComponent
   ],
   imports: [
     CommonModule,

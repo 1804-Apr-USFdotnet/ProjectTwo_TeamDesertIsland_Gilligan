@@ -1,0 +1,32 @@
+<h6>Add A Song</h6>
+
+<p *ngIf="!songs"><em>Loading....</em></p>
+
+<form #f="ngForm" (ngSubmit)="onSubmit(f)" *ngIf="albums">
+    <fieldset>
+        <legend>Add Song:</legend>
+        <div>Name: <input type="text" ngModel name="songName"></div>
+        <div>Album: </div>
+        <select ngModel ngDefaultControl name="songAlbumId">
+            <option *ngFor="let album of albums" [value]="album.AlbumId">{{album.Name}}</option>
+        </select>
+        <div>Artist: </div>
+        <select ngModel ngDefaultControl name="songArtistOne">
+            <option *ngFor="let artist of artists" [value]="artist.ArtistId">{{artist.Name}}</option>
+        </select>
+        <select ngModel ngDefaultControl name="songArtistTwo">
+            <option *ngFor="let artist of artists" [value]="artist.ArtistId">{{artist.Name}}</option>
+        </select>
+        <select ngModel ngDefaultControl name="songArtistThree">
+            <option *ngFor="let artist of artists" [value]="artist.ArtistId">{{artist.Name}}</option>
+        </select>
+        <div><button type="submit">Submit</button></div>
+    </fieldset>
+</form>
+
+<ul *ngIf="songs">
+    <li *ngFor="let song of songs">
+        {{ song.Name }}
+        {{ song.SongId }}
+    </li>
+</ul>

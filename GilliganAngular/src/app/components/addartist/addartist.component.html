@@ -6,7 +6,7 @@
     <fieldset>
         <legend>Add Artist:</legend>
         <div>Name: <input type="text" ngModel name="artistName"></div>
-        <select ngModel ngDefaultControl name="artistGenreOne">
+        <label>Genres: </label><select ngModel ngDefaultControl name="artistGenreOne">
                 <option *ngFor="let genre of genres" [value]="genre.GenreId">{{genre.Name}}</option>
         </select>
         <select ngModel ngDefaultControl name="artistGenreTwo">
