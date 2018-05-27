@@ -1,15 +1,25 @@
-﻿@model Gilligan.MVC.ViewModels.Music.ArtistViewModel
+﻿
+@using Gilligan.MVC.ViewModels.Music;
+@model Gilligan.MVC.ViewModels.Music.AlbumViewModel
 
 <div>
-    <h4>ArtistViewModel</h4>
+    <h4>AlbumViewModel</h4>
     <hr />
     <dl class="dl-horizontal">
         <dt>
-            @Html.DisplayNameFor(model => model.ArtistId)
+            @Html.DisplayNameFor(model => model.AlbumId)
         </dt>
 
         <dd>
-            @Html.DisplayFor(model => model.ArtistId)
+            @Html.DisplayFor(model => model.AlbumId)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.ReleaseDate)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.ReleaseDate)
         </dd>
 
         <dt>

@@ -1,0 +1,12 @@
+﻿@model Gilligan.MVC.ViewModels.Search.SearchViewModel
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2>Index</h2>
+
+@Html.RadioButtonFor(m => m.SearchType, "Artist")
+@Html.RadioButtonFor(m => m.SearchType, "Genre")
+@Html.RadioButtonFor(m => m.SearchType, "Album")
+@Html.RadioButtonFor(m => m.SearchType, "Song")
+@Html.TextBoxFor(t => t.SearchString)
