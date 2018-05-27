@@ -1,4 +1,5 @@
-﻿@model Gilligan.MVC.ViewModels.Music.GenreRatingViewModel
+﻿@using Gilligan.MVC.ViewModels.Music;
+@model Gilligan.MVC.ViewModels.Music.GenreRatingViewModel
 
 @{
     ViewBag.Title = "GenreRating";
@@ -16,23 +17,29 @@
     <table class="table">
         <tr>
             <th>
-                Top All Time Rated Songs
+                Top All Time Rated in Genre
             </th>
             <th>
 
             </th>
             <th></th>
         </tr>
-        >
+        
         @foreach (var item in Model.TopAllTimeRatedGenreViewModels)
         {
-            <tr>
-                <td>
-                    @Html.DisplayFor(modelItem => item.Name)
-                </td>
-            </tr>
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.Name)
+            </td>
+        </tr>
 
-            // list songs by genre
+
+        @{var list = Model.TopAllTimeRatedGenreViewModels.Where(x => x.ArtistViewModels.Where(a => a.Name != null).ToList() != null);
+            foreach (var i in list)
+            {
+
+            }
+        }
         }
     </table>
 </div>
@@ -47,7 +54,7 @@
         <th></th>
     </tr>
 
-@foreach (var item in Model) {
+
     <tr>
         <td>
             @Html.ActionLink("Edit", "Edit", new { /* id=item.PrimaryKey */ }) |
