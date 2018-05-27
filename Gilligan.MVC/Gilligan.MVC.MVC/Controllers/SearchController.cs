@@ -1,11 +1,16 @@
-﻿using System.Threading.Tasks;
+﻿using System.Collections;
+using System.Collections.Generic;
+using System.Net.Http;
+using System.Threading.Tasks;
 using System.Web.Mvc;
 using Gilligan.MVC.DomainContracts;
+using Gilligan.MVC.ViewModels.Music;
 using Gilligan.MVC.ViewModels.Search;
+using Newtonsoft.Json;
 
 namespace Gilligan.MVC.MVC.Controllers
 {
-    public class SearchController : Controller
+    public class SearchController : AServiceController
     {
         private readonly ISearchService _searchService;
 
@@ -24,7 +29,11 @@ namespace Gilligan.MVC.MVC.Controllers
         {
             if (!ModelState.IsValid) return View("", viewModel);
 
-            var result = await _searchService.SearchSongsAsync(viewModel);
+            var request = CreateRequestToService(HttpMethod.Post, "api/search/songs", viewModel.SearchString);
+
+            var result = await HttpClient.SendAsync(request);
+
+            var vm = await result.Content.ReadAsAsync<IEnumerable<SongViewModel>>();
 
             return View("", result);
         }
@@ -33,7 +42,11 @@ namespace Gilligan.MVC.MVC.Controllers
         {
             if (!ModelState.IsValid) return View("", viewModel);
 
-            var result = await _searchService.SearchAlbumsAsync(viewModel);
+            var request = CreateRequestToService(HttpMethod.Post, "api/search/albums", viewModel.SearchString);
+
+            var result = await HttpClient.SendAsync(request);
+
+            var vm = await result.Content.ReadAsAsync<IEnumerable<AlbumViewModel>>();
 
             return View("", result);
         }
@@ -42,7 +55,11 @@ namespace Gilligan.MVC.MVC.Controllers
         {
             if (!ModelState.IsValid) return View("", viewModel);
 
-            var result = await _searchService.SearchGenresAsync(viewModel);
+            var request = CreateRequestToService(HttpMethod.Post, "api/search/genres", viewModel.SearchString);
+
+            var result = await HttpClient.SendAsync(request);
+
+            var vm = await result.Content.ReadAsAsync<IEnumerable<GenreViewModel>>();
 
             return View("", result);
         }
@@ -51,7 +68,11 @@ namespace Gilligan.MVC.MVC.Controllers
         {
             if (!ModelState.IsValid) return View("", viewModel);
 
-            var result = await _searchService.SearchArtistsAsync(viewModel);
+            var request = CreateRequestToService(HttpMethod.Post, "api/search/artist", viewModel.SearchString);
+
+            var result = await HttpClient.SendAsync(request);
+
+            var vm = await result.Content.ReadAsAsync<IEnumerable<ArtistViewModel>>();
 
             return View("", result);
         }

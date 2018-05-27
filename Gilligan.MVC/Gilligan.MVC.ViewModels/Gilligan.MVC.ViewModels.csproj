@@ -53,6 +53,7 @@
     <Compile Include="Music\SongRatingsViewModel.cs" />
     <Compile Include="Music\UserViewModel.cs" />
     <Compile Include="Search\SearchType.cs" />
+    <Compile Include="User\Account.cs" />
     <Compile Include="User\AddRemoveUserSongViewModel.cs" />
     <Compile Include="Music\AlbumViewModel.cs" />
     <Compile Include="Music\ArtistViewModel.cs" />

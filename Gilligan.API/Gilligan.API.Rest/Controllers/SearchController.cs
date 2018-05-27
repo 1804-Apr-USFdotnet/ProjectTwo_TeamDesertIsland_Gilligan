@@ -19,6 +19,7 @@ namespace Gilligan.API.Rest.Controllers
             _searchService = searchService;
         }
 
+        [AllowAnonymous]
         [HttpPost]
         [Route("songs")]
         public IHttpActionResult SearchSongs(string value)
@@ -32,6 +33,7 @@ namespace Gilligan.API.Rest.Controllers
             return Ok(viewModel);
         }
 
+        [AllowAnonymous]
         [HttpPost]
         [Route("albums")]
         public IHttpActionResult SearchAlbums(string value)
@@ -45,6 +47,7 @@ namespace Gilligan.API.Rest.Controllers
             return Ok(viewModel);
         }
 
+        [AllowAnonymous]
         [HttpPost]
         [Route("artists")]
         public IHttpActionResult SearchArtists(string value)
@@ -58,6 +61,7 @@ namespace Gilligan.API.Rest.Controllers
             return Ok(viewModel);
         }
 
+        [AllowAnonymous]
         [HttpPost]
         [Route("genres")]
         public IHttpActionResult SearchGenres(string value)
