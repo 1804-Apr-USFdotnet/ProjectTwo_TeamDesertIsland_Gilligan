@@ -47,27 +47,5 @@ namespace Gilligan.MVC.MVC.Controllers
 
             return View("");
         }
-
-        public async Task<ActionResult> UpdateAsync(UpdateUserViewModel viewModel)
-        {
-            if (!ModelState.IsValid) return View("", viewModel);
-
-            var result = await _userService.UpdateAsync(viewModel);
-
-            if (result == HttpStatusCode.Created) return View("");
-
-            return View("");
-        }
-
-        public async Task<ActionResult> DeleteAsync(DeleteUserViewModel viewModel)
-        {
-            if (!ModelState.IsValid) return View("", viewModel);
-
-            var result = await _userService.DeleteAsync(viewModel);
-
-            if (result == HttpStatusCode.Created) return View("");
-
-            return View("");
-        }
     }
 }

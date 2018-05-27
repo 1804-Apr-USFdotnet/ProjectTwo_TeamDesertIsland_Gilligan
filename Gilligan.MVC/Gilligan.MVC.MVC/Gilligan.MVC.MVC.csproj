@@ -152,8 +152,8 @@
     <Compile Include="App_Start\FilterConfig.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="Controllers\HomeController.cs" />
+    <Compile Include="Controllers\RatingController.cs" />
     <Compile Include="Controllers\SearchController.cs" />
-    <Compile Include="Controllers\SongController.cs" />
     <Compile Include="Controllers\UserController.cs" />
     <Compile Include="Filters\ExceptionFilter.cs" />
     <Compile Include="Global.asax.cs">
@@ -238,26 +238,22 @@
     <Content Include="Scripts\popper.js.map" />
     <Content Include="Scripts\popper-utils.min.js.map" />
     <Content Include="Scripts\popper-utils.js.map" />
-    <Content Include="Views\Song\AddAlbum.cshtml" />
-    <Content Include="Views\Song\Song.cshtml" />
-    <Content Include="Views\Song\Album.cshtml" />
     <Content Include="Views\Song\Rating.cshtml" />
-    <Content Include="Views\Song\AddArtist.cshtml" />
-    <Content Include="Views\Song\AddGenre.cshtml" />
-    <Content Include="Views\Song\AddRating.cshtml" />
-    <Content Include="Views\Song\AddSong.cshtml" />
     <Content Include="Views\Song\ArtistRating.cshtml" />
-    <Content Include="Views\Song\Artist.cshtml" />
     <Content Include="Views\Song\GenreRating.cshtml" />
-    <Content Include="Views\Song\Genre.cshtml" />
-    <Content Include="Views\Song\SongRatings.cshtml" />
     <Content Include="Views\Song\Index.cshtml" />
     <Content Include="Views\Song\AlbumRatings.cshtml" />
     <Content Include="Views\Search\Search.cshtml" />
     <Content Include="Views\Shared\_Search.cshtml" />
     <Content Include="Views\Shared\_Song.cshtml" />
     <Content Include="Views\Shared\_SongList.cshtml" />
+    <Content Include="Views\Song\Song.cshtml" />
+    <Content Include="Views\Song\Album.cshtml" />
+    <Content Include="Views\Song\Genre.cshtml" />
+    <Content Include="Views\Rating\SongRatings.cshtml" />
     <Content Include="Views\Shared\_Artist.cshtml" />
+    <Content Include="Views\Song\Artist.cshtml" />
+    <Content Include="Views\Shared\_Rating.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Views\User\" />
