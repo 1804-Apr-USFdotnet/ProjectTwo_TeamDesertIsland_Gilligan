@@ -11,45 +11,48 @@ const httpOptions = {
   };
 
 @Component({
-    selector: 'app-addgenre',
-    templateUrl: './addgenre.component.html'
+    templateUrl: './addalbum.component.html'
 })
 
-export class AddGenreComponent {
+export class AddAlbumComponent {
     private client: HttpClient;
     private baseUrl: string;
-    public genres: GenreViewModel[];
-    public genreName: string;
+    private albums: AlbumViewModel[];
+    private albumName: string;
+    private releaseDate: Date;
 
     constructor(http: HttpClient) {
         this.client = http;
-        this.baseUrl = 'http://localhost:55562/api/inventory/genre';
+        this.baseUrl = 'http://localhost:55562/api/inventory/album';
         this.Start();
     }
 
     public Start() {
         this.client.get(this.baseUrl).subscribe(result => {
-            this.genres = result as GenreViewModel[];
+            this.albums = result as AlbumViewModel[];
         });
     }
 
 
-    public AddGenre() {
-        const viewModel = new AddGenreViewModel(this.genreName);
-        this.client.post<AddGenreViewModel>(this.baseUrl, viewModel, httpOptions).subscribe();
+    public AddAlbum() {
+        const viewModel = new AddAlbumViewModel(this.albumName, this.releaseDate);
+        this.client.post<AddAlbumViewModel>(this.baseUrl, viewModel, httpOptions).subscribe();
     }
 }
 
-class AddGenreViewModel {
+
+class AddAlbumViewModel {
     public Name: string;
+    public releaseDate: Date;
 
-    constructor(name: string) {
+    constructor(name: string, date: Date) {
         this.Name = name;
+        this.releaseDate = date;
     }
 }
 
-interface GenreViewModel {
-    GenreId: string;
+interface AlbumViewModel {
+    AlbumId: string;
+    ReleaseDate: Date;
     Name: string;
 }
-
