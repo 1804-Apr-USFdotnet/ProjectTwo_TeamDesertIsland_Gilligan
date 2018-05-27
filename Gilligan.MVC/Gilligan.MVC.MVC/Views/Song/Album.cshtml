@@ -1,4 +1,5 @@
-﻿@model Gilligan.MVC.ViewModels.Music.AlbumViewModel
+﻿@using Gilligan.MVC.ViewModels.Music;
+@model Gilligan.MVC.ViewModels.Music.AlbumViewModel
 
 @{
     ViewBag.Title = "Album";
@@ -19,6 +20,14 @@
         </dd>
 
         <dt>
+            @Html.DisplayNameFor(model => model.ReleaseDate)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.ReleaseDate)
+        </dd>
+
+        <dt>
             @Html.DisplayNameFor(model => model.Name)
         </dt>
 
@@ -26,46 +35,16 @@
             @Html.DisplayFor(model => model.Name)
         </dd>
 
-        <dt>
-            @Html.DisplayNameFor(model => model.ReleaseDate)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.ReleaseDate)
-        </dd>
     </dl>
 </div>
+
 <div>
-    <table class="table">
-        <tr>
-            <th>
-                Song
-            </th>
-            <th>
-                Average Rating
-            </th>
-            <th>
-                Artist
-            </th>
-            <th></th>
-        </tr>
-
-        @foreach (var item in Model.SongViewModels)
+    @foreach (var item in Model.SongViewModels)
+    {
         {
-        <tr>
-            <td>
-                @Html.DisplayFor(modelItem => item.Name)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.AverageRating)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.ArtistViewModel)
-            </td>
-        </tr>
-        }
-
-    </table>
+            Html.RenderPartial("_Song", item);
+           }
+    }
 </div>
 <p>
     @Html.ActionLink("Edit", "Edit", new { /* id = Model.PrimaryKey */ }) |

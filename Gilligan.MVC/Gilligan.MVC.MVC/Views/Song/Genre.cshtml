@@ -28,26 +28,16 @@
 
     </dl>
 </div>
+
 <div>
-    <table class="table">
-        <tr>
-            <th>
-                Artist
-            </th>
-            <th></th>
-        </tr>
-
-        @foreach (var item in Model.ArtistViewModels)
+    @foreach (var item in Model.ArtistViewModels)
+    {
         {
-            <tr>
-                <td>
-                    @Html.DisplayFor(modelItem => item.Name)
-                </td>
-            </tr>
+            Html.RenderPartial("_Artist", item);
         }
-
-    </table>
+    }
 </div>
+
 <p>
     @Html.ActionLink("Edit", "Edit", new { /* id = Model.PrimaryKey */ }) |
     @Html.ActionLink("Back to List", "Index")

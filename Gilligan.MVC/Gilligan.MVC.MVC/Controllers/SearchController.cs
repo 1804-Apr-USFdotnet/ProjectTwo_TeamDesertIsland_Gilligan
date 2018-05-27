@@ -14,6 +14,12 @@ namespace Gilligan.MVC.MVC.Controllers
             _searchService = searchService;
         }
 
+        public ActionResult Index  ()
+        {
+            return View();
+
+        }
+
         public async Task<ActionResult> SearchSongsAsync(SearchViewModel viewModel)
         {
             if (!ModelState.IsValid) return View("", viewModel);
@@ -50,27 +56,6 @@ namespace Gilligan.MVC.MVC.Controllers
             return View("", result);
         }
 
-        public ActionResult Search(SearchViewModel viewModel)
-        {
-            switch (viewModel.SearchType)
-            {
-                case SearchType.Artist:
-                    return RedirectToAction("SearchArtistsAsync", viewModel);
-                    break;
-                case SearchType.Genre:
-                    return RedirectToAction("SearchGenresAsync", viewModel);
-                    break;
-                case SearchType.Album:
-                    return RedirectToAction("SearchAlbumsAsync", viewModel);
-                    break;
-                case SearchType.Song:
-                    return RedirectToAction("SearchArtistsAsync", viewModel);
-                    break;
-                default:
-                    return RedirectToAction("Index");
-
-
-            }
-        }
+        
     }
 }
