@@ -15,21 +15,20 @@
     <table class="table">
         <tr>
             <th>
-                Top All Time Album
-            </th>
-            <th>
-                Artist
+                Top All Time Albums
             </th>
             <th></th>
         </tr>
 
         @foreach (var item in Model.TopAllTimeRatedAlbumViewModels)
         {
-            <tr>
-                <td>
-                    @Html.DisplayFor(modelItem => item.Name)
-                </td>
-            </tr>
+        <tr>
+            <td>
+                {
+                Html.RenderPartial("_Song", item);
+                }
+            </td>
+        </tr>
         }
     </table>
 </div>
@@ -38,10 +37,7 @@
     <table class="table">
         <tr>
             <th>
-                Top Daily Album
-            </th>
-            <th>
-                Artist
+                Top Daily Albums
             </th>
             <th></th>
         </tr>
@@ -50,7 +46,9 @@
         {
             <tr>
                 <td>
-                    @Html.DisplayFor(modelItem => item.Name)
+                    {
+                    Html.RenderPartial("_Song", item);
+                    }
                 </td>
             </tr>
         }
@@ -63,9 +61,6 @@
             <th>
                 Top Weekly Albums
             </th>
-            <th>
-                Album
-            </th>
             <th></th>
         </tr>
 
@@ -73,7 +68,9 @@
         {
             <tr>
                 <td>
-                    @Html.DisplayFor(modelItem => item.Name)
+                    {
+                    Html.RenderPartial("_Song", item);
+                    }
                 </td>
             </tr>
         }
@@ -86,9 +83,6 @@
             <th>
                 Top Monthly Albums
             </th>
-            <th>
-                Album
-            </th>
             <th></th>
         </tr>
 
@@ -96,7 +90,9 @@
         {
             <tr>
                 <td>
-                    @Html.DisplayFor(modelItem => item.Name)
+                    {
+                    Html.RenderPartial("_Song", item);
+                    }
                 </td>
             </tr>
         }

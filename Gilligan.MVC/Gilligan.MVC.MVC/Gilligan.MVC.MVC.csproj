@@ -240,13 +240,11 @@
     <Content Include="Scripts\popper-utils.js.map" />
     <Content Include="Views\Song\Rating.cshtml" />
     <Content Include="Views\Song\ArtistRating.cshtml" />
-    <Content Include="Views\Song\GenreRating.cshtml" />
     <Content Include="Views\Song\Index.cshtml" />
     <Content Include="Views\Song\AlbumRatings.cshtml" />
     <Content Include="Views\Search\Search.cshtml" />
     <Content Include="Views\Shared\_Search.cshtml" />
     <Content Include="Views\Shared\_Song.cshtml" />
-    <Content Include="Views\Shared\_SongList.cshtml" />
     <Content Include="Views\Song\Song.cshtml" />
     <Content Include="Views\Song\Album.cshtml" />
     <Content Include="Views\Song\Genre.cshtml" />
@@ -254,10 +252,13 @@
     <Content Include="Views\Shared\_Artist.cshtml" />
     <Content Include="Views\Song\Artist.cshtml" />
     <Content Include="Views\Shared\_Rating.cshtml" />
+    <Content Include="Views\Shared\_Album.cshtml" />
+    <Content Include="Views\Song\GenreRating.cshtml" />
+    <Content Include="Views\Shared\_Genre.cshtml" />
+    <Content Include="Views\Search\Index.cshtml" />
+    <Content Include="Views\User\Index.cshtml" />
   </ItemGroup>
-  <ItemGroup>
-    <Folder Include="Views\User\" />
-  </ItemGroup>
+  <ItemGroup />
   <ItemGroup>
     <None Include="packages.config" />
     <Content Include="Scripts\jquery-3.3.1.slim.min.map" />
