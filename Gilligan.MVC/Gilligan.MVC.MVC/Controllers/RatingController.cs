@@ -58,13 +58,15 @@ namespace Gilligan.MVC.MVC.Controllers
             return View();
         }
 
-        public Task<ActionResult> AddRating(AddRatingViewModel viewModel)
+        public async Task<ActionResult> AddRating(AddRatingViewModel viewModel)
         {
             var asJson = JsonConvert.SerializeObject(viewModel);
 
             var request = CreateRequestToService(HttpMethod.Get, "api/rating/genre", asJson);
 
             var result = await HttpClient.SendAsync(request);
+
+            return null;
         }
     }
 }

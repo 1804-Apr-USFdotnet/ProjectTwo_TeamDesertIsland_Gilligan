@@ -36,7 +36,7 @@ namespace Gilligan.MVC.MVC.Controllers
                 return View("Error");
             }
 
-            HttpRequestMessage apiRequest = CreateRequestToService(HttpMethod.Post, "api/Account/Login");
+            HttpRequestMessage apiRequest = CreateRequestToService(HttpMethod.Post, "api/Account/Login", null);
             apiRequest.Content = new ObjectContent<Account>(account, new JsonMediaTypeFormatter());
 
             HttpResponseMessage apiResponse;
@@ -66,7 +66,7 @@ namespace Gilligan.MVC.MVC.Controllers
                 return View("Error");
             }
 
-            HttpRequestMessage apiRequest = CreateRequestToService(HttpMethod.Get, "api/Account/Logout");
+            HttpRequestMessage apiRequest = CreateRequestToService(HttpMethod.Get, "api/Account/Logout", null);
 
             HttpResponseMessage apiResponse;
 
