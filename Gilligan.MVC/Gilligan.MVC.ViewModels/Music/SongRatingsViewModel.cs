@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace Gilligan.MVC.ViewModels.Music
 {
-    class SongRatingsViewModel
+    public class SongRatingsViewModel
     {
         public IEnumerable<SongViewModel> TopDailyRatedSongViewModels { get; set; }
         public IEnumerable<SongViewModel> TopWeeklyRatedSongViewModels { get; set; }

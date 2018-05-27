@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace Gilligan.MVC.ViewModels.Music
 {
-    class AddGenreViewModel
+    public class AddGenreViewModel
     {
         public Guid GenreId { get; set; }
         public string Name { get; set; }

@@ -1,0 +1,15 @@
+﻿@model Gilligan.MVC.ViewModels.Search.SearchViewModel
+
+@{
+    ViewBag.Title = "Search";
+}
+
+<h2>Search</h2>
+@using (Html.BeginForm("Search", "Search", FormMethod.Get))
+{
+    <div>
+        @Html.EnumDropDownListFor(model => model.SearchType)
+        @Html.TextBoxFor(model => Model.SearchString)
+        <input type="submit" value="Search" />
+    </div>
+}

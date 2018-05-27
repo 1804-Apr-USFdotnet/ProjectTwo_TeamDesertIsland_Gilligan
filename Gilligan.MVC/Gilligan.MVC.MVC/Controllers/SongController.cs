@@ -53,6 +53,79 @@ namespace Gilligan.MVC.MVC.Controllers
             return View("");
         }
 
-        public 
+        public ActionResult AddAlbum ()
+        {
+            return View();
+        }
+
+        public ActionResult AddArtist()
+        {
+            return View();
+        }
+
+        public ActionResult AddGenre()
+        {
+            return View();
+        }
+
+        public ActionResult AddRating()
+        {
+            return View();
+        }
+
+        public ActionResult AddSong()
+        {
+            return View();
+        }
+
+        public ActionResult Album()
+        {
+            return View();
+        }
+
+        public ActionResult AlbumRating()
+        {
+            return View();
+        }
+
+        public ActionResult Artist()
+        {
+            return View();
+        }
+
+        public ActionResult ArtistRating()
+        {
+            return View();
+        }
+
+        public ActionResult Genre()
+        {
+            return View();
+        }
+
+        public ActionResult GenreRating()
+        {
+            return View();
+        }
+
+        public ActionResult Rating()
+        {
+            return View();
+        }
+
+        public ActionResult Song()
+        {
+            return View();
+        }
+
+        public ActionResult SongRatings()
+        {
+            return View();
+        }
+
+        public ActionResult Index ()
+        {
+            return View();
+        }
     }
 }

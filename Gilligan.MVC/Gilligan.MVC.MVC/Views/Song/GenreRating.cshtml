@@ -1,0 +1,69 @@
+﻿@using Gilligan.MVC.ViewModels.Music;
+@model Gilligan.MVC.ViewModels.Music.GenreRatingViewModel
+
+@{
+    ViewBag.Title = "GenreRating";
+}
+
+<h2>GenreRating</h2>
+
+<div>
+    <h4>GenreRatingViewModel</h4>
+    <hr />
+    <dl class="dl-horizontal"></dl>
+</div>
+
+<div>
+    <table class="table">
+        <tr>
+            <th>
+                Top All Time Rated in Genre
+            </th>
+            <th>
+
+            </th>
+            <th></th>
+        </tr>
+        
+        @foreach (var item in Model.TopAllTimeRatedGenreViewModels)
+        {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.Name)
+            </td>
+        </tr>
+
+
+        @{//var list = Model.TopAllTimeRatedGenreViewModels.Where(x => x.ArtistViewModels.Where(a => a.Name != null).ToList() != null);
+
+            var list = Model.TopAllTimeRatedGenreViewModels.Select(x => x.ArtistViewModels.Select(y => y.SongViewModels).ToList());
+            foreach (var i in list)
+            {
+
+            }
+        }
+        }
+    </table>
+</div>
+
+
+
+<p>
+    @Html.ActionLink("Create New", "Create")
+</p>
+<table class="table">
+    <tr>
+        <th></th>
+    </tr>
+
+
+    <tr>
+        <td>
+            @Html.ActionLink("Edit", "Edit", new { /* id=item.PrimaryKey */ }) |
+            @Html.ActionLink("Details", "Details", new { /* id=item.PrimaryKey */ }) |
+            @Html.ActionLink("Delete", "Delete", new { /* id=item.PrimaryKey */ })
+        </td>
+    </tr>
+}
+
+</table>

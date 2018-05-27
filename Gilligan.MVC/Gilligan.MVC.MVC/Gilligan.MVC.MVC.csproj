@@ -241,9 +241,25 @@
     <Content Include="Views\Song\AddAlbum.cshtml" />
     <Content Include="Views\Song\Song.cshtml" />
     <Content Include="Views\Song\Album.cshtml" />
+    <Content Include="Views\Song\Rating.cshtml" />
+    <Content Include="Views\Song\AddArtist.cshtml" />
+    <Content Include="Views\Song\AddGenre.cshtml" />
+    <Content Include="Views\Song\AddRating.cshtml" />
+    <Content Include="Views\Song\AddSong.cshtml" />
+    <Content Include="Views\Song\ArtistRating.cshtml" />
+    <Content Include="Views\Song\Artist.cshtml" />
+    <Content Include="Views\Song\GenreRating.cshtml" />
+    <Content Include="Views\Song\Genre.cshtml" />
+    <Content Include="Views\Song\SongRatings.cshtml" />
+    <Content Include="Views\Song\Index.cshtml" />
+    <Content Include="Views\Song\AlbumRatings.cshtml" />
+    <Content Include="Views\Search\Search.cshtml" />
+    <Content Include="Views\Shared\_Search.cshtml" />
+    <Content Include="Views\Shared\_Song.cshtml" />
+    <Content Include="Views\Shared\_SongList.cshtml" />
+    <Content Include="Views\Shared\_Artist.cshtml" />
   </ItemGroup>
   <ItemGroup>
-    <Folder Include="Views\Search\" />
     <Folder Include="Views\User\" />
   </ItemGroup>
   <ItemGroup>
