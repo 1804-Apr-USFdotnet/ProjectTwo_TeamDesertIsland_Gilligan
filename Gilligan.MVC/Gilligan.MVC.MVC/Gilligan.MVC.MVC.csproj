@@ -255,6 +255,9 @@
     <Content Include="Views\Song\AlbumRatings.cshtml" />
     <Content Include="Views\Search\Search.cshtml" />
     <Content Include="Views\Shared\_Search.cshtml" />
+    <Content Include="Views\Shared\_Song.cshtml" />
+    <Content Include="Views\Shared\_SongList.cshtml" />
+    <Content Include="Views\Shared\_Artist.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Views\User\" />

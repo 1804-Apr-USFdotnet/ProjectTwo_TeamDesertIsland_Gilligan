@@ -34,7 +34,9 @@
         </tr>
 
 
-        @{var list = Model.TopAllTimeRatedGenreViewModels.Where(x => x.ArtistViewModels.Where(a => a.Name != null).ToList() != null);
+        @{//var list = Model.TopAllTimeRatedGenreViewModels.Where(x => x.ArtistViewModels.Where(a => a.Name != null).ToList() != null);
+
+            var list = Model.TopAllTimeRatedGenreViewModels.Select(x => x.ArtistViewModels.Select(y => y.SongViewModels).ToList());
             foreach (var i in list)
             {
 
