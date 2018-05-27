@@ -30,6 +30,7 @@ namespace Gilligan.API.Rest.Controllers
             return Ok();
         }
 
+        [AllowAnonymous]
         [HttpGet]
         [Route("album")]
         public IHttpActionResult AlbumRatings(int takeAmount)
@@ -41,6 +42,7 @@ namespace Gilligan.API.Rest.Controllers
             return Ok(viewModel);
         }
 
+        [AllowAnonymous]
         [HttpGet]
         [Route("song")]
         public IHttpActionResult SongRatings(int takeAmount)
@@ -52,6 +54,7 @@ namespace Gilligan.API.Rest.Controllers
             return Ok(viewModel);
         }
 
+        [AllowAnonymous]
         [HttpGet]
         [Route("artist")]
         public IHttpActionResult ArtistRatings(int takeAmount)
@@ -63,6 +66,7 @@ namespace Gilligan.API.Rest.Controllers
             return Ok(viewModel);
         }
 
+        [AllowAnonymous]
         [HttpGet]
         [Route("genre")]
         public IHttpActionResult GenreRatings(int takeAmount)
