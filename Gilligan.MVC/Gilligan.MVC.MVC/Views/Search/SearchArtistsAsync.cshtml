@@ -1,0 +1,11 @@
+﻿@model IEnumerable<Gilligan.MVC.ViewModels.Music.ArtistViewModel>
+@{
+    ViewBag.Title = "SearchArtistsAsync";
+}
+
+<h2>SearchArtistsAsync</h2>
+
+@foreach (var item in Model)
+{
+    Html.RenderPartial("_Artist", item);
+}

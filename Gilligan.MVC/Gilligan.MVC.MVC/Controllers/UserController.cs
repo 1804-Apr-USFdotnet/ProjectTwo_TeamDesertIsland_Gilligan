@@ -101,5 +101,10 @@ namespace Gilligan.MVC.MVC.Controllers
             }
             return false;
         }
+
+        public ActionResult Index ()
+        {
+            return View();
+        }
     }
 }
