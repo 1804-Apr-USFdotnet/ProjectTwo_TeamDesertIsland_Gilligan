@@ -7,7 +7,7 @@ using Gilligan.API.ViewModels;
 
 namespace Gilligan.API.Rest.Controllers
 {
-    [RoutePrefix("Gilligan.API/api/inventory")]
+    [RoutePrefix("api/inventory")]
     public class InventoryController : ApiController
     {
         private readonly IInventoryService _inventoryService;
