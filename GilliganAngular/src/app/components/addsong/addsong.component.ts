@@ -25,9 +25,9 @@ const httpOptions = {
 
         constructor(http: HttpClient) {
             this.client = http;
-            this.baseUrlAlbum = 'http://localhost:55562/api/inventory/album';
-            this.baseUrlArtist = 'http://localhost:55562/api/inventory/artist';
-            this.baseUrlSong = 'http://localhost:55562/api/inventory/song';
+            this.baseUrlAlbum = 'http://23.101.154.131/api/inventory/album';
+            this.baseUrlArtist = 'http://23.101.154.131/api/inventory/artist';
+            this.baseUrlSong = 'http://23.101.154.131/api/inventory/song';
 
             this.Start();
         }

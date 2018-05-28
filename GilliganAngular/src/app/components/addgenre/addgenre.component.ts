@@ -23,7 +23,7 @@ export class AddGenreComponent {
 
     constructor(http: HttpClient) {
         this.client = http;
-        this.baseUrl = 'http://localhost:55562/api/inventory/genre';
+        this.baseUrl = 'http://23.101.154.131/api/inventory/genre';
         this.Start();
     }
 
