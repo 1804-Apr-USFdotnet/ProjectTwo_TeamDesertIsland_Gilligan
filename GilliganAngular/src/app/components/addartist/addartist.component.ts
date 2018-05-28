@@ -15,11 +15,11 @@ const httpOptions = {
   })
 
   export class AddArtistComponent {
-        private client: HttpClient;
-        private baseUrlGenre: string;
-        private baseUrlArtist: string;
-        private genres: GenreViewModel[];
-        private artists: ArtistViewModel[];
+        public client: HttpClient;
+        public baseUrlGenre: string;
+        public baseUrlArtist: string;
+        public genres: GenreViewModel[];
+        public artists: ArtistViewModel[];
 
         constructor(http: HttpClient) {
             this.client = http;

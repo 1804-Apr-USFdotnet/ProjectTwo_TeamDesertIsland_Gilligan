@@ -15,13 +15,13 @@ const httpOptions = {
   })
 
   export class AddSongComponent {
-        private client: HttpClient;
-        private albums: AlbumViewModel[];
-        private artists: ArtistViewModel[];
-        private songs: SongViewModel[];
-        private baseUrlAlbum: string;
-        private baseUrlArtist: string;
-        private baseUrlSong: string;
+        public client: HttpClient;
+        public albums: AlbumViewModel[];
+        public artists: ArtistViewModel[];
+        public songs: SongViewModel[];
+        public baseUrlAlbum: string;
+        public baseUrlArtist: string;
+        public baseUrlSong: string;
 
         constructor(http: HttpClient) {
             this.client = http;

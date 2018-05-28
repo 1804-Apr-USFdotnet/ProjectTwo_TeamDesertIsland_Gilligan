@@ -16,8 +16,8 @@ const httpOptions = {
 })
 
 export class AddGenreComponent {
-    private client: HttpClient;
-    private baseUrl: string;
+    public client: HttpClient;
+    public baseUrl: string;
     public genres: GenreViewModel[];
     public genreName: string;
 
