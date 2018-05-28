@@ -1,0 +1,11 @@
+﻿@model Gilligan.MVC.ViewModels.User.Account
+
+@{
+    ViewBag.Title = "LogOut";
+}
+
+@using (Html.BeginForm("LogOutAsync", "User", FormMethod.Post, new { role = "form" }))
+{
+    @Html.AntiForgeryToken()
+    <input type="submit" value="Logout" class="btn btn-primary" />
+}

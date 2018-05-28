@@ -1,12 +1,13 @@
-﻿@model Gilligan.MVC.ViewModels.Music.AlbumRatingsViewModel
+﻿@model Gilligan.MVC.ViewModels.Music.ArtistRatingViewModel
+
 @{
-    ViewBag.Title = "AlbumRatings";
+    ViewBag.Title = "ArtistRating";
 }
 
-<h2>AlbumRatings</h2>
+<h2>ArtistRating</h2>
 
 <div>
-    <h4>AlbumRatingsViewModel</h4>
+    <h4>ArtistRatingViewModel</h4>
     <hr />
     <dl class="dl-horizontal"></dl>
 </div>
@@ -15,39 +16,17 @@
     <table class="table">
         <tr>
             <th>
-                Top All Time Albums
+                Top All Time Artists
             </th>
             <th></th>
         </tr>
 
-        @foreach (var item in Model.TopAllTimeRatedAlbumViewModels)
-        {
-        <tr>
-            <td>
-                {
-                Html.RenderPartial("_Song", item);
-                }
-            </td>
-        </tr>
-        }
-    </table>
-</div>
-
-<div>
-    <table class="table">
-        <tr>
-            <th>
-                Top Daily Albums
-            </th>
-            <th></th>
-        </tr>
-
-        @foreach (var item in Model.TopDailyAlbumViewModels)
+        @foreach (var item in Model.TopAllTimeRatedArtistViewModels)
         {
             <tr>
                 <td>
                     {
-                    Html.RenderPartial("_Song", item);
+                    Html.RenderPartial("_Artist", item);
                     }
                 </td>
             </tr>
@@ -59,17 +38,17 @@
     <table class="table">
         <tr>
             <th>
-                Top Weekly Albums
+                Top Daily Artists
             </th>
             <th></th>
         </tr>
 
-        @foreach (var item in Model.TopWeeklyRatedAlbumViewModels)
+        @foreach (var item in Model.TopDailyArtistViewModels)
         {
             <tr>
                 <td>
                     {
-                    Html.RenderPartial("_Song", item);
+                    Html.RenderPartial("_Artist", item);
                     }
                 </td>
             </tr>
@@ -81,17 +60,39 @@
     <table class="table">
         <tr>
             <th>
-                Top Monthly Albums
+                Top All Time Artists
             </th>
             <th></th>
         </tr>
 
-        @foreach (var item in Model.TopMonthlyRatedAlbumViewModels)
+        @foreach (var item in Model.TopWeeklyRatedArtistViewModels)
         {
             <tr>
                 <td>
                     {
-                    Html.RenderPartial("_Song", item);
+                    Html.RenderPartial("_Artist", item);
+                    }
+                </td>
+            </tr>
+        }
+    </table>
+</div>
+
+<div>
+    <table class="table">
+        <tr>
+            <th>
+                Top All Time Artists
+            </th>
+            <th></th>
+        </tr>
+
+        @foreach (var item in Model.TopMonthlyRatedArtistViewModels)
+        {
+            <tr>
+                <td>
+                    {
+                    Html.RenderPartial("_Artist", item);
                     }
                 </td>
             </tr>
