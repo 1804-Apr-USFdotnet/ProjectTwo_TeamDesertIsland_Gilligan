@@ -35,7 +35,7 @@ namespace Gilligan.MVC.MVC.Controllers
 
             var vm = await result.Content.ReadAsAsync<IEnumerable<SongViewModel>>();
 
-            return View("", result);
+            return View("", vm);
         }
 
         public async Task<ActionResult> SearchAlbumsAsync(SearchViewModel viewModel)
@@ -48,7 +48,7 @@ namespace Gilligan.MVC.MVC.Controllers
 
             var vm = await result.Content.ReadAsAsync<IEnumerable<AlbumViewModel>>();
 
-            return View("", result);
+            return View("", vm);
         }
 
         public async Task<ActionResult> SearchGenresAsync(SearchViewModel viewModel)
@@ -61,7 +61,7 @@ namespace Gilligan.MVC.MVC.Controllers
 
             var vm = await result.Content.ReadAsAsync<IEnumerable<GenreViewModel>>();
 
-            return View("", result);
+            return View("", vm);
         }
 
         public async Task<ActionResult> SearchArtistsAsync(SearchViewModel viewModel)
@@ -74,9 +74,7 @@ namespace Gilligan.MVC.MVC.Controllers
 
             var vm = await result.Content.ReadAsAsync<IEnumerable<ArtistViewModel>>();
 
-            return View("", result);
+            return View("", vm);
         }
-
-        
     }
 }

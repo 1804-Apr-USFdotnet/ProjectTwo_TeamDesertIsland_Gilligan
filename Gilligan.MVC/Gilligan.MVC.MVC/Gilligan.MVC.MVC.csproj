@@ -242,29 +242,30 @@
     <Content Include="Scripts\popper.js.map" />
     <Content Include="Scripts\popper-utils.min.js.map" />
     <Content Include="Scripts\popper-utils.js.map" />
-    <Content Include="Views\Song\Rating.cshtml" />
-    <Content Include="Views\Song\ArtistRating.cshtml" />
-    <Content Include="Views\Song\Index.cshtml" />
-    <Content Include="Views\Song\AlbumRatings.cshtml" />
-    <Content Include="Views\Search\Search.cshtml" />
     <Content Include="Views\Shared\_Search.cshtml" />
     <Content Include="Views\Shared\_Song.cshtml" />
-    <Content Include="Views\Song\Song.cshtml" />
-    <Content Include="Views\Song\Album.cshtml" />
-    <Content Include="Views\Song\Genre.cshtml" />
     <Content Include="Views\Rating\SongRatings.cshtml" />
     <Content Include="Views\Shared\_Artist.cshtml" />
-    <Content Include="Views\Song\Artist.cshtml" />
     <Content Include="Views\Shared\_Rating.cshtml" />
     <Content Include="Views\Shared\_Album.cshtml" />
-    <Content Include="Views\Song\GenreRating.cshtml" />
     <Content Include="Views\Shared\_Genre.cshtml" />
     <Content Include="Views\Search\Index.cshtml" />
     <Content Include="Views\User\Index.cshtml" />
+    <Content Include="Views\Search\SearchSongsAsync.cshtml" />
+    <Content Include="Views\Search\SearchAlbumsAsync.cshtml" />
+    <Content Include="Views\Search\SearchGenresAsync.cshtml" />
+    <Content Include="Views\Search\SearchArtistsAsync.cshtml" />
+    <Content Include="Views\User\RegisterAsync.cshtml" />
+    <Content Include="Views\User\LogInAsync.cshtml" />
+    <Content Include="Views\User\LogOutAsync.cshtml" />
+    <Content Include="Views\Rating\ArtistRatings.cshtml" />
+    <Content Include="Views\Rating\AlbumRatings.cshtml" />
+    <Content Include="Views\Rating\GenreRatings.cshtml" />
+    <Content Include="Views\Rating\AddRating.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Views\AService\" />
-    <Folder Include="Views\User\" />
+    <Folder Include="Views\Song\" />
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />

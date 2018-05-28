@@ -1,7 +1,18 @@
-﻿
-@{
-    ViewBag.Title = "Index";
+﻿@{
+ViewBag.Title = "Index";
 }
 
-<h2>Index</h2>
+<div class="row">
 
+    <div class="col-lg-6">
+        @{Html.RenderPartial("LogInAsync");}
+    </div>
+    <div class="col-lg-6">
+        @{Html.RenderPartial("RegisterAsync");}
+    </div>
+
+</div> 
+
+<div>
+    @{Html.RenderPartial("LogoutAsync");}
+</div>

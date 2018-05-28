@@ -41,11 +41,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Music\AddAlbumViewModel.cs" />
-    <Compile Include="Music\AddArtistViewModel.cs" />
-    <Compile Include="Music\AddGenreViewModel.cs" />
     <Compile Include="Music\AddRatingViewModel.cs" />
-    <Compile Include="Music\AddSongViewModel.cs" />
     <Compile Include="Music\AlbumRatingsViewModel.cs" />
     <Compile Include="Music\ArtistRatingViewModel.cs" />
     <Compile Include="Music\GenreRatingViewModel.cs" />

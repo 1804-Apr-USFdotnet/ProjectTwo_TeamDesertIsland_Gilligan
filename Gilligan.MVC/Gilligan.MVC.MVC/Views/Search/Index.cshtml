@@ -1,12 +1,44 @@
-﻿@model Gilligan.MVC.ViewModels.Search.SearchViewModel
+﻿@using Gilligan.MVC.ViewModels.Search
+
+@model Gilligan.MVC.ViewModels.Search.SearchViewModel
 @{
+    /**/
+
     ViewBag.Title = "Index";
 }
 
-<h2>Index</h2>
+<h2>Search</h2>
 
-@Html.RadioButtonFor(m => m.SearchType, "Artist")
-@Html.RadioButtonFor(m => m.SearchType, "Genre")
-@Html.RadioButtonFor(m => m.SearchType, "Album")
-@Html.RadioButtonFor(m => m.SearchType, "Song")
-@Html.TextBoxFor(t => t.SearchString)
+@*@Html.RadioButtonFor(m => m.SearchType, "Artist")
+    @Html.RadioButtonFor(m => m.SearchType, "Genre")
+    @Html.RadioButtonFor(m => m.SearchType, "Album")
+    @Html.RadioButtonFor(m => m.SearchType, "Song")*@
+@*@Html.TextBoxFor(t => t.SearchString)
+    <input type="submit" name="SearchSongsAsync "value="Songs" />
+    <input type="submit" name="SearchAlbumsAsync " value="Albums" />
+    <input type="submit" name="SearchGenresAsync " value="Genres" />
+    <input type="submit" name="SearchArtistAsync " value="Artists" />*@
+
+@using (Html.BeginForm("SearchSongsAsync", "Search", Model))
+{
+    @Html.TextBoxFor(t => t.SearchString)
+    <input type="submit" value="Songs" />
+}
+
+@using (Html.BeginForm("SearchAlbumsAsync", "Search", Model))
+{
+    @Html.TextBoxFor(t => t.SearchString)
+    <input type="submit" value="Albums" />
+}
+
+@using (Html.BeginForm("SearchGenresAsync", "Search", Model))
+{
+    @Html.TextBoxFor(t => t.SearchString)
+    <input type="submit" value="Genres" />
+}
+
+@using (Html.BeginForm("SearchArtistsAsync", "Search", Model))
+{
+    @Html.TextBoxFor(t => t.SearchString)
+    <input type="submit" value="Artists" />
+}
