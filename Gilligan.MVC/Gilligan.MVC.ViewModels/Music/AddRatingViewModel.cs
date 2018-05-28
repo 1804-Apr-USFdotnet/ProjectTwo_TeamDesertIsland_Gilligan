@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace Gilligan.MVC.ViewModels.Music
 {
-    class AddRatingViewModel
+    public class AddRatingViewModel
     {
         public DateTime? RatedOn { get; set; }
         public int Value { get; set; }

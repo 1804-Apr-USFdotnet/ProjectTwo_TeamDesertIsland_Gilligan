@@ -24,17 +24,21 @@ namespace Gilligan.API.Tests.Unit.DomainServices
             _songRepository.Setup(x => x.Get(It.IsAny<Guid>())).Returns(new Song());
             _songRepository.Setup(x => x.SaveChanges());
             _songRepository.Setup(x => x.Add(It.IsAny<Song>()));
+            _songRepository.Setup(x => x.Get()).Returns(new List<Song>());
 
             _artistRepository = new Mock<IArtistRepository>();
             _artistRepository.Setup(x => x.Add(It.IsAny<Artist>()));
             _artistRepository.Setup(x => x.Get(It.IsAny<IEnumerable<Artist>>())).Returns(new List<Artist>());
+            _artistRepository.Setup(x => x.Get()).Returns(new List<Artist>());
 
             _albumRepository = new Mock<IAlbumRepository>();
             _albumRepository.Setup(x => x.Add(It.IsAny<Album>()));
             _albumRepository.Setup(x => x.Get(It.IsAny<Guid>())).Returns(new Album());
+            _albumRepository.Setup(x => x.Get()).Returns(new List<Album>());
 
             _genreRepository = new Mock<IGenreRepository>();
             _genreRepository.Setup(x => x.Add(It.IsAny<Genre>()));
+            _genreRepository.Setup(x => x.Get()).Returns(new List<Genre>());
 
             _userRepository = new Mock<IUserRepository>();
             _userRepository.Setup(x => x.Get(It.IsAny<Guid>())).Returns(new User{UserSongs = new List<UserSong>()});
@@ -179,6 +183,38 @@ namespace Gilligan.API.Tests.Unit.DomainServices
             _inventoryService.AddGenre(genre);
 
             _genreRepository.Verify(x => x.Add(It.IsAny<Genre>()), Times.AtLeastOnce);
+        }
+
+        [TestMethod]
+        public void AllSongs_Empty_CallsRepoGet()
+        {
+            _inventoryService.AllSongs();
+
+            _songRepository.Verify(x => x.Get(), Times.AtLeastOnce);
+        }
+
+        [TestMethod]
+        public void AllArtists_Empty_CallsRepoGet()
+        {
+            _inventoryService.AllArists();
+
+            _artistRepository.Verify(x => x.Get(), Times.AtLeastOnce);
+        }
+
+        [TestMethod]
+        public void AllAlbums_Empty_CallsRepoGet()
+        {
+            _inventoryService.AllAlbums();
+
+            _albumRepository.Verify(x => x.Get(), Times.AtLeastOnce);
+        }
+
+        [TestMethod]
+        public void AllGenres_Empty_CallsRepoGet()
+        {
+            _inventoryService.AllGenres();
+
+            _genreRepository.Verify(x => x.Get(), Times.AtLeastOnce);
         }
     }
 }

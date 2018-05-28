@@ -31,6 +31,8 @@ namespace Gilligan.API.DomainServices
             rating.User = user;
 
             song.Ratings.Add(rating);
+            song.CalculateAverageRating();
+
             _songRepository.SaveChanges();
         }
 

@@ -1,0 +1,95 @@
+﻿@model Gilligan.MVC.ViewModels.Music.GenreRatingViewModel
+
+@{
+    ViewBag.Title = "GenreRating";
+}
+
+<h2>GenreRating</h2>
+
+<div>
+    <table class="table">
+        <tr>
+            <th>
+                Top All Time Genre
+            </th>
+            <th></th>
+        </tr>
+
+        @foreach (var item in Model.TopAllTimeRatedGenreViewModels)
+        {
+            <tr>
+                <td>
+                    {
+                    Html.RenderPartial("_Genre", item);
+                    }
+                </td>
+            </tr>
+        }
+    </table>
+</div>
+
+<div>
+    <table class="table">
+        <tr>
+            <th>
+                Top Daily Genre
+            </th>
+            <th></th>
+        </tr>
+
+        @foreach (var item in Model.TopDailyRatedGenreViewModels)
+        {
+            <tr>
+                <td>
+                    {
+                    Html.RenderPartial("_Genre", item);
+                    }
+                </td>
+            </tr>
+        }
+    </table>
+</div>
+
+<div>
+    <table class="table">
+        <tr>
+            <th>
+                Top Weekly Genre
+            </th>
+            <th></th>
+        </tr>
+
+        @foreach (var item in Model.TopWeeklyRatedGenreViewModels)
+        {
+            <tr>
+                <td>
+                    {
+                    Html.RenderPartial("_Genre", item);
+                    }
+                </td>
+            </tr>
+        }
+    </table>
+</div>
+
+<div>
+    <table class="table">
+        <tr>
+            <th>
+                Top Monthly Genre
+            </th>
+            <th></th>
+        </tr>
+
+        @foreach (var item in Model.TopMonthlyRatedGenreViewModels)
+        {
+            <tr>
+                <td>
+                    {
+                    Html.RenderPartial("_Genre", item);
+                    }
+                </td>
+            </tr>
+        }
+    </table>
+</div>

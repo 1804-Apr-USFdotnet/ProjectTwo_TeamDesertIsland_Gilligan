@@ -1,9 +1,10 @@
 ﻿using System.Data.Entity;
 using Gilligan.API.Models;
+using Microsoft.AspNet.Identity.EntityFramework;
 
 namespace Gilligan.API.Repositories
 {
-    public class GilliganTestContext : DbContext, IDbContext
+    public class GilliganTestContext : IdentityDbContext<IdentityUser>, IDbContext
     {
         public GilliganTestContext() : base("name=GilliganTestConnectionString")
         {

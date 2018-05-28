@@ -1,0 +1,18 @@
+<h6>Add A Genre</h6>
+
+<p *ngIf="!genres"><em>Loading...</em></p>
+
+<form>
+    <fieldset>
+        <legend>Add Genre:</legend>
+        <div>Name: <input type="text" [(ngModel)]="genreName" name="genreInput"></div>
+        <div><button (click)="AddGenre()">Submit</button></div>
+    </fieldset>
+</form>
+
+<ul *ngIf="genres">
+    <li *ngFor="let genre of genres">
+    {{ genre.Name }} 
+    {{ genre.GenreId }}
+    </li>
+</ul>

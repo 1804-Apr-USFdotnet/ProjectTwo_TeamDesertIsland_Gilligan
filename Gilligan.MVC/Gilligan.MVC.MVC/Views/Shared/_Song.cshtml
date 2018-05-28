@@ -1,11 +1,5 @@
 ﻿@model Gilligan.MVC.ViewModels.Music.SongViewModel
 
-@{
-    ViewBag.Title = "Song";
-}
-
-<h2>Song</h2>
-
 <div>
     <h4>SongViewModel</h4>
     <hr />
@@ -42,41 +36,7 @@
             @Html.DisplayFor(model => model.IsAttached)
         </dd>
 
-        <dt>
-            @Html.DisplayNameFor(model => model.AlbumViewModel.Name)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.AlbumViewModel.Name)
-        </dd>
-        <dt>
-            @Html.DisplayNameFor(model => model.AlbumViewModel.ReleaseDate)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.AlbumViewModel.ReleaseDate)
-        </dd>
     </dl>
-</div>
-<div>
-    <table class="table">
-        <tr>
-            <th>
-                Artist
-            </th>
-            <th></th>
-        </tr>
-
-        @foreach (var item in Model.ArtistViewModel)
-        {
-            <tr>
-                <td>
-                    @Html.DisplayFor(modelItem => item.Name)
-                </td>
-            </tr>
-        }
-
-    </table>
 </div>
 <p>
     @Html.ActionLink("Edit", "Edit", new { /* id = Model.PrimaryKey */ }) |

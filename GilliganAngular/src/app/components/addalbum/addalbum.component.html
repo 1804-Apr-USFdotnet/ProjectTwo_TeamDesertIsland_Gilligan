@@ -1,0 +1,20 @@
+<h6>Add A Album</h6>
+
+<p *ngIf="!albums"><em>Loading...</em></p>
+
+<form>
+    <fieldset>
+        <legend>Add Album:</legend>
+        <div>Name: <input type="text" [(ngModel)]="albumName" name="genreInput"></div>
+        <div>Release Date: <input type="date" [(ngModel)]="releaseDate" name="dateInput"></div>
+        <div><button (click)="AddAlbum()">Submit</button></div>
+    </fieldset>
+</form>
+
+<ul *ngIf="albums">
+    <li *ngFor="let album of albums">
+    {{ album.Name }} 
+    {{ album.AlbumId }}
+    {{ album.ReleaseDate }}
+    </li>
+</ul>

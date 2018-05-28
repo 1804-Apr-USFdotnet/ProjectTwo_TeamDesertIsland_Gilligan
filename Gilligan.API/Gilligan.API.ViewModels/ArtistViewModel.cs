@@ -8,6 +8,6 @@ namespace Gilligan.API.ViewModels
         public Guid ArtistId { get; set; }
         public string Name { get; set; }
         public IEnumerable<SongViewModel> SongViewModels { get; set; }
-        public IEnumerable<GenreViewModel> GenreViewModels { get; set; }
+        //public IEnumerable<GenreViewModel> GenreViewModels { get; set; }
     }
 }

@@ -25,7 +25,9 @@ namespace Gilligan.API.Mapping
                 .ForMember(d => d.ZipCode, o => o.Ignore())
                 .ForMember(d => d.Email, o => o.Ignore())
                 .ForMember(d => d.Ratings, o => o.Ignore())
-                .ForMember(d => d.UserSongs, o => o.Ignore());
+                .ForMember(d => d.UserSongs, o => o.Ignore())
+                .ForMember(d => d.UserName, o => o.Ignore())
+                .ForMember(d => d.Password, o => o.Ignore());
 
             CreateMap<AddSongViewModel, Song>()
                 .ForMember(d => d.Id, o => o.Ignore())
@@ -76,6 +78,8 @@ namespace Gilligan.API.Mapping
             CreateMap<AddGenreViewModel, Genre>()
                 .ForMember(d => d.Id, o => o.Ignore())
                 .AfterMap((s, d) => d.Id = Guid.NewGuid())
+                .ForMember(d => d.GenreId, o => o.Ignore())
+                .AfterMap((s, d) => d.GenreId = Guid.NewGuid())
                 .ForMember(d => d.Artists, o => o.Ignore());
 
             CreateMap<AddRatingViewModel, Rating>()
@@ -100,15 +104,15 @@ namespace Gilligan.API.Mapping
                 .ForMember(d => d.ArtistViewModels, o => o.MapFrom(s => s.Artists));
 
             CreateMap<Artist, ArtistViewModel>()
-                .ForMember(d => d.SongViewModels, o => o.MapFrom(s => s.Songs))
-                .ForMember(d => d.GenreViewModels, o => o.MapFrom(s => s.Genres));
+                .ForMember(d => d.SongViewModels, o => o.MapFrom(s => s.Songs));
+                //.ForMember(d => d.GenreViewModels, o => o.MapFrom(s => s.Genres));
 
             CreateMap<Album, AlbumViewModel>()
                 .ForMember(d => d.SongViewModels, o => o.MapFrom(s => s.Songs));
 
-            CreateMap<Song, SongViewModel>()
-                .ForMember(d => d.ArtistViewModel, o => o.MapFrom(s => s.Artists))
-                .ForMember(d => d.AlbumViewModel, o => o.MapFrom(s => s.Album));
+            CreateMap<Song, SongViewModel>();
+                //.ForMember(d => d.ArtistViewModel, o => o.MapFrom(s => s.Artists))
+                //.ForMember(d => d.AlbumViewModel, o => o.MapFrom(s => s.Album));
 
             CreateMap<SongRatings, SongRatingsViewModel>()
                 .ForMember(d => d.TopDailyRatedSongViewModels, o => o.MapFrom(s => s.TopDailyRatedSongs))

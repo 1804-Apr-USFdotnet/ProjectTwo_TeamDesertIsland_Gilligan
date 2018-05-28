@@ -1,0 +1,100 @@
+﻿@model Gilligan.MVC.ViewModels.Music.AlbumRatingsViewModel
+@{
+    ViewBag.Title = "AlbumRatings";
+}
+
+<h2>AlbumRatings</h2>
+
+<div>
+    <h4>AlbumRatingsViewModel</h4>
+    <hr />
+    <dl class="dl-horizontal"></dl>
+</div>
+
+<div>
+    <table class="table">
+        <tr>
+            <th>
+                Top All Time Albums
+            </th>
+            <th></th>
+        </tr>
+
+        @foreach (var item in Model.TopAllTimeRatedAlbumViewModels)
+        {
+            <tr>
+                <td>
+                    {
+                    Html.RenderPartial("_Song", item);
+                    }
+                </td>
+            </tr>
+        }
+    </table>
+</div>
+
+<div>
+    <table class="table">
+        <tr>
+            <th>
+                Top Daily Albums
+            </th>
+            <th></th>
+        </tr>
+
+        @foreach (var item in Model.TopDailyAlbumViewModels)
+        {
+            <tr>
+                <td>
+                    {
+                    Html.RenderPartial("_Song", item);
+                    }
+                </td>
+            </tr>
+        }
+    </table>
+</div>
+
+<div>
+    <table class="table">
+        <tr>
+            <th>
+                Top Weekly Albums
+            </th>
+            <th></th>
+        </tr>
+
+        @foreach (var item in Model.TopWeeklyRatedAlbumViewModels)
+        {
+            <tr>
+                <td>
+                    {
+                    Html.RenderPartial("_Song", item);
+                    }
+                </td>
+            </tr>
+        }
+    </table>
+</div>
+
+<div>
+    <table class="table">
+        <tr>
+            <th>
+                Top Monthly Albums
+            </th>
+            <th></th>
+        </tr>
+
+        @foreach (var item in Model.TopMonthlyRatedAlbumViewModels)
+        {
+            <tr>
+                <td>
+                    {
+                    Html.RenderPartial("_Song", item);
+                    }
+                </td>
+            </tr>
+        }
+    </table>
+</div>
