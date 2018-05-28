@@ -23,7 +23,7 @@ export class AddAlbumComponent {
 
     constructor(http: HttpClient) {
         this.client = http;
-        this.baseUrl = 'http://localhost:55562/api/inventory/album';
+        this.baseUrl = 'http://23.101.154.131/api/inventory/album';
         this.Start();
     }
 

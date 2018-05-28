@@ -23,8 +23,8 @@ const httpOptions = {
 
         constructor(http: HttpClient) {
             this.client = http;
-            this.baseUrlGenre = 'http://localhost:55562/api/inventory/genre';
-            this.baseUrlArtist = 'http://localhost:55562/api/inventory/artist';
+            this.baseUrlGenre = 'http://23.101.154.131/api/inventory/genre';
+            this.baseUrlArtist = 'http://23.101.154.131/api/inventory/artist';
 
             this.Start();
         }
