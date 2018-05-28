@@ -15,11 +15,11 @@ const httpOptions = {
 })
 
 export class AddAlbumComponent {
-    private client: HttpClient;
-    private baseUrl: string;
-    private albums: AlbumViewModel[];
-    private albumName: string;
-    private releaseDate: Date;
+    public client: HttpClient;
+    public baseUrl: string;
+    public albums: AlbumViewModel[];
+    public albumName: string;
+    public releaseDate: Date;
 
     constructor(http: HttpClient) {
         this.client = http;
