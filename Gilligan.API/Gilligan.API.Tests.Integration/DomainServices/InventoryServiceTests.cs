@@ -24,6 +24,8 @@ namespace Gilligan.API.Tests.Integration.DomainServices
         [TestInitialize]
         public void ClearTables()
         {
+            _context.Artists.RemoveRange(_context.Artists);
+            _context.Genres.RemoveRange(_context.Genres);
             _context.Albums.RemoveRange(_context.Albums);
             _context.Users.RemoveRange(_context.Users);
             _context.Songs.RemoveRange(_context.Songs);

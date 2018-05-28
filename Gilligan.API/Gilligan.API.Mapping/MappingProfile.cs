@@ -25,7 +25,9 @@ namespace Gilligan.API.Mapping
                 .ForMember(d => d.ZipCode, o => o.Ignore())
                 .ForMember(d => d.Email, o => o.Ignore())
                 .ForMember(d => d.Ratings, o => o.Ignore())
-                .ForMember(d => d.UserSongs, o => o.Ignore());
+                .ForMember(d => d.UserSongs, o => o.Ignore())
+                .ForMember(d => d.UserName, o => o.Ignore())
+                .ForMember(d => d.Password, o => o.Ignore());
 
             CreateMap<AddSongViewModel, Song>()
                 .ForMember(d => d.Id, o => o.Ignore())
