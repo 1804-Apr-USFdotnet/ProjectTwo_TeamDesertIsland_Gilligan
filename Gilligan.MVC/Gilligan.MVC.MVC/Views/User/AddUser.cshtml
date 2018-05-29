@@ -10,7 +10,7 @@
 
 @using (Html.BeginForm("CreateUser", "User", FormMethod.Post))
 {
-    Html.EditorFor(x => x.UserName);
+    @Html.EditorFor(x => x.UserName);
     <div><input type="submit" value="Submit"/></div>
 }
 
