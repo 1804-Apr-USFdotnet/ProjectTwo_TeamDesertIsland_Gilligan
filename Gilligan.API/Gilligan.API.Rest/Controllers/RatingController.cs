@@ -32,7 +32,7 @@ namespace Gilligan.API.Rest.Controllers
 
         [AllowAnonymous]
         [HttpGet]
-        [Route("album")]
+        [Route("album/{takeAmount}")]
         public IHttpActionResult AlbumRatings(int takeAmount)
         {
             var albumRatings = _ratingService.AlbumRatings(takeAmount);
@@ -44,7 +44,7 @@ namespace Gilligan.API.Rest.Controllers
 
         [AllowAnonymous]
         [HttpGet]
-        [Route("song")]
+        [Route("song/{takeAmount}")]
         public IHttpActionResult SongRatings(int takeAmount)
         {
             var songRatings = _ratingService.SongRatings(takeAmount);
@@ -56,7 +56,7 @@ namespace Gilligan.API.Rest.Controllers
 
         [AllowAnonymous]
         [HttpGet]
-        [Route("artist")]
+        [Route("artist/{takeAmount}")]
         public IHttpActionResult ArtistRatings(int takeAmount)
         {
             var artistRatings = _ratingService.ArtistRatings(takeAmount);
@@ -68,7 +68,7 @@ namespace Gilligan.API.Rest.Controllers
 
         [AllowAnonymous]
         [HttpGet]
-        [Route("genre")]
+        [Route("genre/{takeAmount}")]
         public IHttpActionResult GenreRatings(int takeAmount)
         {
             var genreRatings = _ratingService.GenreRatings(takeAmount);
