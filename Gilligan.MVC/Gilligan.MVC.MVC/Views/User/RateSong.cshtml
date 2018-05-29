@@ -17,7 +17,7 @@
         @Html.DropDownListFor(x => x.SongId, Model.SongItems)
     </div>
 
-    @:<div><input type="number" /></div>
+    <div>@Html.EditorFor(x => x.Value)</div>
 
     @:<div><input type="submit" value="Submit" /></div>
 

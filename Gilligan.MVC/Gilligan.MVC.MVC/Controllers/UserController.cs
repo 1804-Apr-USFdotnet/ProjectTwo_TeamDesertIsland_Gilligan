@@ -158,7 +158,7 @@ namespace Gilligan.MVC.MVC.Controllers
                 RatedOn = DateTime.Today
             };
 
-            var request = CreateGet(HttpMethod.Post, "api/rating");
+            var request = CreateGet(HttpMethod.Post, "api/rating/addrating");
             request.Content = new ObjectContent<AddRatingViewModel>(addRating, new JsonMediaTypeFormatter());
 
             var result = await HttpClient.SendAsync(request);
