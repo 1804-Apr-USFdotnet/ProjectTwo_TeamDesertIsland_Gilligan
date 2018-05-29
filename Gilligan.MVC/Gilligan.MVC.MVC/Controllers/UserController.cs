@@ -107,5 +107,20 @@ namespace Gilligan.MVC.MVC.Controllers
         {
             return View();
         }
+
+        public ActionResult AddUser()
+        {
+            return View();
+        }
+
+        public async Task<ActionResult> CreateUser(UserViewModel viewModel)
+        {
+            var request = CreateRequestToService(HttpMethod.Post, "api/Account/User", null);
+            request.Content = new ObjectContent<UserViewModel>(viewModel, new JsonMediaTypeFormatter());
+
+            var response = await HttpClient.SendAsync(request);
+
+            return RedirectToAction("Index", "Home");
+        }
     }
 }
