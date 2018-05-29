@@ -13,10 +13,11 @@ namespace Gilligan.MVC.MVC.Controllers
         //{
         //    return View();
         //}
+        private const int takeAmount = 10;
 
         public async Task<ActionResult> SongRatings(int? takeAmount)
         {
-            var request = CreateGet(HttpMethod.Get, "api/rating/song" + 10);
+            var request = CreateGet(HttpMethod.Get, "api/rating/song" + takeAmount);
 
             var result = await HttpClient.SendAsync(request);
 
@@ -25,7 +26,7 @@ namespace Gilligan.MVC.MVC.Controllers
             return View(vm);
         }
 
-        public async Task<ActionResult> ArtistRatings(int takeAmount)
+        public async Task<ActionResult> ArtistRatings(int? takeAmount)
         {
             var request = CreateGet(HttpMethod.Get, "api/rating/artist" + takeAmount);
 
@@ -36,7 +37,7 @@ namespace Gilligan.MVC.MVC.Controllers
             return View(vm);
         }
 
-        public async Task<ActionResult> AlbumRatings(int takeAmount)
+        public async Task<ActionResult> AlbumRatings(int? takeAmount)
         {
             var request = CreateGet(HttpMethod.Get, "api/rating/album" + takeAmount);
 
@@ -47,7 +48,7 @@ namespace Gilligan.MVC.MVC.Controllers
             return View(vm);
         }
 
-        public async Task<ActionResult> GenreRatings(int takeAmount)
+        public async Task<ActionResult> GenreRatings(int? takeAmount)
         {
             var request = CreateGet(HttpMethod.Get, "api/rating/genre" + takeAmount);
 
@@ -62,7 +63,7 @@ namespace Gilligan.MVC.MVC.Controllers
         {
             var asJson = JsonConvert.SerializeObject(viewModel);
 
-            var request = CreateRequestToService(HttpMethod.Get, "api/rating/genre", asJson);
+            var request = CreateRequestToService(HttpMethod.Post, "api/rating/genre", asJson);
 
             var result = await HttpClient.SendAsync(request);
 

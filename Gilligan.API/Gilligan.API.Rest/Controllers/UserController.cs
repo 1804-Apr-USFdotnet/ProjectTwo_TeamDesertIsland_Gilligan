@@ -6,6 +6,7 @@ using AutoMapper;
 using Gilligan.API.DomainContracts;
 using Gilligan.API.Models;
 using Gilligan.API.Repositories;
+using Gilligan.API.ViewModels;
 using Microsoft.AspNet.Identity;
 using Microsoft.AspNet.Identity.EntityFramework;
 using Microsoft.Owin.Security;
@@ -26,7 +27,7 @@ namespace Gilligan.API.Rest.Controllers
         [HttpPost]
         [Route("~/api/Account/Register")]
         [AllowAnonymous]
-        public IHttpActionResult Register(User account)
+        public IHttpActionResult Register(Account account)
         {
             if (!ModelState.IsValid)
             {
@@ -51,7 +52,7 @@ namespace Gilligan.API.Rest.Controllers
         [HttpPost]
         [Route("~/api/Account/RegisterAdmin")]
         [AllowAnonymous]
-        public IHttpActionResult RegisterAdmin(User account)
+        public IHttpActionResult RegisterAdmin(Account account)
         {
             if (!ModelState.IsValid)
             {
@@ -79,7 +80,7 @@ namespace Gilligan.API.Rest.Controllers
         [HttpPost]
         [Route("~/api/Account/Login")]
         [AllowAnonymous]
-        public IHttpActionResult LogIn(User account)
+        public IHttpActionResult LogIn(Account account)
         {
             if (!ModelState.IsValid)
             {
