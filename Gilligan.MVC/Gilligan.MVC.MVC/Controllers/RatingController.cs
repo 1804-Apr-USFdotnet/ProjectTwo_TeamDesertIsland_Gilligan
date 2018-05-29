@@ -14,9 +14,9 @@ namespace Gilligan.MVC.MVC.Controllers
         //    return View();
         //}
 
-        public async Task<ActionResult> SongRatings(int takeAmount)
+        public async Task<ActionResult> SongRatings(int? takeAmount)
         {
-            var request = CreateGet(HttpMethod.Get, "api/rating/song" + takeAmount);
+            var request = CreateGet(HttpMethod.Get, "api/rating/song" + 10);
 
             var result = await HttpClient.SendAsync(request);
 

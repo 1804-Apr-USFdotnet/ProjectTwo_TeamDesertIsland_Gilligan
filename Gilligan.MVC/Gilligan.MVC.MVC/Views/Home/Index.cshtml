@@ -12,14 +12,18 @@
 <div class="row">
     <div class="col-md-4">
         <h2>Top Songs</h2>
-        <p><input type="button" value="Top Songs" onclick="@("window.location.href='" + @Url.Action("Song", "SongRatings") + "'");" /></p>
+        <p><input type="button" value="Top Songs" onclick="@("window.location.href='" + @Url.Action("SongRatings", "Rating") + "'");" /></p>
     </div>
     <div class="col-md-4">
         <h2>Top Songs by Genre</h2>
-        <p><input type="button" value="Top Songs Genre" onclick="@("window.location.href='" + @Url.Action("Song", "GenreRating") + "'");" /></p>
+        <p><input type="button" value="Top Songs Genre" onclick="@("window.location.href='" + @Url.Action("GenreRatings", "Rating") + "'");" /></p>
     </div>
     <div class="col-md-4">
         <h2>Top Artists</h2>
-        <p><input type="button" value="Top Artists" onclick="@("window.location.href='" + @Url.Action("Song", "ArtistRating") + "'");" /></p>
+        <p><input type="button" value="Top Artists" onclick="@("window.location.href='" + @Url.Action("ArtistRatings", "Rating") + "'");" /></p>
+    </div>
+    <div class="col-md-4">
+        <h2>Top Albums</h2>
+        <p><input type="button" value="Top Albums" onclick="@("window.location.href='" + @Url.Action("AlbumRatings", "Rating") + "'");" /></p>
     </div>
 </div> 

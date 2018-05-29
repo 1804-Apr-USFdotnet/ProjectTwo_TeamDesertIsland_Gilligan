@@ -20,16 +20,20 @@
             <th></th>
         </tr>
 
-        @foreach (var item in Model.TopAllTimeRatedAlbumViewModels)
+        @if (Model.TopAllTimeRatedAlbumViewModels != null)
         {
-            <tr>
-                <td>
-                    {
-                    Html.RenderPartial("_Song", item);
-                    }
-                </td>
-            </tr>
+            foreach (var item in Model.TopAllTimeRatedAlbumViewModels)
+            {
+                <tr>
+                    <td>
+                        {
+                        Html.RenderPartial("_Song", item);
+                        }
+                    </td>
+                </tr>
+            }
         }
+
     </table>
 </div>
 
@@ -42,16 +46,20 @@
             <th></th>
         </tr>
 
-        @foreach (var item in Model.TopDailyAlbumViewModels)
+        @if (Model.TopDailyAlbumViewModels != null)
         {
-            <tr>
-                <td>
-                    {
-                    Html.RenderPartial("_Song", item);
-                    }
-                </td>
-            </tr>
+            foreach (var item in Model.TopDailyAlbumViewModels)
+            {
+                <tr>
+                    <td>
+                        {
+                        Html.RenderPartial("_Song", item);
+                        }
+                    </td>
+                </tr>
+            }
         }
+
     </table>
 </div>
 
@@ -64,16 +72,20 @@
             <th></th>
         </tr>
 
-        @foreach (var item in Model.TopWeeklyRatedAlbumViewModels)
+        @if (Model.TopWeeklyRatedAlbumViewModels != null)
         {
-            <tr>
-                <td>
-                    {
-                    Html.RenderPartial("_Song", item);
-                    }
-                </td>
-            </tr>
+            foreach (var item in Model.TopWeeklyRatedAlbumViewModels)
+            {
+                <tr>
+                    <td>
+                        {
+                        Html.RenderPartial("_Song", item);
+                        }
+                    </td>
+                </tr>
+            }
         }
+
     </table>
 </div>
 
@@ -86,15 +98,19 @@
             <th></th>
         </tr>
 
-        @foreach (var item in Model.TopMonthlyRatedAlbumViewModels)
+        @if (Model.TopMonthlyRatedAlbumViewModels != null)
         {
-            <tr>
-                <td>
-                    {
-                    Html.RenderPartial("_Song", item);
-                    }
-                </td>
-            </tr>
+            foreach (var item in Model.TopMonthlyRatedAlbumViewModels)
+            {
+                <tr>
+                    <td>
+                        {
+                        Html.RenderPartial("_Song", item);
+                        }
+                    </td>
+                </tr>
+            }
         }
+
     </table>
 </div>

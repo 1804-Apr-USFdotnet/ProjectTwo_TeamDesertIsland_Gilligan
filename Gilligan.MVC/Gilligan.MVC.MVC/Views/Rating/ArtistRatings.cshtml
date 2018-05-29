@@ -21,16 +21,20 @@
             <th></th>
         </tr>
 
-        @foreach (var item in Model.TopAllTimeRatedArtistViewModels)
+        @if (Model.TopAllTimeRatedArtistViewModels != null)
         {
-            <tr>
-                <td>
-                    {
-                    Html.RenderPartial("_Artist", item);
-                    }
-                </td>
-            </tr>
+            foreach (var item in Model.TopAllTimeRatedArtistViewModels)
+            {
+                <tr>
+                    <td>
+                        {
+                        Html.RenderPartial("_Artist", item);
+                        }
+                    </td>
+                </tr>
+            }
         }
+
     </table>
 </div>
 
@@ -43,16 +47,20 @@
             <th></th>
         </tr>
 
-        @foreach (var item in Model.TopDailyArtistViewModels)
+        @if (Model.TopDailyArtistViewModels != null)
         {
-            <tr>
-                <td>
-                    {
-                    Html.RenderPartial("_Artist", item);
-                    }
-                </td>
-            </tr>
+            foreach (var item in Model.TopDailyArtistViewModels)
+            {
+                <tr>
+                    <td>
+                        {
+                        Html.RenderPartial("_Artist", item);
+                        }
+                    </td>
+                </tr>
+            }
         }
+
     </table>
 </div>
 
@@ -60,21 +68,25 @@
     <table class="table">
         <tr>
             <th>
-                Top All Time Artists
+                Top Weekly Artists
             </th>
             <th></th>
         </tr>
 
-        @foreach (var item in Model.TopWeeklyRatedArtistViewModels)
+        @if (Model.TopWeeklyRatedArtistViewModels != null)
         {
-            <tr>
-                <td>
-                    {
-                    Html.RenderPartial("_Artist", item);
-                    }
-                </td>
-            </tr>
+            foreach (var item in Model.TopWeeklyRatedArtistViewModels)
+            {
+                <tr>
+                    <td>
+                        {
+                        Html.RenderPartial("_Artist", item);
+                        }
+                    </td>
+                </tr>
+            }
         }
+
     </table>
 </div>
 
@@ -82,20 +94,24 @@
     <table class="table">
         <tr>
             <th>
-                Top All Time Artists
+                Top Monthly Artists
             </th>
             <th></th>
         </tr>
 
-        @foreach (var item in Model.TopMonthlyRatedArtistViewModels)
+        @if (Model.TopMonthlyRatedArtistViewModels != null)
         {
-            <tr>
-                <td>
-                    {
-                    Html.RenderPartial("_Artist", item);
-                    }
-                </td>
-            </tr>
+            foreach (var item in Model.TopMonthlyRatedArtistViewModels)
+            {
+                <tr>
+                    <td>
+                        {
+                        Html.RenderPartial("_Artist", item);
+                        }
+                    </td>
+                </tr>
+            }
         }
+
     </table>
 </div>
