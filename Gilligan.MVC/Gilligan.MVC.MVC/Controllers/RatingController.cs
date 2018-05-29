@@ -1,7 +1,9 @@
 ﻿using Gilligan.MVC.ViewModels.Music;
 using System.Net.Http;
+using System.Net.Http.Formatting;
 using System.Threading.Tasks;
 using System.Web.Mvc;
+using Gilligan.MVC.ViewModels.User;
 using Newtonsoft.Json;
 
 namespace Gilligan.MVC.MVC.Controllers
@@ -63,7 +65,8 @@ namespace Gilligan.MVC.MVC.Controllers
         {
             var asJson = JsonConvert.SerializeObject(viewModel);
 
-            var request = CreateRequestToService(HttpMethod.Post, "api/rating/genre", asJson);
+            var request = CreateRequestToService(HttpMethod.Post, "api/rating", null);
+            request.Content = new ObjectContent<AddRatingViewModel>(viewModel, new JsonMediaTypeFormatter());
 
             var result = await HttpClient.SendAsync(request);
 

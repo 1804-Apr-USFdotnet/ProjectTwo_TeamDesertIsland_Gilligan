@@ -1,4 +1,5 @@
-﻿@model Gilligan.MVC.ViewModels.Music.AddRatingViewModel
+﻿
+@model Gilligan.MVC.ViewModels.Music.AddRatingViewModel
 
 @{
     ViewBag.Title = "AddRating";
@@ -6,7 +7,7 @@
 
 <h2>AddRating</h2>
 
-@using (Html.BeginForm()) 
+@using (Html.BeginForm("AddRating", "Rating", FormMethod.Post)) 
 {
     @Html.AntiForgeryToken()
     
