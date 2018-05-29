@@ -30,7 +30,7 @@ namespace Gilligan.MVC.MVC.Controllers
         {
             if (!ModelState.IsValid) return View("", viewModel);
 
-            var request = CreateRequestToService(HttpMethod.Get, "api/search/songs/" + viewModel.SearchString, viewModel.SearchString);
+            var request = CreateGet(HttpMethod.Get, "api/search/songs/" + viewModel.SearchString);
 
             var result = await HttpClient.SendAsync(request);
 
@@ -43,11 +43,9 @@ namespace Gilligan.MVC.MVC.Controllers
         {
             if (!ModelState.IsValid) return View("", viewModel);
 
-            var request = CreateRequestToService(HttpMethod.Get, "api/search/albums/" + viewModel.SearchString, viewModel.SearchString);
+            var request = CreateGet(HttpMethod.Get, "api/search/albums/" + viewModel.SearchString);
 
             var result = await HttpClient.SendAsync(request);
-
-            //var vm = JsonConvert.DeserializeObject<IEnumerable<>()
 
             var vm = await result.Content.ReadAsAsync<IEnumerable<AlbumViewModel>>();
 
@@ -58,7 +56,7 @@ namespace Gilligan.MVC.MVC.Controllers
         {
             if (!ModelState.IsValid) return View("", viewModel);
 
-            var request = CreateRequestToService(HttpMethod.Get, "api/search/genres/" + viewModel.SearchString, viewModel.SearchString);
+            var request = CreateGet(HttpMethod.Get, "api/search/genres/" + viewModel.SearchString);
 
             var result = await HttpClient.SendAsync(request);
 
@@ -71,7 +69,7 @@ namespace Gilligan.MVC.MVC.Controllers
         {
             if (!ModelState.IsValid) return View("", viewModel);
 
-            var request = CreateRequestToService(HttpMethod.Get, "api/search/artist/" + viewModel.SearchString, viewModel.SearchString);
+            var request = CreateGet(HttpMethod.Get, "api/search/artists/" + viewModel.SearchString);
 
             var result = await HttpClient.SendAsync(request);
 
