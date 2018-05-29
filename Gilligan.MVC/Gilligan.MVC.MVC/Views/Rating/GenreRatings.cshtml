@@ -15,16 +15,20 @@
             <th></th>
         </tr>
 
-        @foreach (var item in Model.TopAllTimeRatedGenreViewModels)
+        @if (Model.TopAllTimeRatedGenreViewModels != null)
         {
-            <tr>
-                <td>
-                    {
-                    Html.RenderPartial("_Genre", item);
-                    }
-                </td>
-            </tr>
+            foreach (var item in Model.TopAllTimeRatedGenreViewModels)
+            {
+                <tr>
+                    <td>
+                        {
+                        Html.RenderPartial("_Genre", item);
+                        }
+                    </td>
+                </tr>
+            }
         }
+
     </table>
 </div>
 
@@ -37,16 +41,20 @@
             <th></th>
         </tr>
 
-        @foreach (var item in Model.TopDailyRatedGenreViewModels)
+        @if (Model.TopDailyRatedGenreViewModels != null)
         {
-            <tr>
-                <td>
-                    {
-                    Html.RenderPartial("_Genre", item);
-                    }
-                </td>
-            </tr>
+            foreach (var item in Model.TopDailyRatedGenreViewModels)
+            {
+                <tr>
+                    <td>
+                        {
+                        Html.RenderPartial("_Genre", item);
+                        }
+                    </td>
+                </tr>
+            }
         }
+
     </table>
 </div>
 
@@ -59,16 +67,20 @@
             <th></th>
         </tr>
 
-        @foreach (var item in Model.TopWeeklyRatedGenreViewModels)
+        @if (Model.TopWeeklyRatedGenreViewModels != null)
         {
-            <tr>
-                <td>
-                    {
-                    Html.RenderPartial("_Genre", item);
-                    }
-                </td>
-            </tr>
+            foreach (var item in Model.TopWeeklyRatedGenreViewModels)
+            {
+                <tr>
+                    <td>
+                        {
+                        Html.RenderPartial("_Genre", item);
+                        }
+                    </td>
+                </tr>
+            }
         }
+
     </table>
 </div>
 
@@ -81,15 +93,19 @@
             <th></th>
         </tr>
 
-        @foreach (var item in Model.TopMonthlyRatedGenreViewModels)
+        @if (Model.TopMonthlyRatedGenreViewModels != null)
         {
-            <tr>
-                <td>
-                    {
-                    Html.RenderPartial("_Genre", item);
-                    }
-                </td>
-            </tr>
+            foreach (var item in Model.TopMonthlyRatedGenreViewModels)
+            {
+                <tr>
+                    <td>
+                        {
+                        Html.RenderPartial("_Genre", item);
+                        }
+                    </td>
+                </tr>
+            }
         }
+
     </table>
 </div>

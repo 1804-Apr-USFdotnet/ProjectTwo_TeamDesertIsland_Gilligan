@@ -47,15 +47,18 @@
             <th></th>
         </tr>
 
-        @foreach (var item in Model.TopDailyRatedSongViewModels)
+        @if (Model.TopDailyRatedSongViewModels != null)
         {
-            <tr>
-                <td>
-                    {
-                    Html.RenderPartial("_Song", item);
-                    }
-                </td>
-            </tr>
+            foreach (var item in Model.TopDailyRatedSongViewModels)
+            {
+                <tr>
+                    <td>
+                        {
+                        Html.RenderPartial("_Song", item);
+                        }
+                    </td>
+                </tr>
+            }
         }
     </table>
 </div>
@@ -69,15 +72,18 @@
             <th></th>
         </tr>
 
-        @foreach (var item in Model.TopWeeklyRatedSongViewModels)
+        @if (Model.TopWeeklyRatedSongViewModels != null)
         {
-            <tr>
-                <td>
-                    {
-                    Html.RenderPartial("_Song", item);
-                    }
-                </td>
-            </tr>
+            foreach (var item in Model.TopWeeklyRatedSongViewModels)
+            {
+                <tr>
+                    <td>
+                        {
+                        Html.RenderPartial("_Song", item);
+                        }
+                    </td>
+                </tr>
+            }
         }
     </table>
 </div>
@@ -91,15 +97,18 @@
             <th></th>
         </tr>
 
-        @foreach (var item in Model.TopMonthlyRatedSongViewModels)
+        @if (Model.TopMonthlyRatedSongViewModels != null)
         {
-            <tr>
-                <td>
-                    {
-                    Html.RenderPartial("_Song", item);
-                    }
-                </td>
-            </tr>
+            foreach (var item in Model.TopMonthlyRatedSongViewModels)
+            {
+                <tr>
+                    <td>
+                        {
+                        Html.RenderPartial("_Song", item);
+                        }
+                    </td>
+                </tr>
+            }
         }
     </table>
 </div>
