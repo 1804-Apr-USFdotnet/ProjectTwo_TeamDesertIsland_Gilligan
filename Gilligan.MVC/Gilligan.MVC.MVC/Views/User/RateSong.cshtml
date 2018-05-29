@@ -10,11 +10,11 @@
 @using (Html.BeginForm("CreateRating", "User", FormMethod.Post))
 {
     <div>
-    Html.DropDownListFor(x => x.UserId, Model.UserItems);
+    @Html.DropDownListFor(x => x.UserId, Model.UserItems)
     </div>
 
     <div>
-        Html.DropDownListFor(x => x.SongId, Model.SongItems);
+        @Html.DropDownListFor(x => x.SongId, Model.SongItems)
     </div>
 
     @:<div><input type="number" /></div>
