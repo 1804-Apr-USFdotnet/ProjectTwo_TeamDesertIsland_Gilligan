@@ -4,7 +4,7 @@
     ViewBag.Title = "RegisterAsync";
 }
 
-@using (Html.BeginForm())
+@using (Html.BeginForm("RegisterAsync", "User", FormMethod.Post))
 {
     @Html.AntiForgeryToken()
 

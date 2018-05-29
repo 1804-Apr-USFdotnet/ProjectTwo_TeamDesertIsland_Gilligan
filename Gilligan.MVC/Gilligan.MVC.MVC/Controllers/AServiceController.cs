@@ -20,7 +20,7 @@ namespace Gilligan.MVC.MVC.Controllers
 
             apiRequest.Headers.Add("Cookie", new CookieHeaderValue(cookieName, cookieValue).ToString());
 
-            apiRequest.Content = new StringContent(body, Encoding.UTF8, "application/json");
+            //apiRequest.Content = new StringContent(body, Encoding.UTF8, "application/json");
             
 
             return apiRequest;

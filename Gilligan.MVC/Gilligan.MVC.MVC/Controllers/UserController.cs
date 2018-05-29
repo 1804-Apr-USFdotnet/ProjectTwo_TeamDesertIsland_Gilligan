@@ -18,15 +18,16 @@ namespace Gilligan.MVC.MVC.Controllers
             _userService = userService;
         }
 
-        public async Task<ActionResult> RegisterAsync(CreateUserViewModel viewModel)
+        public async Task<ActionResult> RegisterAsync(Account account)
         {
-            if (!ModelState.IsValid) return View("", viewModel);
+            if (!ModelState.IsValid) return View("", account);
 
-            var result = await _userService.RegisterAsync(viewModel);
+            HttpRequestMessage apiRequest = CreateRequestToService(HttpMethod.Post, "api/Account/Register", null);
+            apiRequest.Content = new ObjectContent<Account>(account, new JsonMediaTypeFormatter());
 
-            if (result == HttpStatusCode.Created) return View("");
+            var response = await HttpClient.SendAsync(apiRequest);
 
-            return View("");
+            return RedirectToAction("Index", "Home");
         }
 
         public async Task<ActionResult> LogInAsync(Account account)

@@ -63,7 +63,7 @@ namespace Gilligan.MVC.MVC.Controllers
         {
             var asJson = JsonConvert.SerializeObject(viewModel);
 
-            var request = CreateRequestToService(HttpMethod.Get, "api/rating/genre", asJson);
+            var request = CreateRequestToService(HttpMethod.Post, "api/rating/genre", asJson);
 
             var result = await HttpClient.SendAsync(request);
 
