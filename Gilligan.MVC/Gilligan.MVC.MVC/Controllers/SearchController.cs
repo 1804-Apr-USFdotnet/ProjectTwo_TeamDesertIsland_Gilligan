@@ -30,7 +30,7 @@ namespace Gilligan.MVC.MVC.Controllers
         {
             if (!ModelState.IsValid) return View("", viewModel);
 
-            var request = CreateRequestToService(HttpMethod.Get, "api/search/songs", viewModel.SearchString);
+            var request = CreateRequestToService(HttpMethod.Get, "api/search/songs/" + viewModel.SearchString, viewModel.SearchString);
 
             var result = await HttpClient.SendAsync(request);
 
@@ -43,7 +43,7 @@ namespace Gilligan.MVC.MVC.Controllers
         {
             if (!ModelState.IsValid) return View("", viewModel);
 
-            var request = CreateRequestToService(HttpMethod.Get, "api/search/albums", viewModel.SearchString);
+            var request = CreateRequestToService(HttpMethod.Get, "api/search/albums/" + viewModel.SearchString, viewModel.SearchString);
 
             var result = await HttpClient.SendAsync(request);
 
@@ -58,20 +58,20 @@ namespace Gilligan.MVC.MVC.Controllers
         {
             if (!ModelState.IsValid) return View("", viewModel);
 
-            var request = CreateRequestToService(HttpMethod.Get, "api/search/genres", viewModel.SearchString);
+            var request = CreateRequestToService(HttpMethod.Get, "api/search/genres/" + viewModel.SearchString, viewModel.SearchString);
 
             var result = await HttpClient.SendAsync(request);
 
-            var vm = await result.Content.ReadAsAsync<GenreViewModel>();
+            var vm = await result.Content.ReadAsAsync<IEnumerable<GenreViewModel>>();
 
-            return View();
+            return View(vm);
         }
 
         public async Task<ActionResult> SearchArtistsAsync(SearchViewModel viewModel)
         {
             if (!ModelState.IsValid) return View("", viewModel);
 
-            var request = CreateRequestToService(HttpMethod.Get, "api/search/artist", viewModel.SearchString);
+            var request = CreateRequestToService(HttpMethod.Get, "api/search/artist/" + viewModel.SearchString, viewModel.SearchString);
 
             var result = await HttpClient.SendAsync(request);
 
