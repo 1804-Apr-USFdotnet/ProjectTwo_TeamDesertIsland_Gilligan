@@ -15,11 +15,11 @@ namespace Gilligan.MVC.MVC.Controllers
         //{
         //    return View();
         //}
-        private const int takeAmount = 10;
+        private const int take = 10;
 
         public async Task<ActionResult> SongRatings(int? takeAmount)
         {
-            var request = CreateGet(HttpMethod.Get, "api/rating/song" + takeAmount);
+            var request = CreateGet(HttpMethod.Get, "api/rating/song/" + take);
 
             var result = await HttpClient.SendAsync(request);
 
@@ -30,7 +30,7 @@ namespace Gilligan.MVC.MVC.Controllers
 
         public async Task<ActionResult> ArtistRatings(int? takeAmount)
         {
-            var request = CreateGet(HttpMethod.Get, "api/rating/artist" + takeAmount);
+            var request = CreateGet(HttpMethod.Get, "api/rating/artist/" + take);
 
             var result = await HttpClient.SendAsync(request);
 
@@ -41,7 +41,7 @@ namespace Gilligan.MVC.MVC.Controllers
 
         public async Task<ActionResult> AlbumRatings(int? takeAmount)
         {
-            var request = CreateGet(HttpMethod.Get, "api/rating/album" + takeAmount);
+            var request = CreateGet(HttpMethod.Get, "api/rating/album/" + take);
 
             var result = await HttpClient.SendAsync(request);
 
@@ -52,7 +52,7 @@ namespace Gilligan.MVC.MVC.Controllers
 
         public async Task<ActionResult> GenreRatings(int? takeAmount)
         {
-            var request = CreateGet(HttpMethod.Get, "api/rating/genre" + takeAmount);
+            var request = CreateGet(HttpMethod.Get, "api/rating/genre/" + take);
 
             var result = await HttpClient.SendAsync(request);
 
