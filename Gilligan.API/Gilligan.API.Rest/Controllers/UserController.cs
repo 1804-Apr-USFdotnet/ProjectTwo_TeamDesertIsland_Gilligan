@@ -1,4 +1,6 @@
 ﻿using System;
+using System.Collections;
+using System.Collections.Generic;
 using System.Linq;
 using System.Net.Http;
 using System.Security.Claims;
@@ -137,6 +139,19 @@ namespace Gilligan.API.Rest.Controllers
             context.SaveChanges();
 
             return Ok();
+        }
+
+        [AllowAnonymous]
+        [HttpGet]
+        [Route("~/api/Account/User")]
+        public IHttpActionResult AllUsers()
+        {
+            var context = new GilliganContext();
+            var users = context.Users.ToList();
+
+            var vm = _mapper.Map<IEnumerable<UserViewModel>>(users);
+
+            return Ok(vm);
         }
     }
 }

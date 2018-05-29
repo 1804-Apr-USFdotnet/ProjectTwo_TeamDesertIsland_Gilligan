@@ -137,6 +137,8 @@ namespace Gilligan.API.Mapping
                 .ForMember(d => d.TopWeeklyRatedGenreViewModels, o => o.MapFrom(s => s.TopWeeklyRatedGenres))
                 .ForMember(d => d.TopMonthlyRatedGenreViewModels, o => o.MapFrom(s => s.TopMonthlyRatedGenres))
                 .ForMember(d => d.TopAllTimeRatedGenreViewModels, o => o.MapFrom(s => s.TopAllTimeRatedGenres));
+
+            CreateMap<User, UserViewModel>();
         }
     }
 }

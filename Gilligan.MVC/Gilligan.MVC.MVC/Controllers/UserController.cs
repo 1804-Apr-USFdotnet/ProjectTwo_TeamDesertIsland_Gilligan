@@ -1,10 +1,12 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using System.Net;
 using System.Net.Http;
 using System.Net.Http.Formatting;
 using System.Threading.Tasks;
 using System.Web.Mvc;
 using Gilligan.MVC.DomainContracts;
+using Gilligan.MVC.ViewModels.Music;
 using Gilligan.MVC.ViewModels.User;
 
 namespace Gilligan.MVC.MVC.Controllers
@@ -119,6 +121,47 @@ namespace Gilligan.MVC.MVC.Controllers
             request.Content = new ObjectContent<UserViewModel>(viewModel, new JsonMediaTypeFormatter());
 
             var response = await HttpClient.SendAsync(request);
+
+            return RedirectToAction("Index", "Home");
+        }
+
+        public ActionResult AddSongToUser()
+        {
+            return View();
+        }
+
+        public async Task<ActionResult> RateSong()
+        {
+            var request = CreateGet(HttpMethod.Get, "api/inventory/song");
+
+            var result = await HttpClient.SendAsync(request);
+
+            var vm = await result.Content.ReadAsAsync<IEnumerable<SongViewModel>>();
+
+
+            var userRequest = CreateGet(HttpMethod.Get, "api/Account/User");
+            var userResult = await HttpClient.SendAsync(userRequest);
+            var userVm = await userResult.Content.ReadAsAsync<IEnumerable<UserViewModel>>();
+
+            var viewModel = new UserSongViewModel(userVm, vm);
+            
+            return View(viewModel);
+        }
+
+        public async Task<ActionResult> CreateRating(UserSongViewModel vm)
+        {
+            var addRating = new AddRatingViewModel
+            {
+                UserId = vm.UserId,
+                SongId = vm.SongId,
+                Value = vm.Value,
+                RatedOn = DateTime.Today
+            };
+
+            var request = CreateGet(HttpMethod.Post, "api/rating");
+            request.Content = new ObjectContent<AddRatingViewModel>(addRating, new JsonMediaTypeFormatter());
+
+            var result = await HttpClient.SendAsync(request);
 
             return RedirectToAction("Index", "Home");
         }
