@@ -1,4 +1,5 @@
-﻿using System.Linq;
+﻿using System;
+using System.Linq;
 using System.Net.Http;
 using System.Security.Claims;
 using System.Web.Http;
@@ -115,6 +116,26 @@ namespace Gilligan.API.Rest.Controllers
         public IHttpActionResult Logout()
         {
             Request.GetOwinContext().Authentication.SignOut(WebApiConfig.AuthenticationType);
+            return Ok();
+        }
+
+        [AllowAnonymous]
+        [HttpPost]
+        [Route("~/api/Account/User")]
+        public IHttpActionResult NewUser(UserViewModel viewModel)
+        {
+            var user = new User
+            {
+                Id = Guid.NewGuid(), 
+                UserId = Guid.NewGuid(),
+                UserName = viewModel.UserName
+            };
+
+            var context = new GilliganContext();
+
+            context.Users.Add(user);
+            context.SaveChanges();
+
             return Ok();
         }
     }

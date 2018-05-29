@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace Gilligan.API.ViewModels
+namespace Gilligan.MVC.ViewModels.User
 {
     public class UserViewModel
     {

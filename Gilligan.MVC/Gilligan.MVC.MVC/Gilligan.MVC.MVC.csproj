@@ -263,6 +263,7 @@
     <Content Include="Views\Rating\AlbumRatings.cshtml" />
     <Content Include="Views\Rating\GenreRatings.cshtml" />
     <Content Include="Views\Rating\AddRating.cshtml" />
+    <Content Include="Views\User\AddUser.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Views\AService\" />

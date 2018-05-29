@@ -1,0 +1,16 @@
+﻿
+@model Gilligan.MVC.ViewModels.User.UserViewModel
+
+@{
+    ViewBag.Title = "AddUser";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>AddUser</h2>
+
+@using (Html.BeginForm("CreateUser", "User", FormMethod.Post))
+{
+    Html.EditorFor(x => x.UserName);
+    <div><input type="submit" value="Submit"/></div>
+}
+
