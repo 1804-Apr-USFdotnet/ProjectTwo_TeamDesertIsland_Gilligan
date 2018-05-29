@@ -9,10 +9,10 @@ namespace Gilligan.MVC.MVC.Controllers
     public class RatingController : AServiceController
     {
         // GET: Rating
-        public ActionResult Index()
-        {
-            return View();
-        }
+        //public ActionResult Index()
+        //{
+        //    return View();
+        //}
 
         public async Task<ActionResult> SongRatings(int takeAmount)
         {
@@ -22,7 +22,7 @@ namespace Gilligan.MVC.MVC.Controllers
 
             var vm = await result.Content.ReadAsAsync<SongRatingsViewModel>();
 
-            return View();
+            return View(vm);
         }
 
         public async Task<ActionResult> ArtistRatings(int takeAmount)
@@ -33,7 +33,7 @@ namespace Gilligan.MVC.MVC.Controllers
 
             var vm = await result.Content.ReadAsAsync<ArtistRatingViewModel>();
 
-            return View();
+            return View(vm);
         }
 
         public async Task<ActionResult> AlbumRatings(int takeAmount)
@@ -44,7 +44,7 @@ namespace Gilligan.MVC.MVC.Controllers
 
             var vm = await result.Content.ReadAsAsync<AlbumRatingsViewModel>();
 
-            return View();
+            return View(vm);
         }
 
         public async Task<ActionResult> GenreRatings(int takeAmount)
@@ -55,10 +55,10 @@ namespace Gilligan.MVC.MVC.Controllers
 
             var vm = await result.Content.ReadAsAsync<GenreRatingViewModel>();
 
-            return View();
+            return View(vm);
         }
 
-        public async Task<ActionResult> AddRating(AddRatingViewModel viewModel)
+        public async Task<RedirectToRouteResult> AddRating(AddRatingViewModel viewModel)
         {
             var asJson = JsonConvert.SerializeObject(viewModel);
 
@@ -66,7 +66,7 @@ namespace Gilligan.MVC.MVC.Controllers
 
             var result = await HttpClient.SendAsync(request);
 
-            return null;
+            return RedirectToAction("Index", "Home");
         }
     }
 }
