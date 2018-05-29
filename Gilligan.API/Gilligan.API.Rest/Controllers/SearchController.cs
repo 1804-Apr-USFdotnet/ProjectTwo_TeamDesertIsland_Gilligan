@@ -20,9 +20,9 @@ namespace Gilligan.API.Rest.Controllers
         }
 
         [AllowAnonymous]
-        [HttpGet]
+        [HttpPost]
         [Route("songs")]
-        public IHttpActionResult SearchSongs(string value)
+        public IHttpActionResult SearchSongs([FromBody] string value)
         {
             if (value.IsNullOrWhiteSpace()) return BadRequest("Null Value");
 
@@ -34,9 +34,9 @@ namespace Gilligan.API.Rest.Controllers
         }
 
         [AllowAnonymous]
-        [HttpGet]
+        [HttpPost]
         [Route("albums")]
-        public IHttpActionResult SearchAlbums(string value)
+        public IHttpActionResult SearchAlbums([FromBody] string value)
         {
             if (value.IsNullOrWhiteSpace()) return BadRequest("Null Value");
 
@@ -48,9 +48,9 @@ namespace Gilligan.API.Rest.Controllers
         }
 
         [AllowAnonymous]
-        [HttpGet]
+        [HttpPost]
         [Route("artists")]
-        public IHttpActionResult SearchArtists(string value)
+        public IHttpActionResult SearchArtists([FromBody] string value)
         {
             if (value.IsNullOrWhiteSpace()) return BadRequest("Null Value");
 
@@ -62,9 +62,9 @@ namespace Gilligan.API.Rest.Controllers
         }
 
         [AllowAnonymous]
-        [HttpGet]
+        [HttpPost]
         [Route("genres")]
-        public IHttpActionResult SearchGenres(string value)
+        public IHttpActionResult SearchGenres([FromBody] string value)
         {
             if (value.IsNullOrWhiteSpace()) return BadRequest("Null Value");
 
