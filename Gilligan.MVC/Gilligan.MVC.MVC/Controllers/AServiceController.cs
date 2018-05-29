@@ -25,5 +25,18 @@ namespace Gilligan.MVC.MVC.Controllers
 
             return apiRequest;
         }
+
+        protected HttpRequestMessage CreateGet(HttpMethod method, string url)
+        {
+            var apiRequest = new HttpRequestMessage(method, new Uri(serviceUri, url));
+
+            string cookieValue = Request.Cookies[cookieName]?.Value ?? ""; // ?. operator new in C# 7
+
+            apiRequest.Headers.Add("Cookie", new CookieHeaderValue(cookieName, cookieValue).ToString());
+
+            
+
+            return apiRequest;
+        }
     }
 }
