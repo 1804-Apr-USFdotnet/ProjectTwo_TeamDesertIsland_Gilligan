@@ -18,6 +18,8 @@ namespace Gilligan.API.Rest.Controllers
             _mapper = mapper;
         }
 
+        [AllowAnonymous]
+        [Route("addrating")]
         [HttpPost]
         public IHttpActionResult AddRating(AddRatingViewModel viewModel)
         {

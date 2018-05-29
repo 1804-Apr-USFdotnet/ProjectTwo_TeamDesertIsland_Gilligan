@@ -29,5 +29,10 @@ namespace Gilligan.MVC.ViewModels.User
                 SongItems.Add(new SelectListItem{Text = song.Name, Value = song.SongId.ToString()});
             }
         }
+
+        public UserSongViewModel()
+        {
+            
+        }
     }
 }
