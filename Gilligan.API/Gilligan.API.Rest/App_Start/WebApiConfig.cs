@@ -10,10 +10,9 @@ namespace Gilligan.API.Rest
 
         public static void Register(HttpConfiguration config)
         {
-            config.EnableCors(new EnableCorsAttribute("*", "*", "*", "*"));
-            // Web API configuration and services
-           // config.EnableCors(new EnableCorsAttribute("*", "*", "*"));
-            
+            var cors = new EnableCorsAttribute("*", "*", "*");
+            config.EnableCors(cors);
+
             config.Filters.Add(new AuthorizeAttribute());
 
             // Web API routes
